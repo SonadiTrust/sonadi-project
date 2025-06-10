@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonials - Sonadi Charitable Trust</title>
+    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+  </head>
+  <body>
+    {% if messages %}
+    <div class="message-container">
+      {% for message in messages %}
+      <div class="success-message">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %} {% include 'header.html' %} {% include 'navbar.html' %}
+
+    <div class="page-heading">
+      <img
+        src="{% static 'img/sonadi-logo.jpg' %}"
+        alt="Sonadi Logo"
+        class="logo-img"
+      />
+      <div class="page-heading-text">
+        <h2>Testimonials</h2>
+        <h3>Stories of Hope and Change</h3>
+      </div>
+    </div>
+    <!-- ✅ Testimonials Display -->
+    <section class="testimonials">
+      {% for t in testimonials %}
+      <div class="card">
+        {% if t.photo %}
+        <img
+          src="{{ t.photo.url }}"
+          alt="{{ t.animal_name }} testimonial image"
+        />
+        {% else %}
+        <img
+          src="{% static 'img/default-animal.jpg' %}"
+          alt="Default animal image"
+        />
+        {% endif %}
+        <h3>{{ t.title }}</h3>
+        <p><strong>{{ t.name }} & {{ t.animal_name }}</strong></p>
+        <p>{{ t.message }}</p>
+      </div>
+      {% empty %}
+      <p style="text-align: center">No testimonials yet.</p>
+      {% endfor %}
+    </section>
+
+    <!-- ✅ Modal Form -->
+    <div id="testimonialModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Share Your Story</h3>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <!-- ✅ Button to open the modal -->
+    <div style="text-align: center; margin: 20px">
+      <button class="testimonial-btn" onclick="openModal()">
+        Submit Your Testimonial
+      </button>
+    </div>
+
+    {% include 'footer.html' %}
+
+    <!-- ✅ Modal Script -->
+    <script>
+      function openModal() {
+        document.getElementById("testimonialModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("testimonialModal").style.display = "none";
+      }
+
+      // Close modal if user clicks outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("testimonialModal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      // ✅ Auto-close modal after successful form submission
+    </script>
+    {% if messages %}
+    <script>
+      closeModal();
+    </script>
+    {% endif %}
+    <script></script>
+  </body>
+</html>

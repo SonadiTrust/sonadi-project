@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adopt a Pet - Sonadi Charitable Trust</title>
+    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+
+    <div class="page-heading">
+      <img
+        src="{% static 'img/sonadi-logo.jpg' %}"
+        alt="Sonadi Charitable Trust Logo"
+        class="logo-img"
+      />
+      <div class="page-heading-text">
+        <h2>Adopt a Dog</h2>
+        <h3>Give a Loving Home to a Friend</h3>
+      </div>
+    </div>
+
+    <section>
+      <div class="animal-gallery">
+        <!-- Dog 1 -->
+        <div class="animal-card" onclick="openForm(this)">
+          <img src="{% static 'img/dog 1.jpg' %}" alt="Dog1" class="animal-img" />
+          <div class="animal-info">
+            <h3>Dog1</h3>
+            <p><strong>Age:</strong> 2 years</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Breed:</strong> Indie</p>
+            <p>
+              <strong>Personality:</strong> Friendly and playful, loves to
+              fetch.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dog 2 -->
+        <div class="animal-card" onclick="openForm(this)">
+          <img src="{% static 'img/dog 2.jpg' %}" alt="Dog2" class="animal-img" />
+          <div class="animal-info">
+            <h3>Dog2</h3>
+            <p><strong>Age:</strong> 3 years</p>
+            <p><strong>Gender:</strong> Female</p>
+            <p><strong>Breed:</strong> Labrador Mix</p>
+            <p>
+              <strong>Personality:</strong> Calm and gentle, great with kids.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dog 3 -->
+        <div class="animal-card" onclick="openForm(this)">
+          <img src="{% static 'img/dog 1.jpg' %}" alt="Dog3" class="animal-img" />
+          <div class="animal-info">
+            <h3>Dog3</h3>
+            <p><strong>Age:</strong> 1 year</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Breed:</strong> German Shepherd</p>
+            <p>
+              <strong>Personality:</strong> Energetic and loyal, loves long
+              walks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cat 1 -->
+        <div class="animal-card" onclick="openForm(this)">
+          <img
+            src="{% static 'img/cat1.jpg' %}"
+            alt="Whiskers the cat"
+            class="animal-img"
+          />
+          <div class="animal-info">
+            <h3>Whiskers</h3>
+            <p><strong>Age:</strong> 8 months</p>
+            <p><strong>Gender:</strong> Female</p>
+            <p><strong>Breed:</strong> Domestic Shorthair</p>
+            <p>
+              <strong>Personality:</strong> Curious and affectionate, loves to
+              cuddle.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cat 2 -->
+        <div class="animal-card" onclick="openForm(this)">
+          <img
+            src="{% static 'img/cat2.jpg' %}"
+            alt="Simba the cat"
+            class="animal-img"
+          />
+          <div class="animal-info">
+            <h3>Simba</h3>
+            <p><strong>Age:</strong> 1.5 years</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Breed:</strong> Persian Mix</p>
+            <p>
+              <strong>Personality:</strong> Playful and adventurous, loves to
+              explore.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Form -->
+    <div id="adoptionForm" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeForm()">&times;</span>
+        <h2>Adoption Interest Form</h2>
+        <form>
+          <label for="userName">Full Name</label>
+          <input type="text" id="userName" required />
+
+          <label for="userPhone">Phone Number</label>
+          <input type="tel" id="userPhone" required />
+
+          <label for="userEmail">Email</label>
+          <input type="email" id="userEmail" required />
+
+          <label for="userReason">What motivates you to adopt?</label>
+          <textarea id="userReason" rows="3" required></textarea>
+
+          <h3>Animal Details</h3>
+          <p><strong>Name:</strong> <span id="animalName"></span></p>
+          <p><strong>Age:</strong> <span id="animalAge"></span></p>
+          <p><strong>Gender:</strong> <span id="animalGender"></span></p>
+          <p><strong>Breed:</strong> <span id="animalBreed"></span></p>
+          <p>
+            <strong>Personality:</strong> <span id="animalPersonality"></span>
+          </p>
+
+          <button class="submit-btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>Sonadi Charitable Trust</p>
+      <a
+        href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Masudabad, Near Sai Baba Mandir, Najafgarh, Delhi - 110043 </a
+      ><br />
+      <p>Phone: +91 9212797696</p>
+      <p>Email: info@sonadicharitabletrust.com</p>
+      <p>
+        Follow us on:
+        <a
+          href="https://www.facebook.com/SonadiCharitableTrust/"
+          target="_blank"
+          >Facebook</a
+        >
+        |
+        <a
+          href="https://www.instagram.com/sonadicharitabletrust/"
+          target="_blank"
+          >Instagram</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      function openForm(card) {
+        const name = card.querySelector("h3").innerText;
+        const details = card.querySelectorAll("p");
+
+        document.getElementById("animalName").innerText = name;
+        document.getElementById("animalAge").innerText = details[0].innerText
+          .replace("Age:", "")
+          .trim();
+        document.getElementById("animalGender").innerText = details[1].innerText
+          .replace("Gender:", "")
+          .trim();
+        document.getElementById("animalBreed").innerText = details[2].innerText
+          .replace("Breed:", "")
+          .trim();
+        document.getElementById("animalPersonality").innerText =
+          details[3].innerText.replace("Personality:", "").trim();
+
+        const modal = document.getElementById("adoptionForm");
+        modal.classList.add("show");
+        modal.style.display = "block";
+      }
+
+      function closeForm() {
+        const modal = document.getElementById("adoptionForm");
+        modal.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("adoptionForm");
+        if (event.target === modal) {
+          closeForm();
+        }
+      };
+
+      window.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeForm();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Sonadi Charitable Trust</title>
+    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+  </head>
+  <body>
+    {% include 'header.html' %} {% include 'navbar.html' %}
+
+    <div class="page-heading">
+      <img
+        src="{% static 'img/sonadi-logo.jpg' %}"
+        alt="Sonadi Charitable Trust Logo"
+        class="logo-img"
+      />
+      <div class="page-heading-text">
+        <h2>Contact Us</h2>
+        <h3>We're Here to Help</h3>
+      </div>
+    </div>
+
+    <main class="contact-container">
+      <section class="contact-form-section">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            {{ form.name }}
+            <label>Your Name</label>
+          </div>
+          <div class="form-group">
+            {{ form.email }}
+            <label>Your Email</label>
+          </div>
+          <div class="form-group">
+            {{ form.phone }}
+            <label>Your Phone Number</label>
+          </div>
+          <div class="form-group">
+            {{ form.message }}
+            <label>Your Message</label>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </section>
+
+      <section class="contact-info">
+        <h2>Contact Information</h2>
+        <p>
+          <strong>📍 Address:</strong> Masudabad, Near Sai Baba Mandir,
+          Najafgarh, Delhi - 110043
+        </p>
+        <p>
+          <strong>📞 Phone:</strong>
+          <a href="tel:+919212797696">+91 9212797696</a>
+        </p>
+        <p>
+          <strong>✉️ Email:</strong>
+          <a href="mailto:info@sonadicharitabletrust.com"
+            >info@sonadicharitabletrust.com</a
+          >
+        </p>
+        <p>
+          <strong>📱 WhatsApp:</strong>
+          <a href="https://wa.me/919212797696" target="_blank">Message Us</a>
+        </p>
+        <p>
+          <strong>📘 Facebook:</strong>
+          <a href="https://facebook.com/SonadiCharitableTrust" target="_blank"
+            >Follow</a
+          >
+        </p>
+        <p>
+          <strong>📸 Instagram:</strong>
+          <a href="https://instagram.com/sonadicharitabletrust" target="_blank"
+            >@sonadicharitabletrust</a
+          >
+        </p>
+      </section>
+
+      <section class="map-section">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5534170562214!2d77.00196517605963!3d28.613171284958636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0fdb8c34e897%3A0xb284db0042082343!2sSONADI%20ANIMAL%20CARE%20CENTER!5e0!3m2!1sen!2sin!4v1748173037478!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+    </main>
+    <footer>
+      <p>Sonadi Charitable Trust</p>
+      <a
+        href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Masudabad, Near Sai Baba Mandir, Najafgarh, Delhi - 110043 </a
+      ><br />
+      <p>Phone: +91 9212797696</p>
+      <p>Email: info@sonadicharitabletrust.com</p>
+      <p>
+        Follow us on:
+        <a
+          href="https://www.facebook.com/SonadiCharitableTrust/"
+          target="_blank"
+          >Facebook</a
+        >
+        |
+        <a
+          href="https://www.instagram.com/sonadicharitabletrust/"
+          target="_blank"
+          >Instagram</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

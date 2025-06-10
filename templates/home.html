@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonadi Charitable Trust</title>
+    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+
+    <div class="page-heading">
+      <img
+        src="{% static 'img/sonadi-logo.jpg' %}"
+        alt="Sonadi Charitable Trust Logo"
+        class="logo-img"
+      />
+      <div class="page-heading-text">
+        <h2>Sonadi Charitable Trust</h2>
+        <h3>Empowering Lives, Spreading Kindness</h3>
+      </div>
+    </div>
+
+    <main>
+      <div id="Navbar-placeholder"></div>
+
+      <section class="home-section">
+        <h2>Welcome to Sonadi Charitable Trust</h2>
+        <p>
+          Founded in 2001, Sonadi Charitable Trust is dedicated to the welfare of
+          animals and the empowerment of underprivileged communities. Our mission
+          is to create a compassionate world where every being is treated with
+          dignity and respect.
+        </p>
+        <p>
+          From providing medical care to street animals to supporting education
+          for underprivileged children, we strive to make a positive impact in
+          our community.
+        </p>
+        <a href="{% url 'about' %}" class="btn">Learn More About Us</a>
+      </section>
+
+      <section class="home-section">
+        <h2>Get Involved</h2>
+        <p>
+          Join us in our mission to make a difference. Whether you want to
+          volunteer, donate, or simply spread the word, your support is invaluable.
+        </p>
+        <div class="button-group">
+          <a href="{% url 'volunteer' %}" class="btn">Volunteer</a>
+          <a href="{% url 'donate' %}" class="btn">Donate</a>
+        </div>
+
+        <p>
+          Together, we can create a better future for animals and underprivileged
+          communities.
+        </p>
+      </section>
+
+      <section class="home-section">
+        <h2>Contact Us</h2>
+        <p>
+          Have questions or want to get in touch? We would love to hear from you!
+          Reach out to us via email or phone, or visit us at our location.
+        </p>
+        <div class="button-group">
+          <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+          <a
+            href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6"
+            target="_blank"
+            class="btn"
+            >Find Us</a>          
+        </div>
+      </section>
+
+
+    </main>
+
+    <footer>
+      <p>Sonadi Charitable Trust</p>
+      <a
+        href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Masudabad, Near Sai Baba Mandir, Najafgarh, Delhi - 110043 </a
+      ><br />
+      <p>Phone: +91 9212797696</p>
+      <p>Email: info@sonadicharitabletrust.com</p>
+      <p>
+        Follow us on:
+        <a
+          href="https://www.facebook.com/SonadiCharitableTrust/"
+          target="_blank"
+          >Facebook</a
+        >
+        |
+        <a
+          href="https://www.instagram.com/sonadicharitabletrust/"
+          target="_blank"
+          >Instagram</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

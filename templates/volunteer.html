@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteer - Sonadi Charitable Trust</title>
+    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+  </head>
+  <body>
+    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
+    <div class="message-container">
+      {% for message in messages %}
+      <div class="success-message">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="page-heading">
+      <img
+        src="{% static 'img/sonadi-logo.jpg' %}"
+        alt="Sonadi Charitable Trust Logo"
+        class="logo-img"
+      />
+      <div class="page-heading-text">
+        <h2>Volunteer</h2>
+        <h3>Join Us in Making a Difference</h3>
+      </div>
+    </div>
+
+    <section>
+      <p>
+        Join us in making a difference! Fill out the form below to volunteer
+        your time and skills to help animals in need.
+      </p>
+    </section>
+
+    <section class="contact-form-section">
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.name }}
+          <label>Your Name</label>
+        </div>
+        <div class="form-group">
+          {{ form.email }}
+          <label>Your Email</label>
+        </div>
+        <div class="form-group">
+          {{ form.phone }}
+          <label>Your Phone Number</label>
+        </div>
+        <div class="form-group">
+          {{ form.message }}
+          <label>Your Message</label>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>Sonadi Charitable Trust</p>
+      <a href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6" target="_blank"
+        >Masudabad, Near Sai Baba Mandir, Najafgarh, Delhi - 110043</a
+      ><br />
+      <p>Phone: +91 9212797696</p>
+      <p>Email: info@sonadicharitabletrust.com</p>
+      <p>
+        Follow us on:
+        <a
+          href="https://www.facebook.com/SonadiCharitableTrust/"
+          target="_blank"
+          >Facebook</a
+        >
+        |
+        <a
+          href="https://www.instagram.com/sonadicharitabletrust/"
+          target="_blank"
+          >Instagram</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
