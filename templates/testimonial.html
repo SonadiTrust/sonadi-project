@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% if messages %}
+    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
     <div class="message-container">
       {% for message in messages %}
       <div class="success-message">{{ message }}</div>
       {% endfor %}
     </div>
-    {% endif %} {% include 'header.html' %} {% include 'navbar.html' %}
+    {% endif %}
 
     <div class="page-heading">
       <img

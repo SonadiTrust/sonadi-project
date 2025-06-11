@@ -950,6 +950,11 @@ footer a:hover {
 }
 
 .success-message {
+  transition: all 0.4s ease;
+}
+
+
+.success-message {
   background-color: #dff0d8;
   color: #3c763d;
   padding: 14px 20px;
