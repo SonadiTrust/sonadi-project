@@ -57,33 +57,32 @@ def testimonial(request):
     if request.method == 'POST':
         form = TestimonialForm(request.POST, request.FILES)
         if form.is_valid():
-            testimonial = form.save()
+            form.save()
 
-            # Extract data for email
-            title = testimonial.title
-            message = testimonial.message
-            name = testimonial.name
-            animal_name = testimonial.animal_name
-            email = testimonial.email
-            phone = testimonial.phone
+            # Email content
+            title = form.cleaned_data['title']
+            message = form.cleaned_data['message']
+            name = form.cleaned_data['name']
+            animal_name = form.cleaned_data['animal_name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
 
-            # Compose email
-            email_content = f"""
-New Testimonial Submission:
+            full_message = f"""
+New Testimonial Submitted:
 
 Title: {title}
-Message: {message}
-
-Submitted By:
 Name: {name}
 Animal Name: {animal_name}
 Email: {email}
 Phone: {phone}
+
+Message:
+{message}
 """
 
             email_msg = EmailMessage(
                 subject=f"New Testimonial from {name}",
-                body=email_content,
+                body=full_message,
                 from_email='sonadicharitytrust@gmail.com',
                 to=['sonadicharitytrust@gmail.com'],
                 reply_to=[email]
@@ -94,7 +93,7 @@ Phone: {phone}
             return redirect('testimonial')
     else:
         form = TestimonialForm()
-
+    
     return render(request, 'testimonial.html', {'form': form, 'testimonials': testimonials})
 
 
