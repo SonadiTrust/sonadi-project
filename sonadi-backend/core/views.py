@@ -57,12 +57,46 @@ def testimonial(request):
     if request.method == 'POST':
         form = TestimonialForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            testimonial = form.save()
+
+            # Extract data for email
+            title = testimonial.title
+            message = testimonial.message
+            name = testimonial.name
+            animal_name = testimonial.animal_name
+            email = testimonial.email
+            phone = testimonial.phone
+
+            # Compose email
+            email_content = f"""
+New Testimonial Submission:
+
+Title: {title}
+Message: {message}
+
+Submitted By:
+Name: {name}
+Animal Name: {animal_name}
+Email: {email}
+Phone: {phone}
+"""
+
+            email_msg = EmailMessage(
+                subject=f"New Testimonial from {name}",
+                body=email_content,
+                from_email='sonadicharitytrust@gmail.com',
+                to=['sonadicharitytrust@gmail.com'],
+                reply_to=[email]
+            )
+            email_msg.send(fail_silently=False)
+
             messages.success(request, "Thanks for your testimonial! It will appear once approved.")
             return redirect('testimonial')
     else:
         form = TestimonialForm()
+
     return render(request, 'testimonial.html', {'form': form, 'testimonials': testimonials})
+
 
 from django.core.mail import EmailMessage
 
@@ -106,6 +140,7 @@ Message:
     return render(request, 'volunteer.html', {'form': form})
 
 
+from django.core.mail import EmailMessage
 from .forms import AdoptionForm
 
 def adopt_a_dog(request):
@@ -113,12 +148,51 @@ def adopt_a_dog(request):
         form = AdoptionForm(request.POST)
         if form.is_valid():
             form.save()
+
+            # Extract data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            reason = form.cleaned_data['reason']
+            animal_name = form.cleaned_data['animal_name']
+            animal_age = form.cleaned_data['animal_age']
+            animal_gender = form.cleaned_data['animal_gender']
+            animal_breed = form.cleaned_data['animal_breed']
+            animal_personality = form.cleaned_data['animal_personality']
+
+            # Compose email
+            message = f"""
+New Adoption Request:
+
+Full Name: {name}
+Email: {email}
+Phone: {phone}
+Reason for Adoption: {reason}
+
+Animal Details:
+Name: {animal_name}
+Age: {animal_age}
+Gender: {animal_gender}
+Breed: {animal_breed}
+Personality: {animal_personality}
+"""
+
+            email_msg = EmailMessage(
+                subject=f"Adoption Form Submission from {name}",
+                body=message,
+                from_email='sonadicharitytrust@gmail.com',
+                to=['sonadicharitytrust@gmail.com'],
+                reply_to=[email]
+            )
+            email_msg.send(fail_silently=False)
+
             messages.success(request, "Your adoption request has been submitted!")
             return redirect('adopt_a_dog')
     else:
         form = AdoptionForm()
 
     return render(request, 'adopt-a-dog.html', {'form': form})
+
 
 
 def activities(request):
