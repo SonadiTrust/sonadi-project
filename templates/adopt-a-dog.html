@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+    {% include 'header.html' %} {% include 'navbar.html' %}
 
     <div class="page-heading">
       <img
@@ -27,7 +26,11 @@
       <div class="animal-gallery">
         <!-- Dog 1 -->
         <div class="animal-card" onclick="openForm(this)">
-          <img src="{% static 'img/dog 1.jpg' %}" alt="Dog1" class="animal-img" />
+          <img
+            src="{% static 'img/dog 1.jpg' %}"
+            alt="Dog1"
+            class="animal-img"
+          />
           <div class="animal-info">
             <h3>Dog1</h3>
             <p><strong>Age:</strong> 2 years</p>
@@ -42,7 +45,11 @@
 
         <!-- Dog 2 -->
         <div class="animal-card" onclick="openForm(this)">
-          <img src="{% static 'img/dog 2.jpg' %}" alt="Dog2" class="animal-img" />
+          <img
+            src="{% static 'img/dog 2.jpg' %}"
+            alt="Dog2"
+            class="animal-img"
+          />
           <div class="animal-info">
             <h3>Dog2</h3>
             <p><strong>Age:</strong> 3 years</p>
@@ -56,7 +63,11 @@
 
         <!-- Dog 3 -->
         <div class="animal-card" onclick="openForm(this)">
-          <img src="{% static 'img/dog 1.jpg' %}" alt="Dog3" class="animal-img" />
+          <img
+            src="{% static 'img/dog 1.jpg' %}"
+            alt="Dog3"
+            class="animal-img"
+          />
           <div class="animal-info">
             <h3>Dog3</h3>
             <p><strong>Age:</strong> 1 year</p>
@@ -114,27 +125,95 @@
       <div class="modal-content">
         <span class="close" onclick="closeForm()">&times;</span>
         <h2>Adoption Interest Form</h2>
-        <form>
-          <label for="userName">Full Name</label>
-          <input type="text" id="userName" required />
+        <form method="POST" action="{% url 'adopt_a_dog' %}">
+          {% csrf_token %}
 
-          <label for="userPhone">Phone Number</label>
-          <input type="tel" id="userPhone" required />
+          <label for="id_name">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            id="id_name"
+            required
+            class="input-field"
+          />
 
-          <label for="userEmail">Email</label>
-          <input type="email" id="userEmail" required />
+          <label for="id_phone">Phone Number</label>
+          <input
+            type="tel"
+            name="phone"
+            id="id_phone"
+            required
+            class="input-field"
+          />
 
-          <label for="userReason">What motivates you to adopt?</label>
-          <textarea id="userReason" rows="3" required></textarea>
+          <label for="id_email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="id_email"
+            required
+            class="input-field"
+          />
+
+          <label for="id_reason">What motivates you to adopt?</label>
+          <textarea
+            name="reason"
+            id="id_reason"
+            rows="3"
+            required
+            class="input-field"
+          ></textarea>
 
           <h3>Animal Details</h3>
-          <p><strong>Name:</strong> <span id="animalName"></span></p>
-          <p><strong>Age:</strong> <span id="animalAge"></span></p>
-          <p><strong>Gender:</strong> <span id="animalGender"></span></p>
-          <p><strong>Breed:</strong> <span id="animalBreed"></span></p>
-          <p>
-            <strong>Personality:</strong> <span id="animalPersonality"></span>
-          </p>
+
+          <label for="id_animal_name">Name</label>
+          <input
+            type="text"
+            name="animal_name"
+            id="id_animal_name"
+            required
+            readonly
+            class="input-field"
+          />
+
+          <label for="id_animal_age">Age</label>
+          <input
+            type="text"
+            name="animal_age"
+            id="id_animal_age"
+            required
+            readonly
+            class="input-field"
+          />
+
+          <label for="id_animal_gender">Gender</label>
+          <input
+            type="text"
+            name="animal_gender"
+            id="id_animal_gender"
+            required
+            readonly
+            class="input-field"
+          />
+
+          <label for="id_animal_breed">Breed</label>
+          <input
+            type="text"
+            name="animal_breed"
+            id="id_animal_breed"
+            required
+            readonly
+            class="input-field"
+          />
+
+          <label for="id_animal_personality">Personality</label>
+          <textarea
+            name="animal_personality"
+            id="id_animal_personality"
+            required
+            readonly
+            class="input-field"
+          ></textarea>
 
           <button class="submit-btn" type="submit">Submit</button>
         </form>
@@ -173,17 +252,17 @@
         const name = card.querySelector("h3").innerText;
         const details = card.querySelectorAll("p");
 
-        document.getElementById("animalName").innerText = name;
-        document.getElementById("animalAge").innerText = details[0].innerText
+        document.getElementById("id_animal_name").value = name;
+        document.getElementById("id_animal_age").value = details[0].innerText
           .replace("Age:", "")
           .trim();
-        document.getElementById("animalGender").innerText = details[1].innerText
+        document.getElementById("id_animal_gender").value = details[1].innerText
           .replace("Gender:", "")
           .trim();
-        document.getElementById("animalBreed").innerText = details[2].innerText
+        document.getElementById("id_animal_breed").value = details[2].innerText
           .replace("Breed:", "")
           .trim();
-        document.getElementById("animalPersonality").innerText =
+        document.getElementById("id_animal_personality").value =
           details[3].innerText.replace("Personality:", "").trim();
 
         const modal = document.getElementById("adoptionForm");
