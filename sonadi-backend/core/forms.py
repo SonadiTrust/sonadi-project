@@ -44,3 +44,18 @@ class VolunteerForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'class': 'input-field'}),
             'message': forms.Textarea(attrs={'class': 'input-field'}),
         }
+
+
+from .models import AdoptionRequest
+
+class AdoptionForm(forms.ModelForm):
+    class Meta:
+        model = AdoptionRequest
+        fields = [
+            'name', 'email', 'phone', 'reason',
+            'animal_name', 'animal_age', 'animal_gender',
+            'animal_breed', 'animal_personality'
+        ]
+        widgets = {
+            'reason': forms.Textarea(attrs={'rows': 3}),
+        }

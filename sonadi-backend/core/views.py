@@ -106,8 +106,20 @@ Message:
     return render(request, 'volunteer.html', {'form': form})
 
 
+from .forms import AdoptionForm
+
 def adopt_a_dog(request):
-    return render(request, 'adopt-a-dog.html')
+    if request.method == 'POST':
+        form = AdoptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your adoption request has been submitted!")
+            return redirect('adopt_a_dog')
+    else:
+        form = AdoptionForm()
+
+    return render(request, 'adopt-a-dog.html', {'form': form})
+
 
 def activities(request):
     return render(request, 'activities.html')
