@@ -55,11 +55,16 @@ import os
 default_db_url = f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=default_db_url,
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sonadi_db',
+        'USER': 'sonadi_db_user',
+        'PASSWORD': 'vNrKlosFjmEWizQxOaJKWeuMNrv7WHbx',
+        'HOST': 'dpg-d14lm8juibrs73ajbqe0-a.singapore-postgres.render.com',
+        'PORT': '5432',
+    }
 }
+
 
 
 STATIC_URL = '/static/'
