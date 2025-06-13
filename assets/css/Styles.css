@@ -1363,7 +1363,7 @@ img {
   height: auto;
   display: block;
   object-fit: cover;
-  aspect-ratio: auto;
+  aspect-ratio: attr(width) / attr(height);
 }
 
 /* Container responsive improvements */
@@ -1692,7 +1692,10 @@ footer a {
 
 /* Improve image loading */
 img {
-  loading: lazy;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 /* Prevent layout shift */
