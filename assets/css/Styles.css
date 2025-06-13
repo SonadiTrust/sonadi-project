@@ -2163,11 +2163,6 @@ footer {
   }
 }
 
-/* Improved image loading */
-img {
-  loading: lazy;
-}
-
 /* Improved text readability */
 p, li {
   max-width: 70ch;
