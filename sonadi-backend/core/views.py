@@ -142,6 +142,13 @@ Message:
 from django.core.mail import EmailMessage
 from .forms import AdoptionForm
 
+from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.contrib import messages
+from django.core.mail import EmailMessage
+
+from .forms import AdoptionForm
+
 def adopt_a_dog(request):
     if request.method == 'POST':
         form = AdoptionForm(request.POST)
@@ -186,11 +193,12 @@ Personality: {animal_personality}
             email_msg.send(fail_silently=False)
 
             messages.success(request, "Your adoption request has been submitted!")
-            return redirect('adopt_a_dog')
+            return redirect(reverse('adopt_a_dog') + '#thanks')
     else:
         form = AdoptionForm()
 
     return render(request, 'adopt-a-dog.html', {'form': form})
+
 
 
 
