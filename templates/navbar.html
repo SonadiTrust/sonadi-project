@@ -18,7 +18,28 @@
                     <a href="{% url 'about' %}" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'services' %}" class="nav-link">Services</a>
+                    <a href="{% url 'activities' %}" class="nav-link">What We Do</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'founders' %}" class="nav-link">Founders</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'team' %}" class="nav-link">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'adopt_a_dog' %}" class="nav-link">Adopt a Dog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'volunteer' %}" class="nav-link">Volunteer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'photos' %}" class="nav-link">Photo Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'testimonial' %}" class="nav-link">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'donate' %}" class="nav-link">Donations</a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'contact' %}" class="nav-link">Contact</a>
@@ -179,6 +200,15 @@ document.addEventListener('DOMContentLoaded', function() {
             collapse.classList.remove('show');
             toggler.classList.remove('active');
         }
+    });
+
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            collapse.classList.remove('show');
+            toggler.classList.remove('active');
+        });
     });
 
     // Highlight active link
