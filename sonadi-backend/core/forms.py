@@ -4,24 +4,44 @@ import re
 
 from .models import ContactMessage, Testimonial, Volunteer, AdoptionRequest
 
-# New Validators
+# --- Custom Validators ---
 def validate_name(value):
     if not re.fullmatch(r'[A-Za-z ]+', value):
-        raise ValidationError("Name should contain only letters and spaces.")
+        raise ValidationError("Enter a valid name. Only letters and spaces are allowed.")
 
 def validate_phone(value):
-    if not re.fullmatch(r'\d{10}', value):
-        raise ValidationError("Phone number must be exactly 10 digits.")
+    if not value.isdigit():
+        raise ValidationError("Phone number must contain digits only.")
+    if len(value) != 10:
+        raise ValidationError("Enter a valid 10-digit mobile number.")
 
 def validate_email(value):
     if not re.fullmatch(r"[^@]+@[^@]+\.[^@]+", value):
         raise ValidationError("Enter a valid email address.")
 
-# Contact Form
+def validate_message(value):
+    if not value.strip():
+        raise ValidationError("Message field cannot be empty.")
+
+# --- Contact Form ---
 class ContactForm(forms.ModelForm):
-    name = forms.CharField(validators=[validate_name])
-    phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email])
+    name = forms.CharField(
+        validators=[validate_name],
+        error_messages={'required': "Please enter your name."}
+    )
+    phone = forms.CharField(
+        validators=[validate_phone],
+        error_messages={'required': "Please enter your mobile number."}
+    )
+    email = forms.EmailField(
+        validators=[validate_email],
+        error_messages={'required': "Please enter your email address."}
+    )
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'input-field'}),
+        validators=[validate_message],
+        error_messages={'required': "Please enter a message."}
+    )
 
     class Meta:
         model = ContactMessage
@@ -30,14 +50,27 @@ class ContactForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'input-field'}),
             'email': forms.EmailInput(attrs={'class': 'input-field'}),
             'phone': forms.TextInput(attrs={'class': 'input-field'}),
-            'message': forms.Textarea(attrs={'class': 'input-field'}),
         }
 
-# Testimonial Form
+# --- Testimonial Form ---
 class TestimonialForm(forms.ModelForm):
-    name = forms.CharField(validators=[validate_name])
-    phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email])
+    name = forms.CharField(
+        validators=[validate_name],
+        error_messages={'required': "Please enter your name."}
+    )
+    phone = forms.CharField(
+        validators=[validate_phone],
+        error_messages={'required': "Please enter your mobile number."}
+    )
+    email = forms.EmailField(
+        validators=[validate_email],
+        error_messages={'required': "Please enter your email address."}
+    )
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'input-field'}),
+        validators=[validate_message],
+        error_messages={'required': "Please enter your testimonial message."}
+    )
 
     class Meta:
         model = Testimonial
@@ -55,11 +88,25 @@ class TestimonialForm(forms.ModelForm):
                 raise ValidationError("Invalid file extension. Allowed: jpg, jpeg, png, gif, webp.")
         return photo
 
-# Volunteer Form
+# --- Volunteer Form ---
 class VolunteerForm(forms.ModelForm):
-    name = forms.CharField(validators=[validate_name])
-    phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email])
+    name = forms.CharField(
+        validators=[validate_name],
+        error_messages={'required': "Please enter your name."}
+    )
+    phone = forms.CharField(
+        validators=[validate_phone],
+        error_messages={'required': "Please enter your mobile number."}
+    )
+    email = forms.EmailField(
+        validators=[validate_email],
+        error_messages={'required': "Please enter your email address."}
+    )
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'input-field'}),
+        validators=[validate_message],
+        error_messages={'required': "Please tell us why you want to volunteer."}
+    )
 
     class Meta:
         model = Volunteer
@@ -68,14 +115,27 @@ class VolunteerForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'input-field'}),
             'email': forms.EmailInput(attrs={'class': 'input-field'}),
             'phone': forms.TextInput(attrs={'class': 'input-field'}),
-            'message': forms.Textarea(attrs={'class': 'input-field'}),
         }
 
-# Adoption Form
+# --- Adoption Form ---
 class AdoptionForm(forms.ModelForm):
-    name = forms.CharField(validators=[validate_name])
-    phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email])
+    name = forms.CharField(
+        validators=[validate_name],
+        error_messages={'required': "Please enter your name."}
+    )
+    phone = forms.CharField(
+        validators=[validate_phone],
+        error_messages={'required': "Please enter your mobile number."}
+    )
+    email = forms.EmailField(
+        validators=[validate_email],
+        error_messages={'required': "Please enter your email address."}
+    )
+    reason = forms.CharField(
+        widget=forms.Textarea(attrs={'rows': 3}),
+        validators=[validate_message],
+        error_messages={'required': "Please explain why you want to adopt."}
+    )
 
     class Meta:
         model = AdoptionRequest
@@ -84,6 +144,3 @@ class AdoptionForm(forms.ModelForm):
             'animal_name', 'animal_age', 'animal_gender',
             'animal_breed', 'animal_personality'
         ]
-        widgets = {
-            'reason': forms.Textarea(attrs={'rows': 3}),
-        }
