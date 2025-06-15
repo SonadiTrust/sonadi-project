@@ -4,21 +4,24 @@ import re
 
 from .models import ContactMessage, Testimonial, Volunteer, AdoptionRequest
 
-# Custom Validators
+# New Validators
+def validate_name(value):
+    if not re.fullmatch(r'[A-Za-z ]+', value):
+        raise ValidationError("Name should contain only letters and spaces.")
+
 def validate_phone(value):
     if not re.fullmatch(r'\d{10}', value):
         raise ValidationError("Phone number must be exactly 10 digits.")
 
-def validate_email_provider(value):
-    allowed_domains = ['gmail.com', 'yahoo.com', 'outlook.com']
-    domain = value.split('@')[-1]
-    if domain.lower() not in allowed_domains:
-        raise ValidationError("Only Gmail, Yahoo, or Outlook emails are allowed.")
+def validate_email(value):
+    if not re.fullmatch(r"[^@]+@[^@]+\.[^@]+", value):
+        raise ValidationError("Enter a valid email address.")
 
 # Contact Form
 class ContactForm(forms.ModelForm):
+    name = forms.CharField(validators=[validate_name])
     phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email_provider])
+    email = forms.EmailField(validators=[validate_email])
 
     class Meta:
         model = ContactMessage
@@ -32,8 +35,9 @@ class ContactForm(forms.ModelForm):
 
 # Testimonial Form
 class TestimonialForm(forms.ModelForm):
+    name = forms.CharField(validators=[validate_name])
     phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email_provider])
+    email = forms.EmailField(validators=[validate_email])
 
     class Meta:
         model = Testimonial
@@ -53,8 +57,9 @@ class TestimonialForm(forms.ModelForm):
 
 # Volunteer Form
 class VolunteerForm(forms.ModelForm):
+    name = forms.CharField(validators=[validate_name])
     phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email_provider])
+    email = forms.EmailField(validators=[validate_email])
 
     class Meta:
         model = Volunteer
@@ -68,8 +73,9 @@ class VolunteerForm(forms.ModelForm):
 
 # Adoption Form
 class AdoptionForm(forms.ModelForm):
+    name = forms.CharField(validators=[validate_name])
     phone = forms.CharField(validators=[validate_phone])
-    email = forms.EmailField(validators=[validate_email_provider])
+    email = forms.EmailField(validators=[validate_email])
 
     class Meta:
         model = AdoptionRequest
