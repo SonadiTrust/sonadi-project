@@ -18,40 +18,45 @@ body {
   overflow-x: hidden;
 }
 
-/* Base Footer Styling */
 .site-footer {
   background-color: var(--footer-bg);
   color: white;
   text-align: center;
   padding: 0;
-  /* Removed excess outer padding */
+  margin: 0;
 }
 
-/* Footer Content Layout */
 .footer-content {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
   flex-wrap: wrap;
-  padding: 20px;
-  /* Controlled inner padding to wrap content */
+  padding: 15px;
   box-sizing: border-box;
   max-width: 100%;
+  margin: 0 auto;
 }
 
-/* Footer Section Styling */
+/* Reduce margin inside sections */
 .footer-section {
   max-width: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  padding: 0;
 }
 
-/* Footer Bottom */
+/* Remove excess spacing in <p> */
+.footer-section p {
+  margin: 4px 0;
+  line-height: 1.3;
+}
+
+/* Footer bottom: tighter spacing */
 .footer-bottom {
-  padding: 10px 0;
+  padding: 8px 0;
   font-size: 0.9rem;
   opacity: 0.8;
-  text-align: center;
+  margin: 0;
 }
 
 /* Hyperlink Styles */
@@ -62,7 +67,6 @@ body {
   display: inline-block;
 }
 
-/* Hover Effects */
 .site-footer a:hover {
   text-decoration: underline;
   animation: vibrate 0.3s linear infinite;
@@ -91,18 +95,21 @@ body {
   }
 }
 
-/* ✅ Responsive for Tablets & Mobiles */
+/* Mobile View */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-    padding: 15px;
-    /* Slightly reduced for smaller screens */
+    gap: 15px;
+    padding: 10px;
   }
 
   .footer-section {
     text-align: center;
+  }
+
+  .footer-section p {
+    margin: 3px 0;
   }
 
   .footer-bottom {
