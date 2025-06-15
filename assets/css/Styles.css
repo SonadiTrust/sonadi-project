@@ -49,6 +49,7 @@ footer {
   background-color: var(--footer-bg);
   color: var(--white);
   width: 100%;
+  align-items: center;
   padding: 30px 20px;
   box-sizing: border-box;
 }
@@ -63,6 +64,7 @@ footer {
 .footer-content {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
   max-width: 1000px;
@@ -72,6 +74,7 @@ footer {
 
 .footer-section {
   flex: 1 1 300px;
+  align-items: center;
 }
 
 .footer-section a {
