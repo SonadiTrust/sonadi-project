@@ -55,7 +55,7 @@ body {
 .footer-bottom {
   padding: 8px 0;
   font-size: 0.9rem;
-  opacity: 0.8;
+  font-weight: bold;
   margin: 0;
 }
 
