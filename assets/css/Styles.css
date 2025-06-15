@@ -406,11 +406,19 @@ footer a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 15px 20px;
+  padding: 8px 15px;  /* ⬅️ Reduced padding */
   font-size: 2rem;
   gap: 20px;
   box-sizing: border-box;
+  line-height: 1.1;  /* ⬅️ Prevent tall lines */
 }
+
+.site-header h1 {
+  font-size: 2rem;
+  margin: 0;          /* ⬅️ Remove extra spacing */
+  line-height: 1.1;
+}
+
 
 @media (max-width: 768px) {
   .site-header {
