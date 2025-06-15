@@ -134,53 +134,79 @@
         <form method="POST" action="{% url 'adopt_a_dog' %}">
           {% csrf_token %}
 
-          <label for="id_name">Full Name</label>
-          {{ form.name }} {% for error in form.name.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.name }}
+            <label for="id_name">Full Name</label>
+            {% for error in form.name.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_phone">Phone Number</label>
-          {{ form.phone }} {% for error in form.phone.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.phone }}
+            <label for="id_phone">Phone Number</label>
+            {% for error in form.phone.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_email">Email</label>
-          {{ form.email }} {% for error in form.email.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.email }}
+            <label for="id_email">Email</label>
+            {% for error in form.email.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_reason">What motivates you to adopt?</label>
-          {{ form.reason }} {% for error in form.reason.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.reason }}
+            <label for="id_reason">What motivates you to adopt?</label>
+            {% for error in form.reason.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
           <h3>Animal Details</h3>
 
-          <label for="id_animal_name">Name</label>
-          {{ form.animal_name }} {% for error in form.animal_name.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.animal_name }}
+            <label for="id_animal_name">Name</label>
+            {% for error in form.animal_name.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_animal_age">Age</label>
-          {{ form.animal_age }} {% for error in form.animal_age.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.animal_age }}
+            <label for="id_animal_age">Age</label>
+            {% for error in form.animal_age.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_animal_gender">Gender</label>
-          {{ form.animal_gender }} {% for error in form.animal_gender.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.animal_gender }}
+            <label for="id_animal_gender">Gender</label>
+            {% for error in form.animal_gender.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_animal_breed">Breed</label>
-          {{ form.animal_breed }} {% for error in form.animal_breed.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.animal_breed }}
+            <label for="id_animal_breed">Breed</label>
+            {% for error in form.animal_breed.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-          <label for="id_animal_personality">Personality</label>
-          {{ form.animal_personality }} {% for error in
-          form.animal_personality.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+          <div class="form-group">
+            {{ form.animal_personality }}
+            <label for="id_animal_personality">Personality</label>
+            {% for error in form.animal_personality.errors %}
+            <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
           <button class="submit-btn" type="submit">Submit</button>
         </form>

@@ -8,13 +8,10 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
-
-    {% if messages %}
+    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
     <div class="message-container">
       {% for message in messages %}
-        <div class="success-message">{{ message }}</div>
+      <div class="success-message">{{ message }}</div>
       {% endfor %}
     </div>
     {% endif %}
@@ -43,34 +40,34 @@
         {% csrf_token %}
 
         <div class="form-group">
-          <label for="id_name">Your Name</label>
           {{ form.name }}
+          <label for="id_name">Your Name</label>
           {% for error in form.name.errors %}
-            <div class="error">{{ error }}</div>
+          <div class="error">{{ error }}</div>
           {% endfor %}
         </div>
 
         <div class="form-group">
-          <label for="id_email">Your Email</label>
           {{ form.email }}
+          <label for="id_email">Your Email</label>
           {% for error in form.email.errors %}
-            <div class="error">{{ error }}</div>
+          <div class="error">{{ error }}</div>
           {% endfor %}
         </div>
 
         <div class="form-group">
-          <label for="id_phone">Your Phone Number</label>
           {{ form.phone }}
+          <label for="id_phone">Your Phone Number</label>
           {% for error in form.phone.errors %}
-            <div class="error">{{ error }}</div>
+          <div class="error">{{ error }}</div>
           {% endfor %}
         </div>
 
         <div class="form-group">
-          <label for="id_message">Your Message</label>
           {{ form.message }}
+          <label for="id_message">Your Message</label>
           {% for error in form.message.errors %}
-            <div class="error">{{ error }}</div>
+          <div class="error">{{ error }}</div>
           {% endfor %}
         </div>
 
