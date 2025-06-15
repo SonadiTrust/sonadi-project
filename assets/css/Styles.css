@@ -53,6 +53,13 @@ footer {
   box-sizing: border-box;
 }
 
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+
 .footer-content {
   display: flex;
   flex-wrap: wrap;
@@ -434,16 +441,19 @@ section h2 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 8px 15px;  /* ⬅️ Reduced padding */
+  padding: 8px 15px;
+  /* ⬅️ Reduced padding */
   font-size: 2rem;
   gap: 20px;
   box-sizing: border-box;
-  line-height: 1.1;  /* ⬅️ Prevent tall lines */
+  line-height: 1.1;
+  /* ⬅️ Prevent tall lines */
 }
 
 .site-header h1 {
   font-size: 2rem;
-  margin: 0;          /* ⬅️ Remove extra spacing */
+  margin: 0;
+  /* ⬅️ Remove extra spacing */
   line-height: 1.1;
 }
 
@@ -1152,7 +1162,7 @@ section h2 {
     z-index: 999;
   }
 
-  .nav-toggle:checked + .nav-toggle-label + .mobile-site-title + .nav-links {
+  .nav-toggle:checked+.nav-toggle-label+.mobile-site-title+.nav-links {
     display: flex;
   }
 
