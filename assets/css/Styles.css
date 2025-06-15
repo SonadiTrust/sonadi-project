@@ -11,9 +11,6 @@
 }
 
 /* changes from here founder card also changed*/
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.2);
-}
 
 html, body {
   max-width: 100%;
@@ -1036,4 +1033,48 @@ footer a:hover {
 
 .submit-btn:hover {
   background-color: var(--primary-green-dark);
+}
+ /* hamburger menu */
+ 
+ /* Hide the toggle checkbox */
+.nav-toggle {
+  display: none;
+}
+
+/* Hamburger icon */
+.nav-toggle-label {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  padding: 0 15px;
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 768px) {
+  .nav-toggle-label {
+    display: block;
+    padding: 10px 20px;
+    background-color: var(--navbar-bg);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--navbar-bg);
+    z-index: 999;
+  }
+
+  .nav-toggle:checked + .nav-toggle-label + .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
