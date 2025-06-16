@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
-    <div class="message-container">
-      {% for message in messages %}
-      <div class="success-message">{{ message }}</div>
-      {% endfor %}
-    </div>
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+
+    {% if messages %}
+      <div class="message-container">
+        {% for message in messages %}
+          <div class="success-message">{{ message }}</div>
+        {% endfor %}
+      </div>
     {% endif %}
 
     <div class="page-heading">
@@ -29,51 +32,101 @@
     </div>
 
     <section>
-      <p>
+      <p style="text-align: center;">
         Join us in making a difference! Fill out the form below to volunteer
         your time and skills to help animals in need.
       </p>
     </section>
 
-    <section class="contact-form-section">
-      <form method="POST" action="{% url 'volunteer' %}">
-        {% csrf_token %}
-
-        <div class="form-group">
-          {{ form.name }}
-          <label for="id_name">Your Name</label>
-          {% for error in form.name.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
+    <div class="volunteer-container">
+      <!-- Left: Image Slideshow -->
+      <div class="volunteer-left">
+        <div class="slideshow">
+          <img src="{% static 'img/slide1.jpg' %}" class="slide active" />
+          <img src="{% static 'img/slide2.jpg' %}" class="slide" />
+          <img src="{% static 'img/slide3.jpg' %}" class="slide" />
+          <img src="{% static 'img/slide4.jpg' %}" class="slide" />
+          <img src="{% static 'img/slide5.jpg' %}" class="slide" />
+          <!-- Navigation Arrows -->
+          <button class="nav-arrow left-arrow">&#10094;</button>
+          <button class="nav-arrow right-arrow">&#10095;</button>
         </div>
+      </div>
 
-        <div class="form-group">
-          {{ form.email }}
-          <label for="id_email">Your Email</label>
-          {% for error in form.email.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
-        </div>
+      <!-- Right: Volunteer Form -->
+      <div class="volunteer-right">
+        <form method="POST" action="{% url 'volunteer' %}">
+          {% csrf_token %}
 
-        <div class="form-group">
-          {{ form.phone }}
-          <label for="id_phone">Your Phone Number</label>
-          {% for error in form.phone.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
-        </div>
+          <div class="form-group">
+            {{ form.name }}
+            <label for="id_name">Your Name</label>
+            {% for error in form.name.errors %}
+              <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-        <div class="form-group">
-          {{ form.message }}
-          <label for="id_message">Your Message</label>
-          {% for error in form.message.errors %}
-          <div class="error">{{ error }}</div>
-          {% endfor %}
-        </div>
+          <div class="form-group">
+            {{ form.email }}
+            <label for="id_email">Your Email</label>
+            {% for error in form.email.errors %}
+              <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
 
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-    </section>
+          <div class="form-group">
+            {{ form.phone }}
+            <label for="id_phone">Your Phone Number</label>
+            {% for error in form.phone.errors %}
+              <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
+
+          <div class="form-group">
+            {{ form.message }}
+            <label for="id_message">Your Message</label>
+            {% for error in form.message.errors %}
+              <div class="error">{{ error }}</div>
+            {% endfor %}
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+
     {% include 'footer.html' %}
+
+    <!-- Slideshow Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const leftArrow = document.querySelector(".left-arrow");
+        const rightArrow = document.querySelector(".right-arrow");
+
+        function showSlide(index) {
+          slides.forEach((slide) => slide.classList.remove("active"));
+          slides[index].classList.add("active");
+        }
+
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          showSlide(currentSlide);
+        }
+
+        // Autoplay
+        setInterval(nextSlide, 4000);
+
+        // Manual Controls
+        leftArrow.addEventListener("click", prevSlide);
+        rightArrow.addEventListener("click", nextSlide);
+      });
+    </script>
   </body>
 </html>
