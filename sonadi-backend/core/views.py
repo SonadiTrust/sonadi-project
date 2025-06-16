@@ -52,22 +52,30 @@ Message:
 def donate(request):
     return render(request, 'donate.html')
 
+from django.contrib import messages
+from django.core.mail import EmailMessage
+from .forms import TestimonialForm
+from .models import Testimonial
+from django.shortcuts import render, redirect
+
 def testimonial(request):
     testimonials = Testimonial.objects.filter(approved=True)
+
     if request.method == 'POST':
         form = TestimonialForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
 
-            # Email content
-            title = form.cleaned_data['title']
-            message = form.cleaned_data['message']
-            name = form.cleaned_data['name']
-            animal_name = form.cleaned_data['animal_name']
-            email = form.cleaned_data['email']
-            phone = form.cleaned_data['phone']
+            # Send email
+            try:
+                title = form.cleaned_data['title']
+                message = form.cleaned_data['message']
+                name = form.cleaned_data['name']
+                animal_name = form.cleaned_data['animal_name']
+                email = form.cleaned_data['email']
+                phone = form.cleaned_data['phone']
 
-            full_message = f"""
+                full_message = f"""
 New Testimonial Submitted:
 
 Title: {title}
@@ -79,22 +87,29 @@ Phone: {phone}
 Message:
 {message}
 """
+                email_msg = EmailMessage(
+                    subject=f"New Testimonial from {name}",
+                    body=full_message,
+                    from_email='sonadicharitytrust@gmail.com',
+                    to=['sonadicharitytrust@gmail.com'],
+                    reply_to=[email]
+                )
+                email_msg.send(fail_silently=False)
 
-            email_msg = EmailMessage(
-                subject=f"New Testimonial from {name}",
-                body=full_message,
-                from_email='sonadicharitytrust@gmail.com',
-                to=['sonadicharitytrust@gmail.com'],
-                reply_to=[email]
-            )
-            email_msg.send(fail_silently=False)
+                messages.success(request, "Thanks for your testimonial! It will appear once approved.")
+                return redirect('testimonial')
 
-            messages.success(request, "Thanks for your testimonial! It will appear once approved.")
-            return redirect('testimonial')
+            except Exception as e:
+                messages.error(request, f"Submission saved, but email failed: {e}")
+        else:
+            print("Form is invalid")
+            print(form.errors)
     else:
         form = TestimonialForm()
-    
+
+    # Always render with current form and testimonials
     return render(request, 'testimonial.html', {'form': form, 'testimonials': testimonials})
+
 
 
 from django.core.mail import EmailMessage
