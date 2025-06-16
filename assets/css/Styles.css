@@ -1275,10 +1275,12 @@ section h2 {
   .volunteer-left,
   .volunteer-right {
     width: 100%;
+    min-height: 300px;
   }
 
-  .volunteer-left {
-    min-height: 300px;
+  .nav-arrow {
+    font-size: 20px;
+    padding: 8px;
   }
 }
 
