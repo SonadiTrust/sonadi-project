@@ -8,57 +8,62 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+    <div id="blur-wrapper">
+      {% include 'header.html' %} {% include 'navbar.html' %}
 
-    <div class="page-heading">
-      <img
-        src="{% static 'img/sonadi-logo.jpg' %}"
-        alt="Sonadi Charitable Trust Logo"
-        class="logo-img"
-      />
-      <div class="page-heading-text">
-        <h2>Photo Gallery</h2>
-        <h3>Moments from Our Mission</h3>
+      <!-- ✅ Start main content to blur only this -->
+      <div id="main-content">
+        <div class="page-heading">
+          <img
+            src="{% static 'img/sonadi-logo.jpg' %}"
+            alt="Sonadi Charitable Trust Logo"
+            class="logo-img"
+          />
+          <div class="page-heading-text">
+            <h2>Photo Gallery</h2>
+            <h3>Moments from Our Mission</h3>
+          </div>
+        </div>
+
+        <blockquote class="highlight-quote">
+          Glimpses from our journey of rescue, care, and adoption at Sonadi.
+          These moments reflect love, hope, and the power of second chances.
+        </blockquote>
+
+        <section>
+          <div class="photo-gallery">
+            <img src="{% static 'img/pg3.jpg' %}" alt="Gallery Image 3" />
+            <img src="{% static 'img/pg4.jpg' %}" alt="Gallery Image 4" />
+            <img src="{% static 'img/pg5.jpg' %}" alt="Gallery Image 5" />
+            <img src="{% static 'img/pg6.jpg' %}" alt="Gallery Image 6" />
+            <img src="{% static 'img/pg7.jpg' %}" alt="Gallery Image 7" />
+            <img src="{% static 'img/pg8.jpg' %}" alt="Gallery Image 8" />
+            <img src="{% static 'img/pg9.jpg' %}" alt="Gallery Image 9" />
+            <img src="{% static 'img/pg10.jpg' %}" alt="Gallery Image 10" />
+            <img src="{% static 'img/pg11.jpg' %}" alt="Gallery Image 11" />
+            <img src="{% static 'img/pg12.jpg' %}" alt="Gallery Image 12" />
+            <img src="{% static 'img/pg13.jpg' %}" alt="Gallery Image 13" />
+            <img src="{% static 'img/pg14.jpg' %}" alt="Gallery Image 14" />
+            <img src="{% static 'img/pg15.jpg' %}" alt="Gallery Image 15" />
+            <img src="{% static 'img/pg2.jpg' %}" alt="Gallery Image 2" />
+            <img src="{% static 'img/pg16.jpg' %}" alt="Gallery Image 16" />
+            <img src="{% static 'img/pg17.jpg' %}" alt="Gallery Image 17" />
+            <img src="{% static 'img/pg18.jpg' %}" alt="Gallery Image 18" />
+            <img src="{% static 'img/pg19.jpg' %}" alt="Gallery Image 19" />
+            <img src="{% static 'img/pg20.jpg' %}" alt="Gallery Image 20" />
+            <img src="{% static 'img/pg21.jpg' %}" alt="Gallery Image 21" />
+            <img src="{% static 'img/pg22.jpg' %}" alt="Gallery Image 22" />
+            <img src="{% static 'img/pg24.jpg' %}" alt="Gallery Image 24" />
+            <img src="{% static 'img/pg25.jpg' %}" alt="Gallery Image 25" />
+            <img src="{% static 'img/pg26.jpg' %}" alt="Gallery Image 26" />
+          </div>
+        </section>
+
+        {% include 'footer.html' %}
       </div>
     </div>
 
-    <section>
-      <p>
-        Glimpses from our journey of rescue, care, and adoption at Sonadi. These
-        moments reflect love, hope, and the power of second chances.
-      </p>
-
-      <div class="photo-gallery">
-        <img src="{% static 'img/pg1.jpg' %}" alt="Gallery Image 1" />
-        <img src="{% static 'img/pg2.jpg' %}" alt="Gallery Image 2" />
-        <img src="{% static 'img/pg3.jpg' %}" alt="Gallery Image 3" />
-        <img src="{% static 'img/pg4.jpg' %}" alt="Gallery Image 4" />
-        <img src="{% static 'img/pg5.jpg' %}" alt="Gallery Image 5" />
-        <img src="{% static 'img/pg6.jpg' %}" alt="Gallery Image 6" />
-        <img src="{% static 'img/pg7.jpg' %}" alt="Gallery Image 7" />
-        <img src="{% static 'img/pg8.jpg' %}" alt="Gallery Image 8" />
-        <img src="{% static 'img/pg9.jpg' %}" alt="Gallery Image 9" />
-        <img src="{% static 'img/pg10.jpg' %}" alt="Gallery Image 10" />
-        <img src="{% static 'img/pg11.jpg' %}" alt="Gallery Image 11" />
-        <img src="{% static 'img/pg12.jpg' %}" alt="Gallery Image 12" />
-        <img src="{% static 'img/pg13.jpg' %}" alt="Gallery Image 13" />
-        <img src="{% static 'img/pg14.jpg' %}" alt="Gallery Image 14" />
-        <img src="{% static 'img/pg15.jpg' %}" alt="Gallery Image 15" />
-        <img src="{% static 'img/pg16.jpg' %}" alt="Gallery Image 16" />
-        <img src="{% static 'img/pg17.jpg' %}" alt="Gallery Image 17" />
-        <img src="{% static 'img/pg18.jpg' %}" alt="Gallery Image 18" />
-        <img src="{% static 'img/pg19.jpg' %}" alt="Gallery Image 19" />
-        <img src="{% static 'img/pg20.jpg' %}" alt="Gallery Image 20" />
-        <img src="{% static 'img/pg21.jpg' %}" alt="Gallery Image 21" />
-        <img src="{% static 'img/pg22.jpg' %}" alt="Gallery Image 22" />
-        <img src="{% static 'img/pg23.jpg' %}" alt="Gallery Image 23" />
-        <img src="{% static 'img/pg24.jpg' %}" alt="Gallery Image 24" />
-        <img src="{% static 'img/pg25.jpg' %}" alt="Gallery Image 25" />
-        <img src="{% static 'img/pg26.jpg' %}" alt="Gallery Image 26" />
-      </div>
-    </section>
-
+    <!-- ✅ Keep lightbox outside the blur wrapper -->
     <div id="lightbox" class="lightbox">
       <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
       <img
@@ -71,8 +76,6 @@
       <div class="lightbox-nav right" onclick="changeImage(1)">&#10095;</div>
     </div>
 
-    {% include 'footer.html' %}
-
     <script>
       const galleryImages = document.querySelectorAll(".photo-gallery img");
       const lightbox = document.getElementById("lightbox");
@@ -84,11 +87,13 @@
           lightbox.style.display = "flex";
           lightboxImg.src = img.src;
           currentIndex = index;
+          document.getElementById("blur-wrapper").classList.add("blur");
         });
       });
 
       function closeLightbox() {
         lightbox.style.display = "none";
+        document.getElementById("blur-wrapper").classList.remove("blur");
       }
 
       function changeImage(direction) {

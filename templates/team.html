@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+    {% include 'header.html' %} {% include 'navbar.html' %}
     <div class="page-heading">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
@@ -22,34 +21,43 @@
       </div>
     </div>
 
+    <blockquote class="highlight-quote">
+      “Alone we can do so little; together we can do so much.” – Helen Keller
+    </blockquote>
+    
+    <p class="team-intro">
+      At Sonadi Charitable Trust, our team is the heart of our mission. Each
+      member brings unique skills and a shared passion for animal welfare,
+      working tirelessly to create a better world for all creatures.
+    </p>
     <!-- 🔻 Sample Team Section -->
     <section class="team">
       <div class="card">
         <img
           src="{% static 'img/member1.jpg' %}"
           alt="Team Member 1"
-          style="width: 100%; border-radius: 10px"
+          class="team-member-image"
         />
-        <h3>Ravi Singh</h3>
+        <h3>Vijay Kumar</h3>
         <p>Founder & Director</p>
       </div>
       <div class="card">
         <img
           src="{% static 'img/member2.jpg' %}"
           alt="Team Member 2"
-          style="width: 100%; border-radius: 10px"
+          class="team-member-image"
         />
-        <h3>Anjali Mehra</h3>
+        <h3>Arjun Mehra</h3>
         <p>Head Veterinarian</p>
       </div>
       <div class="card">
         <img
-          src="{% static 'img/member3.jpg' %}"
+          src="{% static 'img/pg2.jpg' %}"
           alt="Team Member 3"
-          style="width: 100%; border-radius: 10px"
+          class="team-member-image"
         />
-        <h3>Vikas Sharma</h3>
-        <p>Rescue Operations Lead</p>
+        <h3>Sita Didi</h3>
+        <p>Head Caretaker</p>
       </div>
     </section>
     {% include 'footer.html' %}

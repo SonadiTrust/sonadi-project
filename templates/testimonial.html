@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
-
-    {% if messages %}
+    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
     <div class="message-container">
       {% for message in messages %}
       <div class="success-message">{{ message }}</div>
@@ -20,21 +17,30 @@
     {% endif %}
 
     <div class="page-heading">
-      <img src="{% static 'img/sonadi-logo.jpg' %}" alt="Sonadi Logo" class="logo-img" />
+      <img
+        src="{% static 'img/sonadi-logo.jpg' %}"
+        alt="Sonadi Logo"
+        class="logo-img"
+      />
       <div class="page-heading-text">
         <h2>Testimonials</h2>
         <h3>Stories of Hope and Change</h3>
       </div>
     </div>
-
     <!-- ✅ Testimonials Display -->
     <section class="testimonials">
       {% for t in testimonials %}
       <div class="card">
         {% if t.photo %}
-        <img src="{{ t.photo.url }}" alt="{{ t.animal_name }} testimonial image" />
+        <img
+          src="{{ t.photo.url }}"
+          alt="{{ t.animal_name }} testimonial image"
+        />
         {% else %}
-        <img src="{% static 'img/default-animal.jpg' %}" alt="Default animal image" />
+        <img
+          src="{% static 'img/default-animal.jpg' %}"
+          alt="Default animal image"
+        />
         {% endif %}
         <h3>{{ t.title }}</h3>
         <p><strong>{{ t.name }} & {{ t.animal_name }}</strong></p>
@@ -52,12 +58,14 @@
         <h3>Share Your Story</h3>
 
         {% if form.errors %}
-        <div class="error-list">
-          {{ form.non_field_errors }}
-        </div>
+        <div class="error-list">{{ form.non_field_errors }}</div>
         {% endif %}
 
-        <form action="{% url 'testimonial' %}" method="POST" enctype="multipart/form-data">
+        <form
+          action="{% url 'testimonial' %}"
+          method="POST"
+          enctype="multipart/form-data"
+        >
           {% csrf_token %}
 
           <div class="form-group">
@@ -123,7 +131,9 @@
 
     <!-- ✅ Button to open the modal -->
     <div style="text-align: center; margin: 20px">
-      <button class="testimonial-btn" onclick="openModal()">Submit Your Testimonial</button>
+      <button class="testimonial-btn" onclick="openModal()">
+        Submit Your Testimonial
+      </button>
     </div>
 
     {% include 'footer.html' %}
