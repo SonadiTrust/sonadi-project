@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+    {% include 'header.html' %} {% include 'navbar.html' %}
 
+    <!-- Page Heading -->
     <div class="page-heading">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
@@ -24,43 +24,70 @@
     </div>
 
     <main class="main-content">
+      <!-- Welcome Section -->
       <section class="home-section">
         <h2>Welcome to Sonadi Charitable Trust</h2>
         <p>
-          Founded in 2001, Sonadi Charitable Trust is dedicated to the welfare of
-          animals and the empowerment of underprivileged communities. Our mission
-          is to create a compassionate world where every being is treated with
-          dignity and respect.
+          Founded in 2001, Sonadi Charitable Trust is dedicated to the welfare
+          of animals and the empowerment of underprivileged communities. Our
+          mission is to create a compassionate world where every being is
+          treated with dignity and respect.
         </p>
         <p>
           From providing medical care to street animals to supporting education
           for underprivileged children, we strive to make a positive impact in
           our community.
         </p>
-        <a href="{% url 'about' %}" class="btn">Learn More About Us</a>
+        <div class="button-group">
+          <a href="{% url 'about' %}" class="btn">Learn More About Us</a>
+        </div>
       </section>
 
+      <!-- Get Involved Section -->
       <section class="home-section">
         <h2>Get Involved</h2>
         <p>
           Join us in our mission to make a difference. Whether you want to
-          volunteer, donate, or simply spread the word, your support is invaluable.
+          volunteer, donate, or simply spread the word — your support is
+          invaluable.
         </p>
         <div class="button-group">
           <a href="{% url 'volunteer' %}" class="btn">Volunteer</a>
           <a href="{% url 'donate' %}" class="btn">Donate</a>
         </div>
         <p>
-          Together, we can create a better future for animals and underprivileged
-          communities.
+          Together, we can create a better future for animals and
+          underprivileged communities.
         </p>
       </section>
 
+      <!-- Core Values Section (optional) -->
+      <section class="home-section">
+        <h2>Our Values</h2>
+        <ul class="value-list">
+          <li><strong>Compassion:</strong> Every life matters.</li>
+          <li>
+            <strong>Commitment:</strong> We stand by those without a voice.
+          </li>
+          <li><strong>Collaboration:</strong> With community, we thrive.</li>
+        </ul>
+      </section>
+
+      <!-- Testimonial Quote -->
+      <section class="home-section">
+        <blockquote class="testimonial-quote">
+          “The compassion, care, and dedication shown here are truly inspiring.
+          Every animal is treated with love, and every life is given a second
+          chance.”
+        </blockquote>
+      </section>
+
+      <!-- Contact Section -->
       <section class="home-section">
         <h2>Contact Us</h2>
         <p>
-          Have questions or want to get in touch? We would love to hear from you!
-          Reach out to us via email or phone, or visit us at our location.
+          Have questions or want to get in touch? We would love to hear from
+          you! Reach out via email or phone, or visit us at our shelter.
         </p>
         <div class="button-group">
           <a href="{% url 'contact' %}" class="btn">Contact Us</a>
@@ -68,7 +95,8 @@
             href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6"
             target="_blank"
             class="btn"
-            >Find Us</a>          
+            >Find Us</a
+          >
         </div>
       </section>
     </main>

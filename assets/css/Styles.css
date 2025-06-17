@@ -1859,3 +1859,77 @@ section>p {
   filter: blur(6px);
   transition: filter 0.3s ease-in-out;
 }
+
+
+.main-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 10px;
+}
+
+.home-section {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.home-section h2 {
+  font-size: 1.8rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.home-section p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  /* 🔧 This centers the buttons */
+  margin-bottom: 10px;
+}
+
+
+.btn {
+  background-color: #2e7d32;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #256628;
+}
+
+/* Optional Values List */
+.value-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.value-list li {
+  margin-bottom: 10px;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.value-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--primary-green, #2e7d32);
+  font-weight: bold;
+}
