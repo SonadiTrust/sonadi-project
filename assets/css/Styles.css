@@ -1929,7 +1929,7 @@ section>p {
 .value-list li::before {
   content: "✔";
   position: absolute;
-  left: 0;
+  left: 15em;
   color: var(--primary-green, #2e7d32);
   font-weight: bold;
 }
