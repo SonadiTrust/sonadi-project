@@ -688,23 +688,26 @@ section h2 {
 }
 
 .about-section {
-  background-color: #fff;
-  padding: 40px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  max-width: 1000px;
-  width: 100%;
-  margin: 40px auto;
-  animation: fadeIn 1s;
-  box-sizing: border-box;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  max-width: 900px;
+  margin: 0 auto 40px auto;
 }
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: auto 8px;
+  }
+}
+
 
 
 .about-section p {
   font-size: 1.1rem;
   line-height: 1.8;
   max-width: 900px;
-  margin: 20px auto;
+  margin: 5px auto;
   color: #444;
   text-align: justify;
 }
@@ -1258,18 +1261,14 @@ section h2 {
 }
 
 
-.about-section {
-  background-color: #ffffff;
-  padding: 2px 1px;
-  font-family: 'Segoe UI', sans-serif;
-  line-height: 1.7;
-  color: #333;
+.about-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 8px;
+  /* optional internal spacing if needed */
 }
 
-.about-wrapper {
-  max-width: 900px;
-  margin: auto;
-}
 
 .about-image-container {
   text-align: center;
@@ -1948,6 +1947,7 @@ textarea {
   flex: 1;
   min-width: 300px;
   max-width: 600px;
-  position: relative;  /* Ensure no absolute positioning */
+  position: relative;
+  /* Ensure no absolute positioning */
   z-index: 0;
 }
