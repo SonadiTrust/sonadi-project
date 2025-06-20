@@ -8,15 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
-
-    {% if messages %}
-      <div class="message-container">
-        {% for message in messages %}
-          <div class="success-message">{{ message }}</div>
-        {% endfor %}
-      </div>
+    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
+    <div class="message-container">
+      {% for message in messages %}
+      <div class="success-message">{{ message }}</div>
+      {% endfor %}
+    </div>
     {% endif %}
 
     <div class="page-heading">
@@ -32,10 +29,10 @@
     </div>
 
     <section>
-      <p style="text-align: center;">
+      <blockquote class="highlight-quote">
         Join us in making a difference! Fill out the form below to volunteer
         your time and skills to help animals in need.
-      </p>
+      </blockquote>
     </section>
 
     <div class="volunteer-container">
@@ -47,9 +44,6 @@
           <img src="{% static 'img/slide3.jpg' %}" class="slide" />
           <img src="{% static 'img/slide4.jpg' %}" class="slide" />
           <img src="{% static 'img/slide5.jpg' %}" class="slide" />
-          <!-- Navigation Arrows -->
-          <button class="nav-arrow left-arrow">&#10094;</button>
-          <button class="nav-arrow right-arrow">&#10095;</button>
         </div>
       </div>
 
@@ -62,7 +56,7 @@
             {{ form.name }}
             <label for="id_name">Your Name</label>
             {% for error in form.name.errors %}
-              <div class="error">{{ error }}</div>
+            <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
 
@@ -70,7 +64,7 @@
             {{ form.email }}
             <label for="id_email">Your Email</label>
             {% for error in form.email.errors %}
-              <div class="error">{{ error }}</div>
+            <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
 
@@ -78,7 +72,7 @@
             {{ form.phone }}
             <label for="id_phone">Your Phone Number</label>
             {% for error in form.phone.errors %}
-              <div class="error">{{ error }}</div>
+            <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
 
@@ -86,7 +80,7 @@
             {{ form.message }}
             <label for="id_message">Your Message</label>
             {% for error in form.message.errors %}
-              <div class="error">{{ error }}</div>
+            <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
 

@@ -1189,107 +1189,27 @@ section h2 {
   }
 }
 
-/* === VOLUNTEER SECTION SPLIT LAYOUT === */
-.volunteer-container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 40px auto;
-  max-width: 1100px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* LEFT SIDE: SLIDESHOW */
-.volunteer-left {
-  flex: 1;
-  min-height: 500px;
-  position: relative;
-}
 
 .slideshow {
+  width: 100%;
   position: relative;
-  height: 100%;
+  overflow: hidden;
 }
 
 .slide {
-  position: absolute;
+  display: none;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  height: auto;
+  border-radius: 10px;
+  position: relative;
+  /* Ensure it flows normally in layout */
+  z-index: 1;
 }
 
 .slide.active {
-  opacity: 1;
+  display: block;
 }
 
-/* RIGHT SIDE: FORM */
-.volunteer-right {
-  flex: 1;
-  background: var(--white, #ffffff);
-  padding: 30px;
-}
-
-/* RESPONSIVE LAYOUT */
-@media screen and (max-width: 768px) {
-  .volunteer-container {
-    flex-direction: column;
-  }
-
-  .volunteer-left,
-  .volunteer-right {
-    width: 100%;
-    min-height: 300px;
-  }
-
-  .nav-arrow {
-    font-size: 20px;
-    padding: 8px;
-  }
-}
-
-/* Make slideshow images full and adaptive */
-.volunteer-left {
-  flex: 1.2;
-  /* Slightly wider than form side */
-  min-height: 500px;
-  position: relative;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Arrow button styling */
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.6);
-  border: none;
-  padding: 12px;
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.3s;
-  z-index: 10;
-}
-
-.left-arrow {
-  left: 15px;
-}
-
-.right-arrow {
-  right: 15px;
-}
-
-.nav-arrow:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-}
 
 .team {
   display: flex;
@@ -1932,4 +1852,102 @@ section>p {
   left: 15em;
   color: var(--primary-green, #2e7d32);
   font-weight: bold;
+}
+
+/* Volunteer Container: Two-column responsive layout */
+.volunteer-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.slide.active {
+  display: block;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+input,
+textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Media Query: Stack columns on narrow screens */
+@media (max-width: 768px) {
+  .volunteer-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .volunteer-left,
+  .volunteer-right {
+    max-width: 100%;
+  }
+}
+
+.volunteer-left,
+.volunteer-right {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  position: relative;  /* Ensure no absolute positioning */
+  z-index: 0;
 }
