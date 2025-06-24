@@ -1834,38 +1834,36 @@ section>p {
 .value-list {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0;
+  margin: 2rem auto;
   font-size: 1.05rem;
   color: #333;
+  max-width: 600px; /* keeps it nicely readable */
+  text-align: center;
 }
 
 .value-list li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center; /* centers contents horizontally */
   gap: 0.6em;
   margin-bottom: 1em;
   position: relative;
-  padding-left: 1.2em;
 }
 
 .value-list li::before {
   content: "✔";
   flex-shrink: 0;
   font-size: 1.2em;
-  line-height: 1;
-  margin-top: 0.2em;
   color: var(--primary-green, #2e7d32);
   font-weight: bold;
 }
 
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
   .value-list {
     font-size: 1rem;
-  }
-
-  .value-list li {
-    padding-left: 1em;
-    gap: 0.5em;
+    padding: 0 1rem;
   }
 
   .value-list li::before {
