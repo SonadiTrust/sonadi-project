@@ -52,8 +52,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 import dj_database_url
 import os
 
-default_db_url = f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
