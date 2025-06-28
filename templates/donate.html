@@ -7,34 +7,41 @@
     <title>Donate | Sonadi Charitable Trust</title>
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
     <style>
-      /* Extra styles to support the custom layout */
+      .page-heading.donate-hero {
+        margin-bottom: 0 !important;
+      }
+
+      .donate-section {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .donate-section > h2:first-child {
+        margin-top: 0 !important;
+      }
+
+      .bank-details-heading {
+        font-size: 1.8rem;
+        color: var(--primary-green-dark);
+        text-align: left;
+      }
 
       .bank-details-row {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-        margin-top: 2rem;
+        align-items: flex-start;
       }
 
-      .bank-details-heading h2 {
-        font-size: 1.8rem;
-        color: var(--primary-green-dark);
-        margin: 0;
-      }
-
-      .bank-details-image .donation-image {
-        max-width: 400px;
-        width: 100%;
-        height: auto;
+      .bank-details-text {
+        flex: 1;
+        background-color: #e9f9e8;
+        padding: 1rem;
         border-radius: 8px;
+        max-width: 500px;
       }
     </style>
   </head>
   <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+    {% include 'header.html' %} {% include 'navbar.html' %}
 
     <!-- Hero Section -->
     <div class="page-heading donate-hero">
@@ -45,7 +52,9 @@
       />
       <div class="page-heading-text">
         <h2>Support Us. Save Lives.</h2>
-        <h3>Your contribution brings care and compassion to animals in need.</h3>
+        <h3>
+          Your contribution brings care and compassion to animals in need.
+        </h3>
       </div>
     </div>
 
@@ -57,7 +66,8 @@
           <div class="donate-card">
             <h3>Rescue & Shelter</h3>
             <p>
-              We provide safe refuge and medical care to abandoned or injured animals.
+              We provide safe refuge and medical care to abandoned or injured
+              animals.
             </p>
           </div>
           <div class="donate-card">
@@ -69,24 +79,34 @@
           <div class="donate-card">
             <h3>Awareness & Adoption</h3>
             <p>
-              Your support helps us promote animal welfare and facilitate adoptions.
+              Your support helps us promote animal welfare and facilitate
+              adoptions.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Bank Details Section in a row -->
+      <!-- Bank Details Section with heading on left and image on right -->
       <section class="bank-section">
+        <h2 class="bank-details-heading">Bank Details for Direct Donation</h2>
         <div class="bank-details-row">
-          <div class="bank-details-heading">
-            <h2>Bank Details for Direct Donation</h2>
-          </div>
-          <div class="bank-details-image">
-            <img
-              src="{% static 'img/donate_details.jpg' %}"
-              alt="Bank Details for Direct Donation"
-              class="donation-image"
-            />
+          <div class="bank-details-text">
+            <p>
+              <strong>Sonadi Charitable Trust</strong><br />
+              Bank Name: Indian Bank<br />
+              Branch: Nazafgarh<br />
+              Address: Sainik Enclave, Maksudabad, Nazafgarh, New Delhi<br />
+              Pincode: 110043<br />
+              Account Holder: Sonadi Charitable Trust<br />
+              Account Number: 6531177186<br />
+              IFSC Code: IDIB000N137<br />
+              CBS Code: 02250<br /><br />
+              Please mention <strong>“Donation”</strong> in the remarks.<br />
+              For 80G receipt, email your transaction details to <br />
+              <a href="mailto:sonadicharitytrust@gmail.com"
+                >sonadicharitytrust@gmail.com</a
+              >
+            </p>
           </div>
         </div>
       </section>

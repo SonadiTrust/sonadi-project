@@ -803,29 +803,8 @@ section h2 {
 .donate-container {
   max-width: 1200px;
   margin: 0px auto;
-  padding: 0px 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 32px rgba(76, 175, 80, 0.08);
-}
-
-.donate-hero {
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.donate-hero h1 {
-  color: var(--primary-green);
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.donate-hero p {
-  font-size: 1.2rem;
-  color: #444;
 }
 
 .donate-section {
@@ -833,145 +812,6 @@ section h2 {
   flex-wrap: wrap;
   justify-content: left;
   align-items: flex-start;
-}
-
-.donate-form,
-.donate-info {
-  width: 100%;
-  max-width: 400px;
-  flex: 1 1 350px;
-  box-sizing: border-box;
-}
-
-
-.donate-form h2 {
-  color: var(--primary-green);
-  margin-bottom: 10px;
-}
-
-.donate-amounts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 16px;
-  margin-bottom: 10px;
-}
-
-.donate-amounts label {
-  background: #e8f5e9;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-weight: 500;
-  color: var(--primary-green-dark);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: 1.5px solid transparent;
-  transition: border .2s, background .2s;
-}
-
-.donate-amounts input[type="radio"]:checked+input,
-.donate-amounts input[type="radio"]:checked~span {
-  font-weight: bold;
-}
-
-.donate-amounts input[type="radio"]:checked+label,
-.donate-amounts input[type="radio"]:checked {
-  border: 1.5px solid var(--primary-green);
-  background: #c8e6c9;
-}
-
-.donate-amounts input[type="number"] {
-  margin-left: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 4px 8px;
-  width: 100px;
-}
-
-.donate-details input {
-  margin-bottom: 10px;
-  padding: 10px 12px;
-  border-radius: 5px;
-  border: 1px solid #bbb;
-  font-size: 1rem;
-  background: #fff;
-}
-
-.donate-btn {
-  background: var(--primary-green);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 14px 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  transition: background .2s;
-}
-
-.donate-btn:hover {
-  background: var(--primary-green-dark);
-}
-
-.payment-methods {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 10px 0 0 0;
-  font-size: 0.98rem;
-  color: #444;
-}
-
-.payment-methods img {
-  vertical-align: middle;
-  height: 28px;
-  border-radius: 4px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-}
-
-.trust-text {
-  color: var(--primary-green-dark);
-  font-size: 1rem;
-  margin-top: 8px;
-  font-weight: 500;
-}
-
-.donate-info h3 {
-  color: var(--primary-green);
-  margin-bottom: 10px;
-}
-
-.donate-info ul {
-  margin: 0 0 18px 0;
-  padding-left: 18px;
-  color: #444;
-  font-size: 1.05rem;
-}
-
-.bank-details {
-  background: #fffde7;
-  border-radius: 8px;
-  padding: 12px 14px;
-  margin: 18px 0 10px 0;
-  font-size: 0.98rem;
-  color: #333;
-  box-shadow: 0 1px 4px rgba(255, 193, 7, 0.04);
-}
-
-.bank-details h4 {
-  margin: 0 0 6px 0;
-  color: var(--accent-orange);
-  font-size: 1.08rem;
-}
-
-.tax-benefit {
-  margin-top: 10px;
-  color: var(--primary-green-dark);
-  font-size: 1rem;
-  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -989,17 +829,8 @@ section h2 {
 
 @media (max-width: 768px) {
   .donate-container {
-    padding: 10px 2px;
+    padding: 8px 2px;
     border-radius: 0;
-  }
-
-  .donate-form,
-  .donate-info {
-    padding: 16px 6px;
-  }
-
-  .donate-hero h1 {
-    font-size: 1.5rem;
   }
 }
 
@@ -1987,13 +1818,8 @@ textarea {
   background-color: #e08919;
 }
 
-.donate-section {
-  text-align: left;
-}
-
 .donate-section h2 {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
   color: var(--primary-green-dark);
 }
 
@@ -2001,17 +1827,17 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .donate-card {
-  background: #fdfdfd;
   border: 1px solid #000000;
   border-radius: 12px;
   padding: 20px;
   max-width: 300px;
   flex: 1;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: -7rem;
 }
 
 .donate-card h3 {
