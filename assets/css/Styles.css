@@ -802,11 +802,11 @@ section h2 {
 /* --- Donate Page Styles --- */
 .donate-container {
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 30px 20px;
+  margin: 0px auto;
+  padding: 0px 0px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 0px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 32px rgba(76, 175, 80, 0.08);
@@ -831,8 +831,7 @@ section h2 {
 .donate-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
+  justify-content: left;
   align-items: flex-start;
 }
 
@@ -975,7 +974,7 @@ section h2 {
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .donate-section {
     flex-direction: column;
     align-items: stretch;
@@ -988,7 +987,7 @@ section h2 {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .donate-container {
     padding: 10px 2px;
     border-radius: 0;
@@ -1837,14 +1836,16 @@ section>p {
   margin: 2rem auto;
   font-size: 1.05rem;
   color: #333;
-  max-width: 600px; /* keeps it nicely readable */
+  max-width: 600px;
+  /* keeps it nicely readable */
   text-align: center;
 }
 
 .value-list li {
   display: flex;
   align-items: center;
-  justify-content: center; /* centers contents horizontally */
+  justify-content: center;
+  /* centers contents horizontally */
   gap: 0.6em;
   margin-bottom: 1em;
   position: relative;
@@ -1968,4 +1969,179 @@ textarea {
   position: relative;
   /* Ensure no absolute positioning */
   z-index: 0;
+}
+
+.cta-button {
+  background-color: var(--accent-orange);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e08919;
+}
+
+.donate-section {
+  text-align: left;
+}
+
+.donate-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-green-dark);
+}
+
+.donate-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.donate-card {
+  background: #fdfdfd;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 300px;
+  flex: 1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.donate-card h3 {
+  color: var(--primary-green);
+  font-size: 1.3rem;
+}
+
+.donate-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.usage-list {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.usage-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 1.05rem;
+}
+
+.impact-quote {
+  font-style: italic;
+  background: #f1f8f5;
+  border-left: 5px solid var(--primary-green);
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+.final-cta {
+  background-color: #fffbea;
+  border: 1px dashed var(--accent-yellow);
+  padding: 30px 20px;
+  border-radius: 12px;
+}
+
+.final-cta h2 {
+  color: var(--accent-orange);
+}
+
+.final-cta p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.bank-details-custom {
+  margin: 0 auto;
+  max-width: 462px;
+  background: #e8f5e9;
+  /* light green */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.07);
+  /* green shadow */
+  padding: 22px 24px;
+  font-size: 1.08rem;
+  color: var(--primary-green-dark);
+}
+
+.bank-details-custom h3 {
+  color: var(--primary-green);
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.18rem;
+}
+
+.bank-details-custom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.bank-details-custom .bank-info-text {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bank-details-custom .bank-info-text .donation-keyword,
+.bank-details-custom .bank-info-text .bank-email {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bank-details-custom .bank-info-text .bank-email-link {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bank-details-custom .bank-info-text .bank-email-desc {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.donation-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.donation-heading {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.donation-image {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
+.bank-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-green-dark);
 }

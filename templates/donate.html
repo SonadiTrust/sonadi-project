@@ -6,11 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Donate | Sonadi Charitable Trust</title>
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+    <style>
+      /* Extra styles to support the custom layout */
+
+      .bank-details-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .bank-details-heading h2 {
+        font-size: 1.8rem;
+        color: var(--primary-green-dark);
+        margin: 0;
+      }
+
+      .bank-details-image .donation-image {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+    </style>
   </head>
   <body>
-    {% include 'header.html' %} {% include 'navbar.html' %}
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
 
-    <div class="page-heading">
+    <!-- Hero Section -->
+    <div class="page-heading donate-hero">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
         alt="Sonadi Logo"
@@ -18,13 +45,51 @@
       />
       <div class="page-heading-text">
         <h2>Support Us. Save Lives.</h2>
-        <h3>
-          Your contribution brings care and compassion to animals in need.
-        </h3>
+        <h3>Your contribution brings care and compassion to animals in need.</h3>
       </div>
     </div>
 
     <main class="donate-container">
+      <!-- Why Donate Section -->
+      <section class="donate-section">
+        <h2>Why Your Support Matters</h2>
+        <div class="donate-reasons">
+          <div class="donate-card">
+            <h3>Rescue & Shelter</h3>
+            <p>
+              We provide safe refuge and medical care to abandoned or injured animals.
+            </p>
+          </div>
+          <div class="donate-card">
+            <h3>Medical Treatment</h3>
+            <p>
+              Donations cover emergency surgeries, medicines, and vaccinations.
+            </p>
+          </div>
+          <div class="donate-card">
+            <h3>Awareness & Adoption</h3>
+            <p>
+              Your support helps us promote animal welfare and facilitate adoptions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bank Details Section in a row -->
+      <section class="bank-section">
+        <div class="bank-details-row">
+          <div class="bank-details-heading">
+            <h2>Bank Details for Direct Donation</h2>
+          </div>
+          <div class="bank-details-image">
+            <img
+              src="{% static 'img/donate_details.jpg' %}"
+              alt="Bank Details for Direct Donation"
+              class="donation-image"
+            />
+          </div>
+        </div>
+      </section>
     </main>
 
     {% include 'footer.html' %}
