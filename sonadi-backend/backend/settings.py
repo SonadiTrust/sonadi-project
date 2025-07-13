@@ -54,14 +54,11 @@ import os
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sonadi_db',
-        'USER': 'sonadi_db_user',
-        'PASSWORD': 'vNrKlosFjmEWizQxOaJKWeuMNrv7WHbx',
-        'HOST': 'dpg-d14lm8juibrs73ajbqe0-a.singapore-postgres.render.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 
