@@ -49,7 +49,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-import dj_database_url
+
 import os
 
 DATABASES = {
