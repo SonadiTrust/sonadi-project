@@ -1,5 +1,9 @@
 from django.db import models
 
+
+# ----------------------------
+# Contact / Feedback
+# ----------------------------
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -8,25 +12,33 @@ class ContactMessage(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.name} – {self.email}"
 
 
+# ----------------------------
+# Testimonials
+# ----------------------------
 class Testimonial(models.Model):
-    title = models.CharField(max_length=255)  # Heading
+    title = models.CharField(max_length=255)          # Heading
     message = models.TextField()
     name = models.CharField(max_length=100)
     animal_name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
-    photo = models.ImageField(upload_to='testimonials/', blank=True, null=True)
+
+    # Uploadcare stores the file and returns a CDN URL; we save that URL.
+    image_url = models.URLField(blank=True, null=True)
+
     approved = models.BooleanField(default=False)
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.title}"
+        return f"{self.name} – {self.title}"
 
-from django.db import models
 
+# ----------------------------
+# Volunteer Sign-ups
+# ----------------------------
 class Volunteer(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -35,9 +47,12 @@ class Volunteer(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.name} – {self.email}"
 
 
+# ----------------------------
+# Adoption Requests
+# ----------------------------
 class AdoptionRequest(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()

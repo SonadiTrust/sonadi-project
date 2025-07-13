@@ -1,174 +1,174 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testimonials - Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-  </head>
-  <body>
-    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
-    <div class="message-container">
-      {% for message in messages %}
-      <div class="success-message">{{ message }}</div>
-      {% endfor %}
-    </div>
-    {% endif %}
+    <title>Testimonials – Sonadi Charitable Trust</title>
 
-    <div class="page-heading">
-      <img
-        src="{% static 'img/sonadi-logo.jpg' %}"
-        alt="Sonadi Logo"
-        class="logo-img"
-      />
-      <div class="page-heading-text">
+    <!-- Main site CSS -->
+    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+
+    <!-- Uploadcare widget (image uploader) -->
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+
+    <!-- Modal tweaks -->
+    <style>
+        /* Modal scroll / padding */
+        .modal-content{
+            max-height:90vh;
+            overflow-y:auto;
+            padding:24px;
+        }
+        /* Field block with tighter spacing */
+        .field{ margin-bottom:5px; }
+        .field label{
+            display:block;
+            margin-bottom:2px;
+            font-weight:600;
+            color: #45a049;              /* green headings */
+        }
+        .field input[type="text"],
+        .field input[type="email"],
+        .field input[type="tel"],
+        .field textarea{
+            width:100%;
+            padding:8px 10px;
+            border:1px solid #ccc;
+            border-radius:4px;
+            font:inherit;
+        }
+    </style>
+</head>
+<body>
+
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+
+{% if messages %}
+<div class="message-container">
+    {% for message in messages %}
+    <div class="success-message">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- ── Page heading ─────────────────────────────────────────────── -->
+<div class="page-heading">
+    <img src="{% static 'img/sonadi-logo.jpg' %}" alt="Sonadi Logo" class="logo-img" />
+    <div class="page-heading-text">
         <h2>Testimonials</h2>
         <h3>Stories of Hope and Change</h3>
-      </div>
     </div>
-    <!-- ✅ Testimonials Display -->
-    <section class="testimonials">
-      {% for t in testimonials %}
-      <div class="card">
-        {% if t.photo %}
-        <img
-          src="{{ t.photo.url }}"
-          alt="{{ t.animal_name }} testimonial image"
-        />
+</div>
+
+<!-- ── Testimonials list ─────────────────────────────────────────── -->
+<section class="testimonials">
+    {% for t in testimonials %}
+    <div class="card">
+        {% if t.image_url %}
+            <img src="{{ t.image_url }}" alt="{{ t.animal_name }} testimonial image" />
         {% else %}
-        <img
-          src="{% static 'img/default-animal.jpg' %}"
-          alt="Default animal image"
-        />
+            <img src="{% static 'img/default-animal.jpg' %}" alt="Default animal image" />
         {% endif %}
         <h3>{{ t.title }}</h3>
-        <p><strong>{{ t.name }} & {{ t.animal_name }}</strong></p>
+        <p><strong>{{ t.name }} &amp; {{ t.animal_name }}</strong></p>
         <p>{{ t.message }}</p>
-      </div>
-      {% empty %}
-      <p style="text-align: center">No testimonials yet.</p>
-      {% endfor %}
-    </section>
-
-    <!-- ✅ Modal Form -->
-    <div id="testimonialModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Share Your Story</h3>
-
-        {% if form.errors %}
-        <div class="error-list">{{ form.non_field_errors }}</div>
-        {% endif %}
-
-        <form
-          action="{% url 'testimonial' %}"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          {% csrf_token %}
-
-          <div class="form-group">
-            {{ form.title }}
-            <label for="id_title">Title</label>
-            {% for error in form.title.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="form-group">
-            {{ form.message }}
-            <label for="id_message">Message</label>
-            {% for error in form.message.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="form-group">
-            {{ form.name }}
-            <label for="id_name">Your Name</label>
-            {% for error in form.name.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="form-group">
-            {{ form.animal_name }}
-            <label for="id_animal_name">Animal's Name</label>
-            {% for error in form.animal_name.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="form-group">
-            {{ form.email }}
-            <label for="id_email">Email</label>
-            {% for error in form.email.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="form-group">
-            {{ form.phone }}
-            <label for="id_phone">Phone Number</label>
-            {% for error in form.phone.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <div class="form-group">
-            {{ form.photo }}
-            <label for="id_photo">Upload a Photo (optional)</label>
-            {% for error in form.photo.errors %}
-            <div class="error">{{ error }}</div>
-            {% endfor %}
-          </div>
-
-          <button type="submit" class="submit-btn">Submit</button>
-        </form>
-      </div>
     </div>
+    {% empty %}
+    <p style="text-align:center;">No testimonials yet.</p>
+    {% endfor %}
+</section>
 
-    <!-- ✅ Button to open the modal -->
-    <div style="text-align: center; margin: 20px">
-      <button class="testimonial-btn" onclick="openModal()">
-        Submit Your Testimonial
-      </button>
-    </div>
+<!-- ── Modal form ────────────────────────────────────────────────── -->
+<div id="testimonialModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Share Your Story</h3>
 
-    {% include 'footer.html' %}
-
-    <!-- ✅ Modal Scripts -->
-    <script>
-      function openModal() {
-        document.getElementById("testimonialModal").style.display = "block";
-      }
-
-      function closeModal() {
-        document.getElementById("testimonialModal").style.display = "none";
-      }
-
-      // Close if click outside modal
-      window.onclick = function (event) {
-        const modal = document.getElementById("testimonialModal");
-        if (event.target === modal) {
-          closeModal();
-        }
-      };
-    </script>
-
-    {% if messages %}
-    <script>
-      // Close modal if success message and no form errors
-      {% if not form.errors %}
-      closeModal();
-      {% endif %}
-    </script>
-    {% elif form.errors %}
-    <script>
-      // Open modal again if form has errors
-      openModal();
-    </script>
+    {% if form.non_field_errors %}
+      <div class="error-list">{{ form.non_field_errors }}</div>
     {% endif %}
-  </body>
+
+    <form action="{% url 'testimonial' %}" method="POST">
+      {% csrf_token %}
+
+      <!-- Title -->
+      <div class="field">
+        <label for="id_title">Title</label>
+        {{ form.title }}
+        {% for error in form.title.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <!-- Message -->
+      <div class="field">
+        <label for="id_message">Message</label>
+        {{ form.message }}
+        {% for error in form.message.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <!-- Name -->
+      <div class="field">
+        <label for="id_name">Your Name</label>
+        {{ form.name }}
+        {% for error in form.name.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <!-- Animal name -->
+      <div class="field">
+        <label for="id_animal_name">Animal's Name</label>
+        {{ form.animal_name }}
+        {% for error in form.animal_name.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label for="id_email">Email</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <!-- Phone -->
+      <div class="field">
+        <label for="id_phone">Phone Number</label>
+        {{ form.phone }}
+        {% for error in form.phone.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <!-- Image -->
+      <div class="field">
+        <label for="id_image_url">Upload a Photo (optional)</label>
+        {{ form.image_url }}
+        {% for error in form.image_url.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Button to open modal ──────────────────────────────────────── -->
+<div style="text-align:center; margin:20px;">
+    <button class="testimonial-btn" onclick="openModal()">Submit Your Testimonial</button>
+</div>
+
+{% include 'footer.html' %}
+
+<!-- ── Modal JS ──────────────────────────────────────────────────── -->
+<script>
+function openModal(){ document.getElementById('testimonialModal').style.display='block'; }
+function closeModal(){ document.getElementById('testimonialModal').style.display='none'; }
+window.onclick=function(e){
+  const m=document.getElementById('testimonialModal');
+  if(e.target===m){ closeModal(); }
+};
+</script>
+
+{% if messages and not form.errors %}
+<script> closeModal(); </script>
+{% elif form.errors %}
+<script> openModal(); </script>
+{% endif %}
+
+</body>
 </html>
