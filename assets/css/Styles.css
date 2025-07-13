@@ -1120,19 +1120,6 @@ section h2 {
   border-radius: 6px;
 }
 
-
-.cta-button {
-  display: inline-block;
-  margin-top: 40px;
-  background-color: var(--primary-green);
-  color: white;
-  padding: 12px 24px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
 .cta-button:hover {
   background-color: #287d35;
 }
@@ -1798,19 +1785,15 @@ textarea {
 }
 
 .cta-button {
-  background-color: var(--accent-orange);
+  background-color: var(--primary-green);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
   text-decoration: none;
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 40px;
   transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #e08919;
 }
 
 .donate-section h2 {
