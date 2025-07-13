@@ -53,12 +53,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 import os
 
 import dj_database_url
-DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # Using PostgreSQL
+        'NAME': 'sonadi_db_qy8m',                   # Database name
+        'USER': 'sonadi_db_qy8m_user',              # Database username
+        'PASSWORD': 'zTxP7v0K8sFXO2cAeA5mYhsvjI9lR1cD',  # Database password
+        'HOST': 'dpg-d1plvn7fte5s73cfv5i0-a.singapore-postgres.render.com',  # Hostname (Render's URL)
+        'PORT': '5432',                             # Default PostgreSQL port
+    }
+}
+
 
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / 'assets',  # ✅ assets folder is at project root
 ]
