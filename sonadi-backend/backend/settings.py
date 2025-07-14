@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+from decouple import config
+
 
 # ✅ Corrected BASE_DIR to point to the main "Sonadi wesite" folder
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -55,14 +57,15 @@ import os
 import dj_database_url
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Using PostgreSQL
-        'NAME': 'sonadi_db_qy8m',                   # Database name
-        'USER': 'sonadi_db_qy8m_user',              # Database username
-        'PASSWORD': 'zTxP7v0K8sFXO2cAeA5mYhsvjI9lR1cD',  # Database password
-        'HOST': 'dpg-d1plvn7fte5s73cfv5i0-a.singapore-postgres.render.com',  # Hostname (Render's URL)
-        'PORT': '5432',                             # Default PostgreSQL port
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
+
 
 
 
