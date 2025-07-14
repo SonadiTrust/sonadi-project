@@ -82,11 +82,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ✅ Email settings
+# =========================
+# ✉️  Email configuration
+# =========================
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = True          # STARTTLS encryption
 EMAIL_HOST_USER = 'sonadicharitytrust@gmail.com'
-EMAIL_HOST_PASSWORD = 'pwpp dyfj pfsn ytom'
+EMAIL_HOST_PASSWORD = 'pwppdyfjpfsnytom'   # ← App password (no spaces)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Optional—raise errors if email fails during development
+# Set to False in production if you’d rather fail silently
+EMAIL_FAIL_SILENTLY = False
