@@ -106,7 +106,7 @@ class TestimonialForm(forms.ModelForm):
         self.fields["image_url"].widget = forms.TextInput(
             attrs={
                 "role": "uploadcare-uploader",
-                "data-public-key": "e27d1532e4be9cc99d76",
+                "data-public-key": "e27d1532e4be9cc99d76",  # pragma: allowlist secret
                 "data-images-only": "true",
                 "data-crop": "free",           # ✅ enables free-form cropping
 
