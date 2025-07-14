@@ -3,3 +3,6 @@
 __pycache__/
 *.pyc
 venv/
+.vscode/           # VS Code project settings
+.idea/             # PyCharm project settings
+*.log              # Log files
