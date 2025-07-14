@@ -107,6 +107,9 @@ class TestimonialForm(forms.ModelForm):
             attrs={
                 "role": "uploadcare-uploader",
                 "data-public-key": "e27d1532e4be9cc99d76",
+                "data-images-only": "true",
+                "data-crop": "free",           # ✅ enables free-form cropping
+
             }
         )
         # Uncomment if you want to force image upload:
