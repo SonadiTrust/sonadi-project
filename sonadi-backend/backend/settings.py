@@ -63,13 +63,15 @@ import os
 
 import dj_database_url
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sonadi_db',
+        'USER': 'sonadi_db_user',
+        'PASSWORD': 'vNrKlosFjmEWizQxOaJKWeuMNrv7WHbx',
+        'HOST': 'dpg-d14lm8juibrs73ajbqe0-a.singapore-postgres.render.com',
+        'PORT': '5432',
+    }
 }
-
 
 
 
