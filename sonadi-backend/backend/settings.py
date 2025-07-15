@@ -62,19 +62,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 import os
 
 import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sonadi_db',
-        'USER': 'sonadi_db_user',
-        'PASSWORD': 'vNrKlosFjmEWizQxOaJKWeuMNrv7WHbx',
-        'HOST': 'dpg-d14lm8juibrs73ajbqe0-a.singapore-postgres.render.com',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
+
 
 
 
