@@ -2032,3 +2032,55 @@ textarea {
   margin-bottom: 0.5rem;
   color: var(--primary-green-dark);
 }
+
+/* New css fot team page */
+/* Team Section Container */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+/* Team Member Card */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 20px 15px;
+  width: 230px;           /* Fixed width */
+  height: 340px;          /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Team Member Image */
+.team-member-image {
+  width: 100%;
+  height: 200px;           /* Enlarge image height */
+  object-fit: cover;       /* Maintain aspect ratio, fill card */
+  border-radius: 12px;
+  border: 3px solid var(--primary-green);
+  margin-bottom: 15px;
+}
+
+/* Team Member Name */
+.card h3 {
+  font-size: 1.1rem;
+  color: var(--primary-green);
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Team Member Role */
+.card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-top: 6px;
+}
