@@ -6,99 +6,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sonadi Charitable Trust</title>
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .stats-grid {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        background-color: #f3f3f3;
+        padding: 30px 10px;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .stats-grid div h3 {
+        margin: 0;
+        font-size: 24px;
+        color: var(--primary-green, #1e3a2f);
+      }
+
+      .stats-grid div p {
+        margin: 5px 0 0;
+        font-size: 14px;
+      }
+
+      .hero-section {
+        background-color: #f5f9f6;
+        color: #1e3a2f;
+        text-align: center;
+        padding: 20px 10px 30px;
+        animation: fadeIn 1.2s ease-in-out;
+      }
+
+      .hero-section h1 {
+        font-size: clamp(28px, 5vw, 52px);
+        margin-bottom: 10px;
+      }
+
+      .hero-section p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .section-heading {
+        text-align: center;
+        margin-top: 60px;
+        font-size: 28px;
+        color: #1e3a2f;
+      }
+    </style>
   </head>
   <body>
     {% include 'header.html' %} {% include 'navbar.html' %}
 
-    <!-- Page Heading -->
-    <div class="page-heading">
-      <img
-        src="{% static 'img/sonadi-logo.jpg' %}"
-        alt="Sonadi Charitable Trust Logo"
-        class="logo-img"
-      />
-      <div class="page-heading-text">
-        <h2>Sonadi Charitable Trust</h2>
-        <h3>Empowering Lives, Spreading Kindness</h3>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>10,000+ Animals Rescued. Countless Lives Changed.</h1>
+      <p>
+        We’re on a mission to protect and uplift stray animals and communities
+        through care, training, and kindness. Join the movement.
+      </p>
+      <div class="button-group" style="margin-top: 10px">
+        <a href="{% url 'donate' %}" class="btn">Support Our Mission</a>
+        <a href="{% url 'volunteer' %}" class="btn">Become a Volunteer</a>
+      </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <div class="stats-grid">
+      <div>
+        <h3>🐕 10,000+</h3>
+        <p>Animals Rescued & Rehabilitated</p>
+      </div>
+      <div>
+        <h3>💉 30,000+</h3>
+        <p>Sterilizations Completed</p>
       </div>
     </div>
-
-    <main class="main-content">
-      <!-- Welcome Section -->
-      <section class="home-section">
-        <h2>Welcome to Sonadi Charitable Trust</h2>
-        <p>
-          Founded in 2001, Sonadi Charitable Trust is dedicated to the welfare
-          of animals and the empowerment of underprivileged communities. Our
-          mission is to create a compassionate world where every being is
-          treated with dignity and respect.
-        </p>
-        <p>
-          From providing medical care to street animals to supporting education
-          for underprivileged children, we strive to make a positive impact in
-          our community.
-        </p>
-        <div class="button-group">
-          <a href="{% url 'about' %}" class="btn">Learn More About Us</a>
+    <main class="main-content" style="background: none">
+      <!-- Two Separate Cards Without Shared Background -->
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 40px;
+          justify-content: center;
+          align-items: stretch;
+          padding: 30px 10px;
+        "
+      >
+        <!-- Welcome Card -->
+        <div
+          style="
+            flex: 1 1 400px;
+            max-width: 600px;
+            background: white;
+            padding: 30px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          "
+        >
+          <h2 class="section-heading" style="margin-top: 0">
+            Welcome to Sonadi Charitable Trust
+          </h2>
+          <p>
+            Founded in 2001, Sonadi Charitable Trust is dedicated to the welfare
+            of animals and the empowerment of underprivileged communities.
+          </p>
+          <p>
+            From providing medical care to street animals to supporting
+            education for underprivileged children, we strive to make a positive
+            impact in our community.
+          </p>
+          <div class="button-group" style="margin-top: auto">
+            <a href="{% url 'about' %}" class="btn">Learn More About Us</a>
+          </div>
         </div>
-      </section>
 
-      <!-- Get Involved Section -->
-      <section class="home-section">
-        <h2>Get Involved</h2>
-        <p>
-          Join us in our mission to make a difference. Whether you want to
-          volunteer, donate, or simply spread the word — your support is
-          invaluable.
-        </p>
-        <div class="button-group">
-          <a href="{% url 'volunteer' %}" class="btn">Volunteer</a>
-          <a href="{% url 'donate' %}" class="btn">Donate</a>
+        <!-- Values Card -->
+        <div
+          style="
+            flex: 1 1 400px;
+            max-width: 600px;
+            background: white;
+            padding: 30px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          "
+        >
+          <h2 class="section-heading" style="margin-top: 0">Our Values</h2>
+          <ul class="value-list">
+            <li><strong>Compassion:</strong> Every life matters.</li>
+            <li>
+              <strong>Commitment:</strong> We stand by those without a voice.
+            </li>
+            <li><strong>Collaboration:</strong> With community, we thrive.</li>
+          </ul>
+          <div style="flex-grow: 1"></div>
         </div>
-        <p>
-          Together, we can create a better future for animals and
-          underprivileged communities.
-        </p>
-      </section>
-
-      <!-- Core Values Section (optional) -->
-      <section class="home-section">
-        <h2>Our Values</h2>
-        <ul class="value-list">
-          <li><strong>Compassion:</strong> Every life matters.</li>
-          <li>
-            <strong>Commitment:</strong> We stand by those without a voice.
-          </li>
-          <li><strong>Collaboration:</strong> With community, we thrive.</li>
-        </ul>
-      </section>
-
-      <!-- Testimonial Quote -->
-      <section class="home-section">
-        <blockquote class="testimonial-quote">
-          “The compassion, care, and dedication shown here are truly inspiring.
-          Every animal is treated with love, and every life is given a second
-          chance.”
-        </blockquote>
-      </section>
-
-      <!-- Contact Section -->
-      <section class="home-section">
-        <h2>Contact Us</h2>
-        <p>
-          Have questions or want to get in touch? We would love to hear from
-          you! Reach out via email or phone, or visit us at our shelter.
-        </p>
-        <div class="button-group">
-          <a href="{% url 'contact' %}" class="btn">Contact Us</a>
-          <a
-            href="https://maps.app.goo.gl/Sa318vMGxYiHeN6q6"
-            target="_blank"
-            class="btn"
-            >Find Us</a
-          >
-        </div>
-      </section>
+      </div>
     </main>
 
     {% include 'footer.html' %}
