@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
   </head>
   <body>
-    {% include 'header.html' %} {% include 'navbar.html' %}
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+
     <div class="page-heading">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
@@ -17,99 +19,76 @@
       />
       <div class="page-heading-text">
         <h2>Meet the Team</h2>
-        <h3>Dedicated Hearts, United Purpose</h3>
+        <h3>Hands That Heal, Hearts That Serve</h3>
       </div>
     </div>
 
     <blockquote class="highlight-quote">
       “Alone we can do so little; together we can do so much.” – Helen Keller
     </blockquote>
-    
+
     <p class="team-intro">
-      At Sonadi Charitable Trust, our team is the heart of our mission. Each
-      member brings unique skills and a shared passion for animal welfare,
-      working tirelessly to create a better world for all creatures.
+      At Sonadi Charitable Trust, our strength lies in unity — a coming together of passionate individuals, both seen and unseen, who devote themselves to the welfare of animals every single day.
     </p>
 
-    <!-- Gratitude Section for Behind-the-Scenes Heroes -->
-    <section class="gratitude-section">
-      <h2>To Our Unsung Heroes</h2>
-      
-      <blockquote class="highlight-quote">
-        "The most valuable thing you can make is a mistake—you can't learn anything from being perfect." – Adam Osborne. Yet our volunteers make no mistakes in their unwavering compassion.
-      </blockquote>
-      
-      <div class="gratitude-content">
-        <p class="team-intro">
-          While these faces represent our core team, our deepest gratitude extends to the <strong>countless volunteers, supporters, and compassionate souls</strong> who have chosen to work quietly behind the scenes. You are the invisible threads that weave our mission together, the gentle hands that heal without seeking recognition, and the generous hearts that give without expecting applause.
-        </p>
-        
-        <div class="gratitude-highlights">
-          <div class="gratitude-card">
-            <h3>🤝 To Our Silent Volunteers</h3>
-            <p>Every early morning feeding, every late-night rescue call, every weekend spent cleaning kennels—your dedication speaks louder than any spotlight ever could. You embody the true spirit of service.</p>
-          </div>
-          
-          <div class="gratitude-card">
-            <h3>💝 To Our Anonymous Donors</h3>
-            <p>Your contributions, whether monetary, material, or emotional, create ripples of hope that extend far beyond what any photograph can capture. Your generosity saves lives daily.</p>
-          </div>
-          
-          <div class="gratitude-card">
-            <h3>🌟 To Our Community Champions</h3>
-            <p>From foster families to transport volunteers, from social media advocates to neighborhood watchdogs—you amplify our mission in ways that multiply our impact exponentially.</p>
-          </div>
-        </div>
-        
-        <p class="team-intro">
-          <strong>You may not see your names on our website or your faces in our galleries, but you are forever etched in the hearts of every animal we've saved together.</strong> Your humility makes you extraordinary, your selflessness makes you irreplaceable, and your compassion makes you family.
-        </p>
-        
-        <blockquote class="highlight-quote">
-          "From the depths of our hearts and on behalf of every wagging tail, every purring cat, and every life given a second chance—thank you for being the heroes who need no recognition, yet deserve all the honor in the world."
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- 🔻 Sample Team Section -->
+    <!-- Core Team Section -->
     <section class="team">
       <div class="card">
-        <img
-          src="{% static 'img/member1.jpg' %}"
-          alt="Team Member 1"
-          class="team-member-image"
-        />
+        <img src="{% static 'img/member1.jpg' %}" alt="Vijay Kumar" class="team-member-image" />
         <h3>Vijay Kumar</h3>
         <p>Founder & Director</p>
       </div>
       <div class="card">
-        <img
-          src="{% static 'img/member2.jpg' %}"
-          alt="Team Member 2"
-          class="team-member-image"
-        />
+        <img src="{% static 'img/member2.jpg' %}" alt="Arjun Mehra" class="team-member-image" />
         <h3>Arjun Mehra</h3>
         <p>Nursing Head</p>
       </div>
       <div class="card">
-        <img
-          src="{% static 'img/member3.jpg' %}"
-          alt="Team Member 3"
-          class="team-member-image"
-        />
+        <img src="{% static 'img/member3.jpg' %}" alt="Nikhil Kumar" class="team-member-image" />
         <h3>Nikhil Kumar</h3>
         <p>Chief Surgeon</p>
       </div>
       <div class="card">
-        <img
-          src="{% static 'img/member4.jpg' %}"
-          alt="Team Member 4"
-          class="team-member-image"
-        />
+        <img src="{% static 'img/member4.jpg' %}" alt="Sita Didi" class="team-member-image" />
         <h3>Sita Didi</h3>
         <p>Head Caretaker</p>
       </div>
     </section>
+
+    <!-- Unified Gratitude Section -->
+    <section class="gratitude-section">
+      <h2>Every Heart Counts</h2>
+
+      <p class="team-intro">
+        While the faces above form the backbone of our daily operations, Sonadi's impact stretches far beyond what photos can capture. We are held up by the quiet strength of volunteers, donors, and supporters who make our mission truly unstoppable.
+      </p>
+
+      <div class="gratitude-highlights">
+        <div class="gratitude-card">
+          <h3>🤝 Our Silent Volunteers</h3>
+          <p>
+            From early-morning feedings to midnight rescue calls, you serve with a quiet commitment that inspires us every day. Your service reminds us that love needs no stage.
+          </p>
+        </div>
+        <div class="gratitude-card">
+          <h3>💝 Our Anonymous Donors</h3>
+          <p>
+            You may never seek the limelight, but your contributions illuminate lives. Every rupee, every blanket, every crate of food makes a difference—and we feel your support in every life saved.
+          </p>
+        </div>
+        <div class="gratitude-card">
+          <h3>🌟 Our Community Champions</h3>
+          <p>
+            From foster parents to social media warriors, your everyday actions ripple outward, amplifying our voice and expanding our reach. You are the movement behind our mission.
+          </p>
+        </div>
+      </div>
+
+      <blockquote class="highlight-quote">
+        "To every gentle hand, every giving heart, every soul who stepped forward quietly—thank you. You may not be in our photos, but you are forever etched in our journey."
+      </blockquote>
+    </section>
+
     {% include 'footer.html' %}
   </body>
 </html>
