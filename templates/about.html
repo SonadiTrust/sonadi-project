@@ -10,33 +10,45 @@
   <body>
     {% include 'header.html' %} {% include 'navbar.html' %}
 
-    <div class="page-heading">
+    <!-- Hero Section -->
+    <div class="page-heading fade-in fade-delayed-1">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
         alt="Sonadi Charitable Trust Logo"
         class="logo-img"
       />
       <div class="page-heading-text">
-        <h2>Our Story</h2>
+        <h2>About Us</h2>
         <h3>Rooted in Kindness, Growing with Purpose</h3>
       </div>
     </div>
 
-    <section class="about-section">
-      <div class="about-wrapper">
-        <blockquote class="highlight-quote">
-          “The greatness of a nation can be judged by the way its animals are
-          treated.” – Mahatma Gandhi
-        </blockquote>
+    <!-- Highlight Quote -->
+    <blockquote class="highlight-quote-about">
+      “The greatness of a nation can be judged by the way its animals are
+      treated.” – Mahatma Gandhi
+    </blockquote>
 
-        <p>
-          Founded in 2001 under the visionary leadership of Mrs. Bandana
-          Sengupta and Dr. Vijay Kumar,
-          <strong>Sonadi Charitable Trust</strong> began its journey in
-          Chittaranjan Park, New Delhi, with a single mission — to bring
-          compassionate care to the lives of voiceless animals.
-        </p>
-
+    <!-- About Content -->
+    <section class="about-section fade-in fade-delayed-1">
+      <!-- Our Story -->
+      <div class="about-block">
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>
+            Founded in 2001 under the visionary leadership of Mrs. Bandana
+            Sengupta and Dr. Vijay Kumar,
+            <strong>Sonadi Charitable Trust</strong> began its journey in
+            Chittaranjan Park, New Delhi, with a single mission — to bring
+            compassionate care to the lives of voiceless animals.
+          </p>
+          <p>
+            From modest beginnings, Sonadi has grown into a leading shelter and
+            treatment facility for injured, abandoned, and mistreated street
+            animals. With unwavering commitment, our veterinarians, para-vets,
+            caretakers, and volunteers have transformed thousands of lives.
+          </p>
+        </div>
         <div class="about-image-container">
           <img
             src="{% static 'img/about1.jpg' %}"
@@ -44,55 +56,41 @@
             class="about-image"
           />
         </div>
+      </div>
 
-        <p>
-          From modest beginnings, Sonadi has grown into a leading shelter and
-          treatment facility for injured, abandoned, and mistreated street
-          animals. With unwavering commitment, our veterinarians, para-vets,
-          caretakers, and volunteers have transformed thousands of lives.
-        </p>
-
-        <p>
-          Key programs include the
-          <strong>Animal Birth Control Program</strong>, aimed at reducing
-          human-animal conflict, controlling population, and eliminating rabies.
-          We run a state-of-the-art unit for sterilization surgeries on dogs and
-          cats, ensuring quality post-op care.
-        </p>
-
-        <p>
-          <strong>Rescue operations</strong> are powered by medical ambulances
-          for ill or abandoned animals. We also conduct
-          <strong>anti-rabies vaccination drives</strong>, in collaboration with
-          community groups and local volunteers.
-        </p>
-
+      <!-- Our Impact -->
+      <div class="about-block impact-section">
+        <div class="about-text">
+          <h2>Our Impact</h2>
+          <p>
+            Sonadi has successfully performed over
+            <strong>30,000 ABC surgeries</strong>, treated countless injured
+            animals, and provided lifelong shelter to many who can no longer
+            survive on the streets.
+          </p>
+          <p>
+            Through adoption campaigns, awareness drives, and community
+            outreach, we're building a culture of compassion — one paw at a
+            time.
+          </p>
+        </div>
         <div class="about-image-container">
           <img
             src="{% static 'img/about2.jpg' %}"
-            alt="Rescue in action"
+            alt="Animal Ambulance"
             class="about-image"
           />
         </div>
+      </div>
 
-        <p>
-          So far, Sonadi has successfully performed over
-          <strong>2 Lakh ABC surgeries</strong>, treated countless animals, and
-          provided lifelong shelter to many who can no longer survive on the
-          streets.
+      <!-- Enhanced CTA Section -->
+      <div class="cta-section">
+        <h2 class="cta-heading">Make a Difference Today</h2>
+        <p class="cta-subtext">
+          Your support helps us rescue, heal, and rehome animals in need.
+          Sponsor a dog, support our ambulance, or adopt a furry friend — every
+          action matters.
         </p>
-
-        <p>
-          At Sonadi, our vision is to create a future where
-          <em>no animal suffers alone</em>. We aim to build a compassionate
-          medical facility that ensures healing with dignity and love.
-        </p>
-
-        <p>
-          Through adoption campaigns, awareness drives, and community outreach,
-          we’re building a culture of compassion — one paw at a time.
-        </p>
-
         <a href="{% url 'adopt_a_dog' %}" class="cta-button"
           >Support an Adoption</a
         >
