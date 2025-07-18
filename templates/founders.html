@@ -6,10 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Founders - Sonadi Charitable Trust</title>
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
+    <style>
+      .founders-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+        padding: 40px 20px;
+        background-color: #f9f9f9;
+      }
+
+      .founder-card {
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        max-width: 420px;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+      }
+
+      .founder-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .founder-img {
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: -10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: 4px solid var(--primary-green, #4caf50);
+        border-radius: 10px; /* slight rounding, remove if not needed */
+      }
+
+      .founder-name {
+        font-size: 1.5rem;
+        color: var(--text-main, #333);
+        margin-bottom: 8px;
+      }
+
+      .founder-role {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--primary-green, #4caf50);
+        margin-bottom: 15px;
+      }
+
+      .founder-quote {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .founder-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+
+      .founder-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 12px;
+        font-size: 1rem;
+        color: #444;
+      }
+
+      .founder-list li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--primary-green, #4caf50);
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
     {% include 'header.html' %} {% include 'navbar.html' %}
 
+    <!-- Page Heading -->
     <div class="page-heading">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
@@ -21,50 +101,35 @@
         <h3>Meet the Visionaries Behind Sonadi</h3>
       </div>
     </div>
-    <blockquote class="highlight-quote">
+
+    <!-- Quote -->
+    <blockquote class="highlight-quote-about">
       “Compassion for animals is intimately connected with goodness of
       character.” – Arthur Schopenhauer
     </blockquote>
 
-    <section class="team">
+    <!-- Founders Cards -->
+    <section class="founders-wrapper">
       <div class="founder-card">
         <img
           src="{% static 'img/founder2.jpg' %}"
           alt="Mrs. Bandana Sen Gupta"
           class="founder-img"
         />
-        <h3>Mrs. Bandana Sen Gupta</h3>
+        <h3 class="founder-name">Mrs. Bandana Sen Gupta</h3>
         <p class="founder-role">Founder & President, Sonadi Charitable Trust</p>
-        <p class="founder-bio">
-          Mrs. Bandana Sen Gupta is the visionary Founder and President of
-          Sonadi Charitable Trust, an organization she established in 1999 to
-          champion the welfare of stray and abandoned animals in Delhi. Driven
-          by deep compassion, she left her teaching profession to dedicate
-          herself entirely to animal welfare.
+        <p class="founder-quote">
+          “Compassion for animals is deeply linked to the goodness of
+          character.”
         </p>
-        <p class="founder-bio">
-          Under her leadership, the trust has provided shelter to hundreds of
-          animals monthly, including dogs, cats, cows, and donkeys. Mrs. Sen
-          Gupta has been instrumental in implementing Animal Birth Control (ABC)
-          programs in collaboration with the Municipal Corporation of Delhi and
-          the Animal Welfare Board of India. Her unwavering commitment has
-          significantly contributed to reducing rabies cases and controlling the
-          stray animal population in the region.
-        </p>
-        <p class="founder-bio">
-          Beyond her administrative role, she actively engages in daily
-          operations, ensuring that each animal receives the care and attention
-          it deserves. Her dedication extends to working closely with
-          institutions like the Sanjay Gandhi Memorial Hospital, where she has
-          been involved for over 18 years, providing medical assistance to
-          animals in need.
-        </p>
-        <p class="founder-bio">
-          Mrs. Sen Gupta's tireless efforts and compassionate approach have not
-          only transformed countless animal lives but have also inspired a
-          community to embrace kindness and responsibility towards all living
-          beings.
-        </p>
+        <ul class="founder-list">
+          <li>Left her teaching career to champion animal welfare</li>
+          <li>Spearheaded ABC programs with Municipal Corporation of Delhi</li>
+          <li>20+ years providing hands-on care and leadership</li>
+          <li>
+            Partnered with Sanjay Gandhi Memorial Hospital for critical care
+          </li>
+        </ul>
       </div>
 
       <div class="founder-card">
@@ -73,31 +138,21 @@
           alt="Dr. Vijay Kumar"
           class="founder-img"
         />
-        <h3>Dr. Vijay Kumar</h3>
+        <h3 class="founder-name">Dr. Vijay Kumar</h3>
         <p class="founder-role">
           Co-Founder & Secretary, Sonadi Charitable Trust
         </p>
-        <p class="founder-bio">
-          Dr. Vijay Kumar is a dedicated veterinarian and compassionate animal
-          welfare advocate, serving as the Secretary and Co-Founder of Sonadi
-          Charitable Trust. With decades of experience in veterinary medicine,
-          Dr. Kumar has been instrumental in shaping the trust's mission to
-          rescue, rehabilitate, and care for abandoned and injured animals.
+        <p class="founder-quote">
+          “Real change begins when we take action — no matter how small.”
         </p>
-        <p class="founder-bio">
-          His deep understanding of animal health and welfare, combined with a
-          hands-on approach, ensures that every animal under the trust's care
-          receives the highest standard of medical attention. Dr. Kumar leads
-          several key initiatives including the Animal Birth Control (ABC) and
-          Anti-Rabies Vaccination (ARV) programs, which have had a lasting
-          impact on controlling the stray animal population in Delhi.
-        </p>
-        <p class="founder-bio">
-          A firm believer in compassionate action, Dr. Vijay Kumar also works to
-          spread awareness about responsible pet ownership and the ethical
-          treatment of animals. His leadership and vision continue to inspire a
-          new generation of animal lovers and volunteers to support the cause.
-        </p>
+        <ul class="founder-list">
+          <li>Licensed veterinarian leading rescue and treatment operations</li>
+          <li>Heads ABC & Anti-Rabies Vaccination initiatives</li>
+          <li>
+            Advocates for responsible pet ownership and community outreach
+          </li>
+          <li>On the ground during rescue missions, hands-on care</li>
+        </ul>
       </div>
     </section>
 

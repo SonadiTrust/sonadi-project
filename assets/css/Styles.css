@@ -1436,7 +1436,7 @@ section > p {
   max-width: 800px;
   margin: 20px auto;
   padding: 16px 24px;
-  margin-bottom: 30px;
+  margin-bottom: -10px;
   font-style: italic;
   background-color: #f1f1f1;
   border-left: 6px solid var(--primary-green, #2e7d32);
