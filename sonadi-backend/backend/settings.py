@@ -63,12 +63,15 @@ import os
 
 import dj_database_url
 
+from decouple import config
+import dj_database_url
+
+DATABASE_URL = config("DATABASE_URL")
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
 }
-print("DATABASE_URL in use:", dj_database_url.config())
 
-
+print("DATABASE_URL in use:", DATABASE_URL)
 
 
 
