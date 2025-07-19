@@ -79,6 +79,11 @@ class HomepageStats(models.Model):
     def __str__(self):
         return "Homepage Stats"
 
+    class Meta:
+        verbose_name = "Homepage Stats"
+        verbose_name_plural = "Homepage Stats"
+
+
 class CoreValue(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -86,3 +91,16 @@ class CoreValue(models.Model):
 
     def __str__(self):
         return self.title
+
+class AboutStats(models.Model):
+    abc_surgeries_count = models.CharField(max_length=50, default='30,000+')
+
+    def __str__(self):
+        return "About Page Stats"
+
+class ActivityInfo(models.Model):
+    ambulance_phone = models.CharField(max_length=20, default='+91 9212797696')
+
+    def __str__(self):
+        return "Activity Page Info"
+
