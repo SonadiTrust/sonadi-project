@@ -7,17 +7,29 @@
     <title>Contact Us | Sonadi Charitable Trust</title>
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
     <style>
-      /* Fallback for phones */
+      /* Responsive fallback */
       @media (max-width: 768px) {
         .no-class-grid {
           grid-template-columns: 1fr !important;
         }
       }
+
+      /* New card container */
+      .contact-card-wrapper {
+        background-color: #ffffff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        padding: 40px 30px;
+        margin-top: 2rem;
+      }
     </style>
   </head>
 
   <body>
-    {% include 'header.html' %} {% include 'navbar.html' %} {% if messages %}
+    {% include 'header.html' %}
+    {% include 'navbar.html' %}
+
+    {% if messages %}
     <div class="message-container">
       {% for message in messages %}
       <div class="success-message">{{ message }}</div>
@@ -25,7 +37,7 @@
     </div>
     {% endif %}
 
-    <!-- ─── Page Heading ─────────────────────────────────────────────── -->
+    <!-- Page Heading -->
     <div class="page-heading">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
@@ -38,93 +50,97 @@
       </div>
     </div>
 
-    <!-- ─── Main Content ──────────────────────────────────────────────── -->
+    <!-- Main Content -->
     <main class="contact-container">
-      <!-- ❶  Grid wrapper : 2 equal columns → collapses to 1 on phones -->
-      <div
-        class="no-class-grid"
-        style="
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          margin-top: 2rem;
-        "
-      >
-        <!-- Form column -->
-        <section>
-          <form method="POST" action="">
-            {% csrf_token %}
-            <div class="form-group">
-              {{ form.name }}
-              <label for="id_name">Your Name</label>
-              {% for error in form.name.errors %}
-              <div class="error">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.email }}
-              <label for="id_email">Your Email</label>
-              {% for error in form.email.errors %}
-              <div class="error">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.phone }}
-              <label for="id_phone">Your Phone Number</label>
-              {% for error in form.phone.errors %}
-              <div class="error">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <div class="form-group">
-              {{ form.message }}
-              <label for="id_message">Your Message</label>
-              {% for error in form.message.errors %}
-              <div class="error">{{ error }}</div>
-              {% endfor %}
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
-        </section>
 
-        <!-- Info column -->
-        <section>
-          <h2>Contact Information</h2>
-          <p>
-            <strong>📍 Address:</strong> Masudabad, Near Sai Baba Mandir,
-            Najafgarh, Delhi – 110043
-          </p>
-          <p>
-            <strong>📞 Phone:</strong>
-            <a href="tel:+919212797696">+91 92127 97696</a>
-          </p>
-          <p>
-            <strong>✉️ Email:</strong>
-            <a href="mailto:sonadicharitytrust@gmail.com"
-              >sonadicharitytrust@gmail.com</a
-            >
-          </p>
-          <p>
-            <strong>📱 WhatsApp:</strong>
-            <a href="https://wa.me/8527666297" target="_blank">Message Us</a>
-          </p>
-          <p>
-            <strong>📘 Facebook:</strong>
-            <a href="https://facebook.com/SonadiCharitableTrust" target="_blank"
-              >Follow</a
-            >
-          </p>
-          <p>
-            <strong>📸 Instagram:</strong>
-            <a
-              href="https://instagram.com/sonadicharitabletrust"
-              target="_blank"
-              >@sonadicharitabletrust</a
-            >
-          </p>
-        </section>
+      <!-- Card Wrapper Added -->
+      <div class="contact-card-wrapper">
+        <div
+          class="no-class-grid"
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+          "
+        >
+          <!-- Form column -->
+          <section>
+            <form method="POST" action="">
+              {% csrf_token %}
+              <div class="form-group">
+                {{ form.name }}
+                <label for="id_name">Your Name</label>
+                {% for error in form.name.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+              <div class="form-group">
+                {{ form.email }}
+                <label for="id_email">Your Email</label>
+                {% for error in form.email.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+              <div class="form-group">
+                {{ form.phone }}
+                <label for="id_phone">Your Phone Number</label>
+                {% for error in form.phone.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+              <div class="form-group">
+                {{ form.message }}
+                <label for="id_message">Your Message</label>
+                {% for error in form.message.errors %}
+                <div class="error">{{ error }}</div>
+                {% endfor %}
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </section>
+
+          <!-- Info column -->
+          <section>
+            <h2>Contact Information</h2>
+            <p>
+              <strong>📍 Address:</strong> Masudabad, Near Sai Baba Mandir,
+              Najafgarh, Delhi – 110043
+            </p>
+            <p>
+              <strong>📞 Phone:</strong>
+              <a href="tel:+919212797696">+91 92127 97696</a>
+            </p>
+            <p>
+              <strong>✉️ Email:</strong>
+              <a href="mailto:sonadicharitytrust@gmail.com"
+                >sonadicharitytrust@gmail.com</a
+              >
+            </p>
+            <p>
+              <strong>📱 WhatsApp:</strong>
+              <a href="https://wa.me/8527666297" target="_blank">Message Us</a>
+            </p>
+            <p>
+              <strong>📘 Facebook:</strong>
+              <a
+                href="https://facebook.com/SonadiCharitableTrust"
+                target="_blank"
+                >Follow</a
+              >
+            </p>
+            <p>
+              <strong>📸 Instagram:</strong>
+              <a
+                href="https://instagram.com/sonadicharitabletrust"
+                target="_blank"
+                >@sonadicharitabletrust</a
+              >
+            </p>
+          </section>
+        </div>
       </div>
 
-      <!-- ❷  Map sits beneath the grid automatically -->
+      <!-- Map -->
       <section class="map-section" style="margin-top: 2rem">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5534170562214!2d77.00196517605963!3d28.613171284958636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0fdb8c34e897%3A0xb284db0042082343!2sSONADI%20ANIMAL%20CARE%20CENTER!5e0!3m2!1sen!2sin!4v1748173037478!5m2!1sen!2sin"
