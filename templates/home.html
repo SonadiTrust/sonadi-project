@@ -87,17 +87,17 @@
       </div>
     </section>
 
-    <!-- Impact Stats -->
     <div class="stats-grid">
       <div>
-        <h3>🐕 10,000+</h3>
+        <h3>🐕 {{ stats.animals_rescued }}</h3>
         <p>Animals Rescued & Rehabilitated</p>
       </div>
       <div>
-        <h3>💉 30,000+</h3>
+        <h3>💉 {{ stats.sterilizations_done }}</h3>
         <p>Sterilizations Completed</p>
       </div>
     </div>
+
     <main class="main-content" style="background: none">
       <!-- Two Separate Cards Without Shared Background -->
       <div
@@ -157,12 +157,13 @@
         >
           <h2 class="section-heading" style="margin-top: 0">Our Values</h2>
           <ul class="value-list">
-            <li><strong>Compassion:</strong> Every life matters.</li>
-            <li>
-              <strong>Commitment:</strong> We stand by those without a voice.
-            </li>
-            <li><strong>Collaboration:</strong> With community, we thrive.</li>
+            {% for value in values %}
+            <li><strong>{{ value.title }}:</strong> {{ value.description }}</li>
+            {% empty %}
+            <li>No values to show at the moment.</li>
+            {% endfor %}
           </ul>
+
           <div style="flex-grow: 1"></div>
         </div>
       </div>

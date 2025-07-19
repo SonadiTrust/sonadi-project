@@ -4,8 +4,15 @@ from django.core.mail import EmailMessage
 from .forms import ContactForm, TestimonialForm, VolunteerForm
 from .models import Testimonial
 
+from .models import HomepageStats  # ensure this is at the top
+
+from .models import HomepageStats, CoreValue  # include both models
+
 def home(request):
-    return render(request, 'home.html')
+    stats = HomepageStats.objects.first()
+    values = CoreValue.objects.filter(show_on_homepage=True)
+    return render(request, 'home.html', {'stats': stats, 'values': values})
+
 
 def about(request):
     return render(request, 'about.html')

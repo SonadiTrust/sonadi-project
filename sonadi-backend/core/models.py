@@ -78,3 +78,11 @@ class HomepageStats(models.Model):
 
     def __str__(self):
         return "Homepage Stats"
+
+class CoreValue(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    show_on_homepage = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
