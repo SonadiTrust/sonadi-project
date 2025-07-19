@@ -17,3 +17,7 @@ class VolunteerAdmin(admin.ModelAdmin):
 @admin.register(AdoptionRequest)
 class AdoptionRequestAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'animal_name', 'submitted_at')
+
+from .models import HomepageStats
+
+admin.site.register(HomepageStats)
