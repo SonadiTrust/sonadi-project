@@ -43,51 +43,60 @@
 
       /* Testimonials Section */
       .testimonials {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-        padding: 40px 60px;
-        background-color: #f9f9f9;
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 24px !important;
+        padding: 40px 60px !important;
+        background-color: #f9f9f9 !important;
+        flex-wrap: unset !important;
+        justify-content: unset !important;
+        margin-top: unset !important;
       }
 
       /* Testimonial Card */
       .testimonials .card {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        text-align: center;
-        transition: transform 0.3s ease;
+        background: white !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        padding: 20px !important;
+        text-align: center !important;
+        transition: transform 0.3s ease !important;
+        width: auto !important;
+        height: auto !important;
+        display: block !important;
+        flex-direction: unset !important;
+        justify-content: unset !important;
+        align-items: unset !important;
       }
 
       .testimonials .card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-5px) !important;
       }
 
       .testimonials .card img {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 12px;
+        width: 100% !important;
+        height: 240px !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+        margin-bottom: 12px !important;
       }
 
       .testimonials .card h3 {
-        font-size: 1.1rem;
-        margin-bottom: 4px;
-        color: #2e7d32;
+        font-size: 1.1rem !important;
+        margin-bottom: 4px !important;
+        color: #2e7d32 !important;
       }
 
       .testimonials .card p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        color: #333;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        color: #333 !important;
       }
 
       .testimonials .card p strong {
-        display: block;
-        margin-bottom: 6px;
-        color: #444;
+        display: block !important;
+        margin-bottom: 6px !important;
+        color: #444 !important;
       }
     </style>
   </head>
