@@ -21,3 +21,7 @@ class AdoptionRequestAdmin(admin.ModelAdmin):
 from .models import HomepageStats
 
 admin.site.register(HomepageStats)
+
+from .models import CoreValue  # (if not already)
+
+admin.site.register(CoreValue)
