@@ -1445,6 +1445,19 @@ section > p {
   border-radius: 6px;
 }
 
+.highlight-quote-founders {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 16px 24px;
+  font-style: italic;
+  background-color: #f1f1f1;
+  border-left: 6px solid var(--primary-green, #2e7d32);
+  color: #444;
+  text-align: center;
+  font-size: 1.05rem;
+  border-radius: 6px;
+  margin-bottom: -1px;
+}
 /* Gallery Grid */
 .photo-gallery {
   display: grid;
