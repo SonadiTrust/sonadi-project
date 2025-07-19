@@ -14,8 +14,12 @@ def home(request):
     return render(request, 'home.html', {'stats': stats, 'values': values})
 
 
+from .models import AboutStats  # make sure this is imported
+
 def about(request):
-    return render(request, 'about.html')
+    stats = AboutStats.objects.first()
+    return render(request, 'about.html', {'about_stats': stats})
+
 
 def contact(request):
     if request.method == 'POST':
@@ -224,8 +228,12 @@ Personality: {animal_personality}
 
 
 
+from .models import ActivityInfo  # make sure it's imported
+
 def activities(request):
-    return render(request, 'activities.html')
+    activity_info = ActivityInfo.objects.first()
+    return render(request, 'activities.html', {'activity_info': activity_info})
+
 
 def gallery(request):
     return render(request, 'gallery.html')
