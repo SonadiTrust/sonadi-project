@@ -33,13 +33,20 @@
       }
 
       .founder-img {
-        width: 40%;
+        width: 100%;
+        max-width: 220px;
         height: auto;
         object-fit: cover;
-        margin-bottom: -10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border: 4px solid var(--primary-green, #4caf50);
-        border-radius: 10px; /* slight rounding, remove if not needed */
+        margin: 0 auto 20px auto;
+        display: block;
+        border: 3px solid var(--primary-green, #4caf50);
+        border-radius: 14px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+
+      .founder-card:hover .founder-img {
+        transform: scale(1.02);
       }
 
       .founder-name {
@@ -84,6 +91,13 @@
         color: var(--primary-green, #4caf50);
         font-weight: bold;
       }
+
+      .caption {
+        font-size: 0.9rem;
+        color: #777;
+        margin-top: -10px;
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -103,19 +117,24 @@
     </div>
 
     <!-- Quote -->
-    <blockquote class="highlight-quote-about">
+    <blockquote class="highlight-quote-founders">
       “Compassion for animals is intimately connected with goodness of
       character.” – Arthur Schopenhauer
     </blockquote>
 
     <!-- Founders Cards -->
     <section class="founders-wrapper">
+      <!-- Bandana Sen Gupta -->
       <div class="founder-card">
         <img
           src="{% static 'img/founder2.jpg' %}"
           alt="Mrs. Bandana Sen Gupta"
           class="founder-img"
         />
+        <p class="caption">
+          Pictured in her graceful later years — a face that still radiates
+          compassion.
+        </p>
         <h3 class="founder-name">Mrs. Bandana Sen Gupta</h3>
         <p class="founder-role">Founder & President, Sonadi Charitable Trust</p>
         <p class="founder-quote">
@@ -132,12 +151,16 @@
         </ul>
       </div>
 
+      <!-- Dr. Vijay Kumar -->
       <div class="founder-card">
         <img
           src="{% static 'img/founder1.jpg' %}"
           alt="Dr. Vijay Kumar"
           class="founder-img"
         />
+        <p class="caption">
+          A compassionate leader, healer, and advocate for street animals.
+        </p>
         <h3 class="founder-name">Dr. Vijay Kumar</h3>
         <p class="founder-role">
           Co-Founder & Secretary, Sonadi Charitable Trust
