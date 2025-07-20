@@ -466,16 +466,14 @@ section h2 {
 }
 
 .site-header h1 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin: 0;
-  /* ⬅️ Remove extra spacing */
   line-height: 1.1;
 }
 
 @media (max-width: 768px) {
   .site-header {
-    padding: 10px;
-    font-size: 1.4rem;
+    display: none;
   }
 }
 
