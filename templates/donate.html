@@ -1,47 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Donate | Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-    <style>
-      .page-heading.donate-hero {
-        margin-bottom: 0 !important;
-      }
 
-      .donate-section {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-      }
+{% block title %}Donate | Sonadi Charitable Trust{% endblock %}
 
-      .donate-section > h2:first-child {
-        margin-top: 0 !important;
-      }
+{% block extra_css %}
+<style>
+  .page-heading.donate-hero {
+    margin-bottom: 0 !important;
+  }
 
-      .bank-details-heading {
-        font-size: 1.8rem;
-        color: var(--primary-green-dark);
-        text-align: left;
-      }
+  .donate-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
 
-      .bank-details-row {
-        display: flex;
-        align-items: flex-start;
-      }
+  .donate-section > h2:first-child {
+    margin-top: 0 !important;
+  }
 
-      .bank-details-text {
-        flex: 1;
-        background-color: #e9f9e8;
-        padding: 1rem;
-        border-radius: 8px;
-        max-width: 500px;
-      }
-    </style>
-  </head>
-  <body>
-    {% include 'header.html' %} {% include 'navbar.html' %}
+  .bank-details-heading {
+    font-size: 1.8rem;
+    color: var(--primary-green-dark);
+    text-align: left;
+  }
+
+  .bank-details-row {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .bank-details-text {
+    flex: 1;
+    background-color: #e9f9e8;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 500px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
 
     <!-- Hero Section -->
     <div class="page-heading donate-hero">
@@ -58,7 +56,7 @@
       </div>
     </div>
 
-    <main class="donate-container">
+    <div class="donate-container">
       <!-- Why Donate Section -->
       <section class="donate-section">
         <h2>Why Your Support Matters</h2>
@@ -110,8 +108,5 @@
           </div>
         </div>
       </section>
-    </main>
-
-    {% include 'footer.html' %}
-  </body>
-</html>
+    </div>
+{% endblock %}

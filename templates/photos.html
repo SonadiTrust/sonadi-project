@@ -1,18 +1,12 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photo Gallery - Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-  </head>
-  <body>
-    <div id="blur-wrapper">
-      {% include 'header.html' %} {% include 'navbar.html' %}
 
-      <!-- ✅ Start main content to blur only this -->
-      <div id="main-content">
+{% block title %}Photo Gallery - Sonadi Charitable Trust{% endblock %}
+
+{% block content %}
+<div id="blur-wrapper">
+  <!-- ✅ Start main content to blur only this -->
+  <div id="main-content">
         <div class="page-heading">
           <img
             src="{% static 'img/sonadi-logo.jpg' %}"
@@ -53,8 +47,6 @@
             <img src="{% static 'img/pg26.jpg' %}" alt="Gallery Image 26" />
           </div>
         </section>
-
-        {% include 'footer.html' %}
       </div>
     </div>
 
@@ -70,41 +62,42 @@
       <div class="lightbox-nav left" onclick="changeImage(-1)">&#10094;</div>
       <div class="lightbox-nav right" onclick="changeImage(1)">&#10095;</div>
     </div>
+{% endblock %}
 
-    <script>
-      const galleryImages = document.querySelectorAll(".photo-gallery img");
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      let currentIndex = 0;
+{% block extra_js %}
+<script>
+  const galleryImages = document.querySelectorAll(".photo-gallery img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  let currentIndex = 0;
 
-      galleryImages.forEach((img, index) => {
-        img.addEventListener("click", () => {
-          lightbox.style.display = "flex";
-          lightboxImg.src = img.src;
-          currentIndex = index;
-          document.getElementById("blur-wrapper").classList.add("blur");
-        });
-      });
+  galleryImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+      currentIndex = index;
+      document.getElementById("blur-wrapper").classList.add("blur");
+    });
+  });
 
-      function closeLightbox() {
-        lightbox.style.display = "none";
-        document.getElementById("blur-wrapper").classList.remove("blur");
-      }
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    document.getElementById("blur-wrapper").classList.remove("blur");
+  }
 
-      function changeImage(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = galleryImages.length - 1;
-        if (currentIndex >= galleryImages.length) currentIndex = 0;
-        lightboxImg.src = galleryImages[currentIndex].src;
-      }
+  function changeImage(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+    if (currentIndex >= galleryImages.length) currentIndex = 0;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
 
-      document.addEventListener("keydown", (e) => {
-        if (lightbox.style.display === "flex") {
-          if (e.key === "ArrowRight") changeImage(1);
-          if (e.key === "ArrowLeft") changeImage(-1);
-          if (e.key === "Escape") closeLightbox();
-        }
-      });
-    </script>
-  </body>
-</html>
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+      if (e.key === "ArrowRight") changeImage(1);
+      if (e.key === "ArrowLeft") changeImage(-1);
+      if (e.key === "Escape") closeLightbox();
+    }
+  });
+</script>
+{% endblock %}

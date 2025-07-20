@@ -167,29 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Add scroll to top button
-    const scrollTopBtn = document.createElement('button');
-    scrollTopBtn.className = 'scroll-top-btn';
-    scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    document.body.appendChild(scrollTopBtn);
-    
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', utils.throttle(() => {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
-    }, 100));
-    
-    // Scroll to top when button is clicked
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
     // Add animation to elements when they come into view
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.animate-on-scroll');

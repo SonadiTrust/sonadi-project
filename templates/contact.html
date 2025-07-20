@@ -1,33 +1,29 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us | Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-    <style>
-      /* Responsive fallback */
-      @media (max-width: 768px) {
-        .no-class-grid {
-          grid-template-columns: 1fr !important;
-        }
-      }
 
-      /* New card container */
-      .contact-card-wrapper {
-        background-color: #ffffff;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        border-radius: 20px;
-        padding: 40px 30px;
-        margin-top: 2rem;
-      }
-    </style>
-  </head>
+{% block title %}Contact Us | Sonadi Charitable Trust{% endblock %}
 
-  <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+{% block extra_css %}
+<style>
+  /* Responsive fallback */
+  @media (max-width: 768px) {
+    .no-class-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* New card container */
+  .contact-card-wrapper {
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 40px 30px;
+    margin-top: 2rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
 
     {% if messages %}
     <div class="message-container">
@@ -152,8 +148,4 @@
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
-    </main>
-
-    {% include 'footer.html' %}
-  </body>
-</html>
+{% endblock %}
