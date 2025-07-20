@@ -75,7 +75,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'  # Points to the root media folder where images actually exist
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

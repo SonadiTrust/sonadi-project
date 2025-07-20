@@ -30,7 +30,7 @@
     <section>
       <div class="animal-gallery">
         <!-- Dog 1 -->
-        <div class="animal-card" onclick="openForm(this)">
+        <div class="animal-card" onclick="openForm(this)" style="--card-index: 0;">
           <img
             src="{% static 'img/dog 1.jpg' %}"
             alt="Dog1"
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Dog 2 -->
-        <div class="animal-card" onclick="openForm(this)">
+        <div class="animal-card" onclick="openForm(this)" style="--card-index: 1;">
           <img
             src="{% static 'img/dog 2.jpg' %}"
             alt="Dog2"
@@ -65,7 +65,7 @@
           </div>
         </div>
         <!-- Cat 1 -->
-        <div class="animal-card" onclick="openForm(this)">
+        <div class="animal-card" onclick="openForm(this)" style="--card-index: 2;">
           <img
             src="{% static 'img/cat1.jpg' %}"
             alt="Whiskers the cat"
@@ -83,7 +83,7 @@
         </div>
 
         <!-- Cat 2 -->
-        <div class="animal-card" onclick="openForm(this)">
+        <div class="animal-card" onclick="openForm(this)" style="--card-index: 3;">
           <img
             src="{% static 'img/cat2.jpg' %}"
             alt="Simba the cat"
@@ -236,6 +236,7 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="{% static 'js/adopt-a-dog.js' %}"></script>
 <script>
   if (window.location.hash === "#thanks") {
     closeForm();

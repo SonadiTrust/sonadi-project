@@ -67,7 +67,7 @@ class ContactForm(forms.ModelForm):
 
 
 # ------------------------------------------------------------------
-# 🔸 Testimonial Form (Uploadcare)
+# 🔸 Testimonial Form (File Upload)
 # ------------------------------------------------------------------
 class TestimonialForm(forms.ModelForm):
     name = forms.CharField(
@@ -97,23 +97,17 @@ class TestimonialForm(forms.ModelForm):
             "animal_name",
             "email",
             "phone",
-            "image_url",   # Uploadcare CDN URL
+            "image",   # Use Django's ImageField
         ]
-
+        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Attach Uploadcare widget (no placeholder text)
-        self.fields["image_url"].widget = forms.TextInput(
-            attrs={
-                "role": "uploadcare-uploader",
-                "data-public-key": "e27d1532e4be9cc99d76",  # pragma: allowlist secret
-                "data-images-only": "true",
-                "data-crop": "free",           # ✅ enables free-form cropping
-
-            }
-        )
-        # Uncomment if you want to force image upload:
-        # self.fields["image_url"].required = True
+        # Style the image field properly
+        self.fields["image"].widget.attrs.update({
+            "class": "form-control",
+            "accept": "image/*"
+        })
+        self.fields["image"].required = False
 
 
 # ------------------------------------------------------------------

@@ -4,9 +4,6 @@
 {% block title %}Testimonials – Sonadi Charitable Trust{% endblock %}
 
 {% block extra_css %}
-<!-- Uploadcare widget (image uploader) -->
-<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
-
 <!-- Modal tweaks -->
 <style>
   /* Modal scroll / padding */
@@ -14,20 +11,43 @@
     max-height: 90vh;
     overflow-y: auto;
     padding: 24px;
+    animation: slideInFromTop 0.3s ease;
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
   }
   /* Field block with tighter spacing */
   .field {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
   .field label {
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     font-weight: 600;
     color: #45a049; /* green headings */
   }
   .field input[type="text"],
   .field input[type="email"],
   .field input[type="tel"],
+  .field input[type="file"],
   .field textarea {
     width: 100%;
     padding: 8px 10px;
@@ -35,8 +55,22 @@
     border-radius: 4px;
     font: inherit;
   }
+  
+  /* File upload styling */
+  .field input[type="file"] {
+    padding: 10px;
+    border: 2px dashed #45a049;
+    background: #f9f9f9;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #45a049;
+  }
+  
+  .field input[type="file"]:hover {
+    background: #f0f8f0;
+  }
 
-  /* Testimonials Section */
+  /* Testimonials Section - Override main CSS */
   .testimonials {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
@@ -46,52 +80,227 @@
     flex-wrap: unset !important;
     justify-content: unset !important;
     margin-top: unset !important;
+    flex-direction: unset !important;
   }
 
-  /* Testimonial Card */
+  /* Force override of any conflicting styles */
+  body .testimonials {
+    display: grid !important;
+  }
+
+  /* Ensure cards are visible and properly displayed */
+  .testimonials .card {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Clean testimonials styling */
+  .testimonials {
+    min-height: 200px !important;
+  }
+
+  /* Force all text to be visible */
+  .testimonials .card h3,
+  .testimonials .card p,
+  .testimonials .card strong {
+    color: #333 !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+
+  /* Testimonial Card - Force visibility with high specificity */
+  body main .testimonials .card,
   .testimonials .card {
     background: white !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
     padding: 20px !important;
     text-align: center !important;
-    transition: transform 0.3s ease !important;
+    transition: all 0.3s ease !important;
     width: auto !important;
     height: auto !important;
     display: block !important;
     flex-direction: unset !important;
     justify-content: unset !important;
     align-items: unset !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 
   .testimonials .card:hover {
-    transform: translateY(-5px) !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
   }
+
+  /* Animation keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Staggered animation delays */
+  .testimonials .card:nth-child(1) { animation-delay: 0.1s !important; }
+  .testimonials .card:nth-child(2) { animation-delay: 0.2s !important; }
+  .testimonials .card:nth-child(3) { animation-delay: 0.3s !important; }
+  .testimonials .card:nth-child(4) { animation-delay: 0.4s !important; }
+  .testimonials .card:nth-child(5) { animation-delay: 0.5s !important; }
+  .testimonials .card:nth-child(6) { animation-delay: 0.6s !important; }
+  .testimonials .card:nth-child(7) { animation-delay: 0.7s !important; }
+  .testimonials .card:nth-child(8) { animation-delay: 0.8s !important; }
+  .testimonials .card:nth-child(9) { animation-delay: 0.9s !important; }
+  .testimonials .card:nth-child(10) { animation-delay: 1.0s !important; }
 
   .testimonials .card img {
     width: 100% !important;
-    height: 240px !important;
-    object-fit: cover !important;
+    height: auto !important;
+    max-height: 400px !important;
+    object-fit: contain !important;
     border-radius: 8px !important;
     margin-bottom: 12px !important;
+    background-color: #f0f0f0 !important;
+    transition: all 0.4s ease !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
   }
 
+  .testimonials .card:hover img {
+    transform: scale(1.05) !important;
+    border-radius: 12px !important;
+  }
+
+  /* Loading state for images */
+  .testimonial-image {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  .testimonial-image.loaded {
+    opacity: 1;
+  }
+
+  /* Text styling - visible by default */
   .testimonials .card h3 {
     font-size: 1.1rem !important;
     margin-bottom: 4px !important;
     color: #2e7d32 !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
 
   .testimonials .card p {
     font-size: 0.95rem !important;
     line-height: 1.5 !important;
     color: #333 !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
 
   .testimonials .card p strong {
     display: block !important;
     margin-bottom: 6px !important;
     color: #444 !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Image modal for full view */
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+  }
+
+  .image-modal img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+
+  .image-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .testimonials .card p strong {
+    display: block !important;
+    margin-bottom: 6px !important;
+    color: #444 !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Image preview styling */
+  .image-preview {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .image-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
   }
 </style>
 {% endblock %}
@@ -121,15 +330,19 @@
     <section class="testimonials">
       {% for t in testimonials %}
       <div class="card">
-        {% if t.image_url %}
+        {% if t.get_image_url %}
         <img
-          src="{{ t.image_url }}"
+          src="{{ t.get_image_url }}"
           alt="{{ t.animal_name }} testimonial image"
+          class="testimonial-image"
+          loading="lazy"
         />
         {% else %}
         <img
-          src="{% static 'img/default-animal.jpg' %}"
+          src="{% static 'img/cat1.jpg' %}"
           alt="Default animal image"
+          class="testimonial-image"
+          loading="lazy"
         />
         {% endif %}
         <h3>{{ t.title }}</h3>
@@ -151,13 +364,14 @@
         <div class="error-list">{{ form.non_field_errors }}</div>
         {% endif %}
 
-        <form action="{% url 'testimonial' %}" method="POST">
+        <form action="{% url 'testimonial' %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
 
           <!-- Title -->
           <div class="field">
             <label for="id_title">Title</label>
-            {{ form.title }} {% for error in form.title.errors %}
+            {{ form.title }} 
+            {% for error in form.title.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
@@ -165,7 +379,8 @@
           <!-- Message -->
           <div class="field">
             <label for="id_message">Message</label>
-            {{ form.message }} {% for error in form.message.errors %}
+            {{ form.message }} 
+            {% for error in form.message.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
@@ -173,7 +388,8 @@
           <!-- Name -->
           <div class="field">
             <label for="id_name">Your Name</label>
-            {{ form.name }} {% for error in form.name.errors %}
+            {{ form.name }} 
+            {% for error in form.name.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
@@ -181,7 +397,8 @@
           <!-- Animal name -->
           <div class="field">
             <label for="id_animal_name">Animal's Name</label>
-            {{ form.animal_name }} {% for error in form.animal_name.errors %}
+            {{ form.animal_name }} 
+            {% for error in form.animal_name.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
@@ -189,7 +406,8 @@
           <!-- Email -->
           <div class="field">
             <label for="id_email">Email</label>
-            {{ form.email }} {% for error in form.email.errors %}
+            {{ form.email }} 
+            {% for error in form.email.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
@@ -197,15 +415,18 @@
           <!-- Phone -->
           <div class="field">
             <label for="id_phone">Phone Number</label>
-            {{ form.phone }} {% for error in form.phone.errors %}
+            {{ form.phone }} 
+            {% for error in form.phone.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
 
-          <!-- Image -->
+          <!-- Image Upload -->
           <div class="field">
-            <label for="id_image_url">Upload a Photo (optional)</label>
-            {{ form.image_url }} {% for error in form.image_url.errors %}
+            <label for="id_image">Upload a Photo (optional)</label>
+            {{ form.image }}
+            <div id="image-preview" class="image-preview"></div>
+            {% for error in form.image.errors %}
             <div class="error">{{ error }}</div>
             {% endfor %}
           </div>
@@ -222,20 +443,121 @@
       </button>
     </div>
 
+    <!-- ── Image Modal for Full View ─────────────────────────────────── -->
+    <div id="imageModal" class="image-modal">
+      <span class="close-modal" onclick="closeImageModal()">&times;</span>
+      <img id="modalImage" src="" alt="Full size testimonial image">
+    </div>
+
     <!-- ── Modal JS ──────────────────────────────────────────────────── -->
     <script>
       function openModal() {
-        document.getElementById("testimonialModal").style.display = "block";
+        const modal = document.getElementById("testimonialModal");
+        modal.style.display = "block";
+        modal.style.animation = "fadeIn 0.3s ease";
+        document.body.style.overflow = "hidden";
       }
+      
       function closeModal() {
-        document.getElementById("testimonialModal").style.display = "none";
+        const modal = document.getElementById("testimonialModal");
+        modal.style.animation = "fadeOut 0.3s ease";
+        setTimeout(function() {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }, 300);
       }
+      
+      // Image modal functions
+      function openImageModal(imageSrc, altText) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+        modalImg.alt = altText;
+        document.body.style.overflow = "hidden";
+      }
+      
+      function closeImageModal() {
+        document.getElementById("imageModal").style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+      
       window.onclick = function (e) {
-        const m = document.getElementById("testimonialModal");
-        if (e.target === m) {
+        const testimonialModal = document.getElementById("testimonialModal");
+        const imageModal = document.getElementById("imageModal");
+        
+        if (e.target === testimonialModal) {
           closeModal();
         }
+        if (e.target === imageModal) {
+          closeImageModal();
+        }
       };
+
+      // Simplified testimonials functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const testimonialCards = document.querySelectorAll('.testimonials .card');
+        
+        // Ensure all cards are visible
+        testimonialCards.forEach(function(card, index) {
+          card.style.display = 'block';
+          card.style.visibility = 'visible';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        });
+
+        // Simple hover effects
+        testimonialCards.forEach(function(card) {
+          card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+            this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.15)';
+            this.style.transition = 'all 0.3s ease';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            this.style.transition = 'all 0.3s ease';
+          });
+        });
+
+        // Image modal functionality
+        const testimonialImages = document.querySelectorAll('.testimonial-image');
+        testimonialImages.forEach(function(img, index) {
+          img.addEventListener('click', function() {
+            openImageModal(this.src, this.alt);
+          });
+          
+          img.addEventListener('load', function() {
+            this.classList.add('loaded');
+          });
+        });
+
+        // Image preview for file upload
+        const imageInput = document.getElementById('id_image');
+        const imagePreview = document.getElementById('image-preview');
+        
+        if (imageInput && imagePreview) {
+          imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                imagePreview.innerHTML = `
+                  <div style="margin-top: 10px;">
+                    <img src="${e.target.result}" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 4px; border: 1px solid #ddd;">
+                    <br>
+                    <small style="color: #666;">Selected: ${file.name}</small>
+                  </div>
+                `;
+              };
+              reader.readAsDataURL(file);
+            } else {
+              imagePreview.innerHTML = '';
+            }
+          });
+        }
+      });
     </script>
 
     {% if messages and not form.errors %}
@@ -250,13 +572,5 @@
 {% endblock %}
 
 {% block extra_js %}
-    {% if form and form.is_valid %}
-    <script>
-      closeModal();
-    </script>
-    {% elif form.errors %}
-    <script>
-      openModal();
-    </script>
-    {% endif %}
+    <script src="{% static 'js/testimonial.js' %}"></script>
 {% endblock %}

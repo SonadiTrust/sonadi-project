@@ -26,14 +26,25 @@ class Testimonial(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=15)
 
-    # Uploadcare stores the file and returns a CDN URL; we save that URL.
+    # Keep the old URL field for backwards compatibility with existing data
     image_url = models.URLField(blank=True, null=True)
+    # Use Django's ImageField for proper file uploads
+    image = models.ImageField(upload_to='testimonials/', blank=True, null=True)
 
     approved = models.BooleanField(default=False)
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.name} – {self.title}"
+    
+    @property
+    def get_image_url(self):
+        """Get the image URL, preferring uploaded image over external URL"""
+        if hasattr(self, 'image') and self.image:
+            return self.image.url
+        elif self.image_url:
+            return self.image_url
+        return None
 
 
 # ----------------------------
