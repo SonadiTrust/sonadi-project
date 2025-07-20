@@ -1,78 +1,76 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
 
-      .fade-in {
-        animation: fadeIn 1s ease-in-out;
-      }
+{% block title %}Sonadi Charitable Trust{% endblock %}
 
-      .stats-grid {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        background-color: #f3f3f3;
-        padding: 30px 10px;
-        flex-wrap: wrap;
-        text-align: center;
-      }
+{% block extra_css %}
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-      .stats-grid div h3 {
-        margin: 0;
-        font-size: 24px;
-        color: var(--primary-green, #1e3a2f);
-      }
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
 
-      .stats-grid div p {
-        margin: 5px 0 0;
-        font-size: 14px;
-      }
+  .stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background-color: #f3f3f3;
+    padding: 30px 10px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
 
-      .hero-section {
-        background-color: #f5f9f6;
-        color: #1e3a2f;
-        text-align: center;
-        padding: 20px 10px 30px;
-        animation: fadeIn 1.2s ease-in-out;
-      }
+  .stats-grid div h3 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--primary-green, #1e3a2f);
+  }
 
-      .hero-section h1 {
-        font-size: clamp(28px, 5vw, 52px);
-        margin-bottom: 10px;
-      }
+  .stats-grid div p {
+    margin: 5px 0 0;
+    font-size: 14px;
+  }
 
-      .hero-section p {
-        max-width: 700px;
-        margin: 0 auto 30px;
-        font-size: 18px;
-        line-height: 1.6;
-      }
+  .hero-section {
+    background-color: #f5f9f6;
+    color: #1e3a2f;
+    text-align: center;
+    padding: 20px 10px 30px;
+    animation: fadeIn 1.2s ease-in-out;
+  }
 
-      .section-heading {
-        text-align: center;
-        margin-top: 60px;
-        font-size: 28px;
-        color: #1e3a2f;
-      }
-    </style>
-  </head>
-  <body>
-    {% include 'header.html' %} {% include 'navbar.html' %}
+  .hero-section h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    margin-bottom: 10px;
+  }
+
+  .hero-section p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 28px;
+    color: #1e3a2f;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -98,7 +96,7 @@
       </div>
     </div>
 
-    <main class="main-content" style="background: none">
+    <div style="background: none">
       <!-- Two Separate Cards Without Shared Background -->
       <div
         style="
@@ -167,8 +165,5 @@
           <div style="flex-grow: 1"></div>
         </div>
       </div>
-    </main>
-
-    {% include 'footer.html' %}
-  </body>
-</html>
+    </div>
+{% endblock %}

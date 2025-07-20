@@ -11,7 +11,7 @@
     <title>{% block title %}Sonadi{% endblock %}</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/paw-icon.png' %}">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,12 +23,10 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/Styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components.css' %}">
-    <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
+    {% comment %} Additional CSS files can be added as needed {% endcomment %}
     
     <!-- Preload critical assets -->
-    <link rel="preload" href="{% static 'images/logo.png' %}" as="image">
+    <link rel="preload" href="{% static 'img/sonadi-logo.jpg' %}" as="image">
     <link rel="preload" href="{% static 'css/Styles.css' %}" as="style">
     
     {% block extra_css %}{% endblock %}

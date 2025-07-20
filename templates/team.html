@@ -1,15 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Team - Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-  </head>
-  <body>
-    {% include 'header.html' %}
-    {% include 'navbar.html' %}
+
+{% block title %}Our Team - Sonadi Charitable Trust{% endblock %}
+
+{% block content %}
 
     <div class="page-heading">
       <img
@@ -88,7 +82,4 @@
         "To every gentle hand, every giving heart, every soul who stepped forward quietly—thank you. You may not be in our photos, but you are forever etched in our journey."
       </blockquote>
     </section>
-
-    {% include 'footer.html' %}
-  </body>
-</html>
+{% endblock %}

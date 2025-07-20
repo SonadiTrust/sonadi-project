@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from decouple import config
+import dj_database_url
 
 
 # ✅ Corrected BASE_DIR to point to the main "Sonadi wesite" folder
@@ -58,14 +59,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
-import os
-
-import dj_database_url
-
-from decouple import config
-import dj_database_url
-
+# Database configuration
 DATABASE_URL = config("DATABASE_URL")
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
@@ -73,18 +67,12 @@ DATABASES = {
 
 print("DATABASE_URL in use:", DATABASE_URL)
 
-
-
-
-
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / 'assets',  # ✅ assets folder is at project root
 ]
-
-import os
-from pathlib import Path
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

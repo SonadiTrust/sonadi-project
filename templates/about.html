@@ -1,14 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us - Sonadi Charitable Trust</title>
-    <link rel="stylesheet" href="{% static 'css/Styles.css' %}" />
-  </head>
-  <body>
-    {% include 'header.html' %} {% include 'navbar.html' %}
+
+{% block title %}About Us - Sonadi Charitable Trust{% endblock %}
+
+{% block content %}
 
     <!-- Hero Section -->
     <div class="page-heading fade-in fade-delayed-1">
@@ -97,7 +92,4 @@
         >
       </div>
     </section>
-
-    {% include 'footer.html' %}
-  </body>
-</html>
+{% endblock %}
