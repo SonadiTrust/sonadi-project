@@ -6,7 +6,7 @@
 {% block content %}
 
     <!-- Hero Section -->
-    <div class="page-heading fade-in fade-delayed-1">
+    <div class="page-heading">
       <img
         src="{% static 'img/sonadi-logo.jpg' %}"
         alt="Sonadi Charitable Trust Logo"
@@ -25,7 +25,7 @@
     </blockquote>
 
     <!-- About Content -->
-    <section class="about-section fade-in fade-delayed-1">
+    <section class="about-section">
       <!-- Our Story -->
       <div class="about-block">
         <div class="about-text">
@@ -80,16 +80,20 @@
       </div>
 
       <!-- Enhanced CTA Section -->
-      <div class="cta-section">
+      <div class="cta-section hero-section">
         <h2 class="cta-heading">Make a Difference Today</h2>
         <p class="cta-subtext">
           Your support helps us rescue, heal, and rehome animals in need.
           Sponsor a dog, support our ambulance, or adopt a furry friend — every
           action matters.
         </p>
-        <a href="{% url 'adopt_a_dog' %}" class="cta-button"
-          >Support an Adoption</a
-        >
+        <div class="button-group" style="margin-top: 10px">
+          <a href="{% url 'adopt_a_dog' %}" class="btn">Support an Adoption</a>
+        </div>
       </div>
     </section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/about.js' %}"></script>
 {% endblock %}
