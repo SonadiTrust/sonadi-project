@@ -3,6 +3,10 @@
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Clear any stuck notifications on page load
+    const existingNotifications = document.querySelectorAll('.alert.position-fixed');
+    existingNotifications.forEach(notification => notification.remove());
+    
     // Donation amount selection
     const donationAmounts = document.querySelectorAll('.donation-amount');
     const customAmountInput = document.getElementById('customAmount');
@@ -59,13 +63,13 @@ document.addEventListener('DOMContentLoaded', function() {
         donationForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const selectedAmount = document.getElementById('selectedAmount').value;
+            const selectedAmount = document.getElementById('selectedAmount')?.value;
             if (!selectedAmount || selectedAmount <= 0) {
                 showNotification('Please select a donation amount', 'warning');
                 return;
             }
             
-            if (formValidation.validateForm(donationForm)) {
+            if (typeof formValidation !== 'undefined' && formValidation.validateForm(donationForm)) {
                 processDonation(donationForm);
             }
         });
@@ -128,17 +132,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update impact when amount changes
         document.addEventListener('change', function(e) {
             if (e.target.id === 'selectedAmount' || e.target.classList.contains('donation-amount')) {
-                const amount = document.getElementById('selectedAmount').value;
-                updateImpact(amount);
+                const amount = document.getElementById('selectedAmount')?.value;
+                if (amount) {
+                    updateImpact(amount);
+                }
             }
         });
     }
 
     // Show notification
     function showNotification(message, type = 'info') {
+        // Remove any existing notifications first
+        const existingNotifications = document.querySelectorAll('.alert.position-fixed');
+        existingNotifications.forEach(notification => notification.remove());
+        
         const notification = document.createElement('div');
         notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; max-width: 350px;';
+        notification.style.cssText = 'top: 20px; right: 20px; z-index: 1050; max-width: 350px;';
         notification.innerHTML = `
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

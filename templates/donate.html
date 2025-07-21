@@ -1,120 +1,156 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Donate | Sonadi Charitable Trust{% endblock %}
-
-{% block page_css %}
-<link rel="stylesheet" href="{% static 'css/donate.css' %}">
-{% endblock %}
-
-{% block extra_css %}
+{% extends 'base.html' %} {% load static %} {% block title %}Donate | Sonadi
+Charitable Trust{% endblock %} {% block page_css %}
+<link rel="stylesheet" href="{% static 'css/donate.css' %}" />
+{% endblock %} {% block extra_css %}
 <style>
   .page-heading.donate-hero {
-    margin-bottom: 0 !important;
+    margin-bottom: 40px !important;
   }
 
   .donate-section {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 40px !important;
+    margin-bottom: 60px !important;
+    padding: 0 20px;
   }
 
   .donate-section > h2:first-child {
     margin-top: 0 !important;
+    margin-bottom: 30px !important;
+    text-align: center;
   }
 
   .bank-details-heading {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: var(--primary-green-dark);
-    text-align: left;
+    text-align: center;
+    margin-bottom: 30px !important;
   }
 
   .bank-details-row {
     display: flex;
+    justify-content: center;
     align-items: flex-start;
+    margin-bottom: 40px;
   }
 
   .bank-details-text {
-    flex: 1;
     background-color: #e9f9e8;
-    padding: 1rem;
-    border-radius: 8px;
-    max-width: 500px;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.1);
+    line-height: 1.6;
+  }
+
+  .bank-details-text p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .bank-details-text strong {
+    color: var(--primary-green-dark);
+  }
+
+  .bank-details-text a {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .bank-details-text a:hover {
+    text-decoration: underline;
+  }
+
+  .donate-reasons {
+    margin-top: 20px;
+  }
+
+  .donate-card {
+    margin-bottom: 0 !important;
+  }
+
+  .bank-section {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%);
+    border-radius: 16px;
+    margin: 40px 0;
   }
 </style>
-{% endblock %}
+{% endblock %} {% block content %}
+<!-- Hero Section -->
+<div class="page-heading donate-hero">
+  <img
+    src="{% static 'img/sonadi-logo.jpg' %}"
+    alt="Sonadi Logo"
+    class="logo-img"
+  />
+  <div class="page-heading-text">
+    <h2>Support Us. Save Lives.</h2>
+    <h3>Your contribution brings care and compassion to animals in need.</h3>
+  </div>
+</div>
 
-{% block content %}
+<div class="donate-container">
+  <!-- Why Donate Section -->
+  <section class="donate-section">
+    <h2><strong>Why Your Support Matters</strong></h2>
 
-    <!-- Hero Section -->
-    <div class="page-heading donate-hero">
-      <img
-        src="{% static 'img/sonadi-logo.jpg' %}"
-        alt="Sonadi Logo"
-        class="logo-img"
-      />
-      <div class="page-heading-text">
-        <h2>Support Us. Save Lives.</h2>
-        <h3>
-          Your contribution brings care and compassion to animals in need.
-        </h3>
+    <div class="donate-reasons">
+      <div class="donate-card">
+        <h3>Rescue & Shelter</h3>
+        <p>
+          We provide safe refuge and medical care to abandoned or injured
+          animals.
+        </p>
+      </div>
+      <div class="donate-card">
+        <h3>Medical Treatment</h3>
+        <p>Donations cover emergency surgeries, medicines, and vaccinations.</p>
+      </div>
+      <div class="donate-card">
+        <h3>Awareness & Adoption</h3>
+        <p>
+          Your support helps us promote animal welfare and facilitate adoptions.
+        </p>
       </div>
     </div>
+  </section>
 
-    <div class="donate-container">
-      <!-- Why Donate Section -->
-      <section class="donate-section">
-        <h2>Why Your Support Matters</h2>
-        <div class="donate-reasons">
-          <div class="donate-card">
-            <h3>Rescue & Shelter</h3>
-            <p>
-              We provide safe refuge and medical care to abandoned or injured
-              animals.
-            </p>
-          </div>
-          <div class="donate-card">
-            <h3>Medical Treatment</h3>
-            <p>
-              Donations cover emergency surgeries, medicines, and vaccinations.
-            </p>
-          </div>
-          <div class="donate-card">
-            <h3>Awareness & Adoption</h3>
-            <p>
-              Your support helps us promote animal welfare and facilitate
-              adoptions.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Bank Details Section with heading on left and image on right -->
-      <section class="bank-section">
-        <h2 class="bank-details-heading">Bank Details for Direct Donation</h2>
-        <div class="bank-details-row">
-          <div class="bank-details-text">
-            <p>
-              <strong>Sonadi Charitable Trust</strong><br />
-              Bank Name: Indian Bank<br />
-              Branch: Nazafgarh<br />
-              Address: Sainik Enclave, Maksudabad, Nazafgarh, New Delhi<br />
-              Pincode: 110043<br />
-              Account Holder: Sonadi Charitable Trust<br />
-              Account Number: 6531177186<br />
-              IFSC Code: IDIB000N137<br />
-              CBS Code: 02250<br /><br />
-              Please mention <strong>“Donation”</strong> in the remarks.<br />
-              For 80G receipt, email your transaction details to <br />
-              <a href="mailto:sonadicharitytrust@gmail.com"
-                >sonadicharitytrust@gmail.com</a
-              >
-            </p>
-          </div>
-        </div>
-      </section>
+  <!-- Bank Details Section -->
+  <section class="bank-section">
+    <h2 class="bank-details-heading">
+      <strong>Bank Details for Direct Donation</strong>
+    </h2>
+    <div class="bank-details-row">
+      <div class="bank-details-text">
+        <p>
+          <strong>Sonadi Charitable Trust</strong><br />
+          Bank Name: Indian Bank<br />
+          Branch: Nazafgarh<br />
+          Address: Sainik Enclave, Maksudabad, Nazafgarh, New Delhi<br />
+          Pincode: 110043<br />
+          Account Holder: Sonadi Charitable Trust<br />
+          Account Number: 6531177186<br />
+          IFSC Code: IDIB000N137<br />
+          CBS Code: 02250<br /><br />
+          Please mention <strong>“Donation”</strong> in the remarks.<br /><br />
+          <strong>Important Notice:</strong><br />
+          At this time, we are unable to provide 80G tax exemption certificates
+          for donations. We are working on obtaining the necessary documentation
+          and approvals to offer tax benefits to our donors in the future. Your
+          generous support continues to make a meaningful difference in the
+          lives of animals in need.<br /><br />
+          For donation confirmation and receipt, please email your transaction
+          details to <br />
+          <a href="mailto:sonadicharitytrust@gmail.com"
+            >sonadicharitytrust@gmail.com</a
+          >
+        </p>
+      </div>
     </div>
-{% endblock %}
-
-{% block extra_js %}
+  </section>
+</div>
+{% endblock %} {% block extra_js %}
 <script src="{% static 'js/donate.js' %}"></script>
 {% endblock %}

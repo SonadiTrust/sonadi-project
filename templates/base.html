@@ -188,6 +188,10 @@
                 }
             }, 300);
         });
+        
+        // Clear any stuck notifications on page load
+        const existingNotifications = document.querySelectorAll('.alert.position-fixed');
+        existingNotifications.forEach(notification => notification.remove());
     </script>
 </body>
 </html> 
