@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="{% static 'css/volunteer.css' %}">
 {% endblock %}
 
-{% block content %} {% if messages %}
+{% block content %}
+    {% if messages %}
     <div class="message-container">
       {% for message in messages %}
       <div class="success-message">{{ message }}</div>
@@ -37,7 +38,7 @@
     <div class="volunteer-container">
       <!-- Left: Image Slideshow -->
       <div class="volunteer-left">
-        <div class="slideshow">
+        <div class="slideshow" tabindex="0" role="region" aria-label="Volunteer photo slideshow">
           <img src="{% static 'img/slide1.jpg' %}" alt="Volunteers helping animals" class="slide active" />
           <img src="{% static 'img/slide2.jpg' %}" alt="Community outreach program" class="slide" />
           <img src="{% static 'img/slide3.jpg' %}" alt="Animal care volunteers" class="slide" />
@@ -88,35 +89,195 @@
       </div>
     </div>
 
-    <!-- Slideshow Script -->
+    <!-- ANIMATED SLIDESHOW SCRIPT -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      console.log('🎬 ANIMATED SLIDESHOW LOADING...');
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 DOM Ready - Initializing animated slideshow');
+        
+        const slideshow = document.querySelector('.slideshow');
+        const slides = document.querySelectorAll('.slide');
+        
+        console.log('📊 Found slideshow container:', slideshow);
+        console.log('📊 Found slides:', slides.length);
+        
+        if (!slideshow || slides.length === 0) {
+          console.error('❌ Slideshow container or slides not found!');
+          return;
+        }
+        
+        // Make slideshow container clean and natural
+        slideshow.style.cssText = `
+          background: transparent !important;
+          border: none !important;
+          min-height: 500px !important;
+          display: block !important;
+          position: relative !important;
+          margin: 20px 0 !important;
+          width: 100% !important;
+          overflow: hidden !important;
+          border-radius: 15px !important;
+        `;
+        
+        // Add slide animations
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes slideIn {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+          }
+          @keyframes slideOut {
+            0% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(-100%); opacity: 0; }
+          }
+          @keyframes zoomFade {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Style each slide
+        slides.forEach((slide, index) => {
+          console.log(`📝 Styling slide ${index}:`, slide.src);
+          
+          slide.style.cssText = `
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: none !important;
+            z-index: 5 !important;
+            opacity: 0 !important;
+            transition: all 0.5s ease !important;
+          `;
+          
+          // Test image loading
+          slide.onload = function() {
+            console.log(`✅ Slide ${index} image loaded successfully`);
+          };
+          
+          slide.onerror = function() {
+            console.log(`❌ Slide ${index} failed to load, creating backup`);
+            
+            // Create colorful backup div
+            const backup = document.createElement('div');
+            backup.style.cssText = `
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(135deg, 
+                hsl(${index * 72}, 70%, 60%), 
+                hsl(${index * 72 + 40}, 70%, 70%));
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 28px;
+              color: white;
+              font-weight: bold;
+              text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+              z-index: 5;
+              opacity: 0;
+            `;
+            backup.innerHTML = `
+              <div style="text-align: center;">
+                <div style="font-size: 36px; margin-bottom: 10px;">🎨</div>
+                <div>SLIDE ${index + 1}</div>
+                <div style="font-size: 18px;">Animated Gallery</div>
+              </div>
+            `;
+            backup.className = 'slide backup-slide';
+            backup.dataset.slideIndex = index;
+            slide.parentElement.appendChild(backup);
+          };
+        });
+        
         let currentSlide = 0;
-        const slides = document.querySelectorAll(".slide");
-        const leftArrow = document.querySelector(".left-arrow");
-        const rightArrow = document.querySelector(".right-arrow");
-
-        function showSlide(index) {
-          slides.forEach((slide) => slide.classList.remove("active"));
-          slides[index].classList.add("active");
+        let isTransitioning = false;
+        
+        function getAllSlides() {
+          return document.querySelectorAll('.slide');
         }
-
+        
+        function showSlide(index, animation = 'slideIn') {
+          if (isTransitioning) return;
+          isTransitioning = true;
+          
+          const allSlides = getAllSlides();
+          console.log(`🎯 Showing slide ${index} with ${animation} animation`);
+          
+          // Hide all slides first
+          allSlides.forEach((slide, i) => {
+            slide.style.display = 'none';
+            slide.style.opacity = '0';
+            slide.style.transform = 'scale(1)';
+            slide.style.animation = '';
+          });
+          
+          // Show target slide with animation
+          if (allSlides[index]) {
+            const targetSlide = allSlides[index];
+            targetSlide.style.display = 'block';
+            targetSlide.style.zIndex = '10';
+            
+            // Apply animation based on type
+            if (animation === 'slideIn') {
+              targetSlide.style.animation = 'slideIn 0.8s ease-out forwards';
+            } else if (animation === 'zoomFade') {
+              targetSlide.style.animation = 'zoomFade 0.8s ease-out forwards';
+            } else {
+              targetSlide.style.opacity = '1';
+            }
+            
+            setTimeout(() => {
+              targetSlide.style.opacity = '1';
+              isTransitioning = false;
+            }, 100);
+            
+            console.log(`✅ Slide ${index} is now visible with ${animation}`);
+          }
+          
+          currentSlide = index;
+        }
+        
         function nextSlide() {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
+          const allSlides = getAllSlides();
+          const next = (currentSlide + 1) % allSlides.length;
+          const animations = ['slideIn', 'zoomFade'];
+          const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+          console.log(`⏭️ Next slide: ${next} with ${randomAnimation}`);
+          showSlide(next, randomAnimation);
         }
-
-        function prevSlide() {
-          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-          showSlide(currentSlide);
-        }
-
-        // Autoplay
-        setInterval(nextSlide, 4000);
-
-        // Manual Controls
-        leftArrow.addEventListener("click", prevSlide);
-        rightArrow.addEventListener("click", nextSlide);
+        
+        // Wait for images to load, then start
+        setTimeout(() => {
+          console.log('🎬 Starting slideshow...');
+          const allSlides = getAllSlides();
+          
+          if (allSlides.length > 0) {
+            // Show first slide
+            showSlide(0, 'zoomFade');
+            
+            // Auto-advance with random animations
+            setInterval(() => {
+              console.log('⏰ Auto-advancing with animation...');
+              nextSlide();
+            }, 4000);
+            
+            console.log('🎉 CLEAN ANIMATED SLIDESHOW INITIALIZED!');
+            console.log('✨ Features: Random animations, auto-advance every 4 seconds');
+            
+          } else {
+            console.error('❌ No slides found after initialization');
+          }
+        }, 1500); // Wait 1.5 seconds for images
+        
+        console.log('🔧 Animated slideshow setup complete');
       });
     </script>
 {% endblock %}
