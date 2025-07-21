@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Google Maps integration (if needed)
     function initMap() {
         // Initialize Google Maps here if used
-        console.log('Map initialization placeholder');
+        // Map initialization placeholder - replace with actual map implementation
+        // console.log('Map initialization placeholder'); // Removed for production
     }
 
     // Office hours toggle

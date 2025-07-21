@@ -1,0 +1,195 @@
+/* ===========================================
+   DONATE PAGE STYLES
+   =========================================== */
+
+/* Donate Container */
+.donate-container {
+  max-width: 1200px;
+  margin: 0px auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(76, 175, 80, 0.08);
+}
+
+.donate-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+.donate-section h2 {
+  font-size: 2rem;
+  color: var(--primary-green-dark);
+}
+
+/* Donate Reasons */
+.donate-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.donate-card {
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 300px;
+  flex: 1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-bottom: -7rem;
+}
+
+.donate-card h3 {
+  color: var(--primary-green);
+  font-size: 1.3rem;
+}
+
+.donate-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Usage List */
+.usage-list {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.usage-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 1.05rem;
+}
+
+/* Impact Quote */
+.impact-quote {
+  font-style: italic;
+  background: #f1f8f5;
+  border-left: 5px solid var(--primary-green);
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+/* Final CTA */
+.final-cta {
+  background-color: #fffbea;
+  border: 1px dashed var(--accent-yellow);
+  padding: 30px 20px;
+  border-radius: 12px;
+}
+
+.final-cta h2 {
+  color: var(--accent-orange);
+}
+
+.final-cta p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Bank Details */
+.bank-details-custom {
+  margin: 0 auto;
+  max-width: 462px;
+  background: #e8f5e9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.07);
+  padding: 22px 24px;
+  font-size: 1.08rem;
+  color: var(--primary-green-dark);
+}
+
+.bank-details-custom h3 {
+  color: var(--primary-green);
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.18rem;
+}
+
+.bank-details-custom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.bank-details-custom .bank-info-text {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bank-details-custom .bank-info-text .donation-keyword,
+.bank-details-custom .bank-info-text .bank-email {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bank-details-custom .bank-info-text .bank-email-link {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.bank-details-custom .bank-info-text .bank-email-desc {
+  margin-top: 10px;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Donation Layout */
+.donation-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.donation-heading {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.donation-image {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
+.bank-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-green-dark);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .donate-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .donate-form,
+  .donate-info {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .donate-container {
+    padding: 8px 2px;
+    border-radius: 0;
+  }
+}

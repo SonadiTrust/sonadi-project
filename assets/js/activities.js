@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initActivitiesCalendar() {
         // Calendar implementation would go here
-        console.log('Activities calendar initialized');
+        // console.log('Activities calendar initialized'); // Removed for production
     }
 
     // Activities page animations - FAST VERSION

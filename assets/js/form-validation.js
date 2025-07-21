@@ -15,18 +15,27 @@ const formValidation = {
         return re.test(phone);
     },
 
-    // Show error message
+    // Show error message with error handling
     showError(input, message) {
-        const formGroup = input.closest('.form-group');
-        const errorDiv = formGroup.querySelector('.invalid-feedback') || document.createElement('div');
-        
-        if (!formGroup.querySelector('.invalid-feedback')) {
-            errorDiv.className = 'invalid-feedback';
-            formGroup.appendChild(errorDiv);
+        try {
+            const formGroup = input.closest('.form-group');
+            if (!formGroup) {
+                console.warn('Form group not found for input:', input);
+                return;
+            }
+            
+            const errorDiv = formGroup.querySelector('.invalid-feedback') || document.createElement('div');
+            
+            if (!formGroup.querySelector('.invalid-feedback')) {
+                errorDiv.className = 'invalid-feedback';
+                formGroup.appendChild(errorDiv);
+            }
+            
+            input.classList.add('is-invalid');
+            errorDiv.textContent = message;
+        } catch (error) {
+            console.error('Error showing validation message:', error);
         }
-        
-        input.classList.add('is-invalid');
-        errorDiv.textContent = message;
     },
 
     // Clear error message

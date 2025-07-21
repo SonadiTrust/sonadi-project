@@ -1,0 +1,36 @@
+/* ===========================================
+   TESTIMONIAL PAGE STYLES
+   =========================================== */
+
+/* Programs, Pets, Testimonials */
+.programs,
+.pets,
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Testimonial Button */
+.testimonial-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: var(--primary-green);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.testimonial-btn:hover {
+  background-color: var(--primary-green-dark);
+}

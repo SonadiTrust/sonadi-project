@@ -3,64 +3,74 @@
 // ========================================
 
 const CoreAnimations = {
-    // Initialize GSAP animations
+    // Initialize GSAP animations with error handling
     initGSAP() {
-        if (typeof gsap !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger, TextPlugin);
-            
-            // Initialize common animations
-            this.initScrollAnimations();
-            this.initStaggerAnimations();
-            this.initParallax();
+        try {
+            if (typeof gsap !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger, TextPlugin);
+                
+                // Initialize common animations
+                this.initScrollAnimations();
+                this.initStaggerAnimations();
+                this.initParallax();
+            } else {
+                console.warn('GSAP library not loaded - animations disabled');
+            }
+        } catch (error) {
+            console.error('Error initializing GSAP animations:', error);
         }
     },
 
     // Common scroll-triggered animations
     initScrollAnimations() {
-        // Fade in elements
-        gsap.utils.toArray('.fade-in').forEach(element => {
-            gsap.from(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                duration: 1,
-                opacity: 0,
-                y: 50,
-                ease: 'power2.out'
+        try {
+            // Fade in elements
+            gsap.utils.toArray('.fade-in').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    duration: 1,
+                    opacity: 0,
+                    y: 50,
+                    ease: 'power2.out'
+                });
             });
-        });
 
-        // Slide in from left
-        gsap.utils.toArray('.slide-left').forEach(element => {
-            gsap.from(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                duration: 1,
-                x: -100,
-                opacity: 0,
-                ease: 'power2.out'
+            // Slide in from left
+            gsap.utils.toArray('.slide-left').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    duration: 1,
+                    x: -100,
+                    opacity: 0,
+                    ease: 'power2.out'
+                });
             });
-        });
 
-        // Slide in from right
-        gsap.utils.toArray('.slide-right').forEach(element => {
-            gsap.from(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                duration: 1,
-                x: 100,
-                opacity: 0,
-                ease: 'power2.out'
+            // Slide in from right
+            gsap.utils.toArray('.slide-right').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    duration: 1,
+                    x: 100,
+                    opacity: 0,
+                    ease: 'power2.out'
+                });
             });
-        });
+        } catch (error) {
+            console.error('Error in scroll animations:', error);
+        }
     },
 
     // Stagger animation for lists

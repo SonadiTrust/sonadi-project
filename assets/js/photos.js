@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Simulate loading more images
             setTimeout(() => {
                 // Here you would typically fetch more images from the server
-                console.log(`Loading page ${page + 1}`);
+                // console.log(`Loading page ${page + 1}`); // Removed for production
                 page++;
                 loading = false;
             }, 1000);

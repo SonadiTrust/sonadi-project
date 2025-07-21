@@ -232,7 +232,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nullTargetWarn: false,
       });
 
-      console.log("🎉 Advanced GSAP animations initialized!");
+      // Advanced GSAP animations initialized
+      // console.log("🎉 Advanced GSAP animations initialized!"); // Removed for production
     }
   } else {
     console.warn("GSAP not loaded, falling back to CSS animations");
