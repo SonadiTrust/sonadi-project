@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleActions: "play none none reverse",
         markers: false, // Set to true for debugging
         onEnter: () => {
-          console.log("CTA button animation triggered!"); // Debug log
+          // console.log("CTA button animation triggered!"); // Removed for production
         },
       },
     });
@@ -62,6 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 100);
 
   } else {
-    console.log("GSAP not loaded");
+    // console.log("GSAP not loaded"); // Removed for production
   }
 });

@@ -3,6 +3,10 @@
 
 {% block title %}Adopt a Pet - Sonadi Charitable Trust{% endblock %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/adopt-a-dog.css' %}">
+{% endblock %}
+
 {% block content %} {% if messages %}
     <div class="message-container">
       {% for message in messages %}

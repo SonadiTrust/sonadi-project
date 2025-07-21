@@ -3,6 +3,10 @@
 
 {% block title %}Volunteer - Sonadi Charitable Trust{% endblock %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/volunteer.css' %}">
+{% endblock %}
+
 {% block content %} {% if messages %}
     <div class="message-container">
       {% for message in messages %}
@@ -34,11 +38,11 @@
       <!-- Left: Image Slideshow -->
       <div class="volunteer-left">
         <div class="slideshow">
-          <img src="{% static 'img/slide1.jpg' %}" class="slide active" />
-          <img src="{% static 'img/slide2.jpg' %}" class="slide" />
-          <img src="{% static 'img/slide3.jpg' %}" class="slide" />
-          <img src="{% static 'img/slide4.jpg' %}" class="slide" />
-          <img src="{% static 'img/slide5.jpg' %}" class="slide" />
+          <img src="{% static 'img/slide1.jpg' %}" alt="Volunteers helping animals" class="slide active" />
+          <img src="{% static 'img/slide2.jpg' %}" alt="Community outreach program" class="slide" />
+          <img src="{% static 'img/slide3.jpg' %}" alt="Animal care volunteers" class="slide" />
+          <img src="{% static 'img/slide4.jpg' %}" alt="Volunteer training session" class="slide" />
+          <img src="{% static 'img/slide5.jpg' %}" alt="Community service activities" class="slide" />
         </div>
       </div>
 
