@@ -1,0 +1,933 @@
+/* ===========================================
+   VOLUNTEER PAGE STYLES
+   =========================================== */
+
+/* Page entrance animation */
+@keyframes pageSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating animation for decorative elements */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Pulse effect for attention */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.2);
+  }
+}
+
+/* Slide in from left animation */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right animation */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale up entrance animation */
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Volunteer Container */
+.volunteer-container {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 1400px;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  animation: pageSlideIn 0.8s ease-ut;
+  margin: 0 auto;
+}
+
+.volunteer-left,
+.volunteer-right {
+  flex: 1;
+  min-width: 300px;
+  max-width: 650px;
+  position: relative;
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInLeft 0.8s ease-out 0.3s forwards;
+}
+
+.volunteer-right {
+  animation: slideInRight 0.8s ease-out 0.5s forwards;
+}
+
+/* Slideshow */
+.slideshow {
+  position: relative;
+  width: 100%;
+  min-height: 550px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 3px solid #4caf50;
+  background: #f0f0f0;
+}
+
+/* Add pulsing animation to make slideshow obvious */
+@keyframes slideShowPulse {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.2);
+    border-color: rgba(76, 175, 80, 0.6);
+  }
+}
+
+.slideshow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(76, 175, 80, 0.1) 0%, 
+    rgba(46, 125, 50, 0.05) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slideshow:hover::before {
+  opacity: 1;
+}
+
+.slideshow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 15px;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.slide.active {
+  display: block !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  position: relative !important;
+}
+
+/* Slideshow navigation controls */
+.slideshow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(76, 175, 80, 0.8);
+  color: white;
+  border: 2px solid white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 15;
+  opacity: 1;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-nav:hover {
+  background: rgba(76, 175, 80, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.slideshow-prev {
+  left: 20px;
+}
+
+.slideshow-next {
+  right: 20px;
+}
+
+/* Slideshow dots/indicators */
+.slideshow-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 15;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.slideshow-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-dot.active {
+  background: rgba(76, 175, 80, 0.9);
+  transform: scale(1.4);
+  border-color: rgba(76, 175, 80, 0.9);
+}
+
+.slideshow-dot:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+/* Slideshow progress bar */
+.slideshow-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: rgba(76, 175, 80, 0.8);
+  z-index: 10;
+  transition: width 0.3s ease;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Slide image entrance animation */
+@keyframes slideImageIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide image exit animation */
+@keyframes slideImageOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Fade transition animation */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Slide from right animation */
+@keyframes slideFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide from left animation */
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Zoom in animation */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Progress bar animation */
+@keyframes progressBar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: scaleUp 0.8s ease-out 0.7s forwards;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideInRight 0.6s ease-out forwards;
+  animation-delay: calc(0.8s + var(--form-delay, 0) * 0.1s);
+}
+
+.form-group:nth-child(1) { --form-delay: 1; }
+.form-group:nth-child(2) { --form-delay: 2; }
+.form-group:nth-child(3) { --form-delay: 3; }
+.form-group:nth-child(4) { --form-delay: 4; }
+.form-group:nth-child(5) { --form-delay: 5; }
+
+label {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+label::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-green, #4caf50);
+  transition: width 0.3s ease;
+}
+
+.form-group:focus-within label::after {
+  width: 100%;
+}
+
+.form-group:focus-within label {
+  color: var(--primary-green, #4caf50);
+  transform: translateY(-2px);
+}
+
+input,
+textarea {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  resize: vertical;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-green, #4caf50);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  transform: translateY(-2px);
+  background: #fafafa;
+}
+
+input:hover,
+textarea:hover {
+  border-color: #c0c0c0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Volunteer Form Wrapper */
+.volunteer-form-wrapper {
+  background: white;
+  max-width: 700px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: scaleUp 0.8s ease-out 0.6s forwards;
+}
+
+.volunteer-form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(76, 175, 80, 0.05),
+    transparent
+  );
+  transition: left 0.8s ease;
+}
+
+.volunteer-form-wrapper:hover::before {
+  left: 100%;
+}
+
+.volunteer-form-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Submit button with enhanced animations */
+.submit-btn {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInRight 0.6s ease-out 1.5s forwards;
+}
+
+.submit-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+}
+
+.submit-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+  background: linear-gradient(135deg, #45a049 0%, #4caf50 100%);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.volunteer-form label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--primary-green);
+  font-weight: 500;
+  text-align: right;
+  margin-bottom: 4px;
+}
+
+.volunteer-form input,
+.volunteer-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.volunteer-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Quote Styles */
+.highlight-quote-volunteer {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px 30px;
+  font-style: italic;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+  border-left: 6px solid var(--primary-green, #2e7d32);
+  color: #444;
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  margin-top: -20px;
+  margin-bottom: -25px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideInLeft 0.8s ease-out 0.2s forwards;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-quote-volunteer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(76, 175, 80, 0.1),
+    transparent
+  );
+  transition: left 0.8s ease;
+}
+
+.highlight-quote-volunteer:hover::before {
+  left: 100%;
+}
+
+.highlight-quote-volunteer:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid #1b5e20;
+}
+
+/* Success message animation */
+.success-message {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  animation: 
+    slideInRight 0.6s ease-out,
+    pulseGlow 2s ease-in-out infinite 1s;
+}
+
+/* Page heading enhancements */
+.page-heading {
+  opacity: 1;
+}
+
+/* Mobile Responsive - stack only on very small screens */
+@media (max-width: 599px) {
+  .volunteer-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .volunteer-left,
+  .volunteer-right {
+    max-width: 100%;
+    min-width: 280px;
+    animation: scaleUp 0.6s ease-out 0.3s forwards;
+  }
+  
+  .slideshow {
+    margin-bottom: 20px;
+    min-height: 250px;
+  }
+  
+  .slide {
+    height: 250px;
+  }
+  
+  .slideshow-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .slideshow-prev {
+    left: 10px;
+  }
+  
+  .slideshow-next {
+    right: 10px;
+  }
+  
+  .slideshow-dots {
+    bottom: 15px;
+    gap: 8px;
+  }
+  
+  .slideshow-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .form-group {
+    animation-delay: calc(0.5s + var(--form-delay, 0) * 0.08s);
+  }
+  
+  .highlight-quote-volunteer {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  
+  .notification {
+    right: 10px;
+    left: 10px;
+    transform: translateY(-100px);
+  }
+  
+  .notification.show {
+    transform: translateY(0);
+  }
+}
+
+/* Loading animation for form submission */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.submit-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.submit-btn.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+}
+
+/* Enhanced form group states */
+.form-group.focused label {
+  color: var(--primary-green, #4caf50);
+  transform: translateY(-4px);
+}
+
+.form-group.form-group-focused {
+  transform: translateY(-2px);
+}
+
+.form-group.form-group-filled label {
+  color: var(--primary-green, #4caf50);
+}
+
+/* Loading spinner for submit button */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+/* Notification styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  z-index: 1000;
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification-success {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+}
+
+.notification-error {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+}
+
+.notification-info {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+}
+
+/* Scroll animation classes */
+.animate-in {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced hover states for slideshow */
+.slideshow:hover .slide.active {
+  transform: scale(1.02);
+}
+
+/* Slideshow transition effects */
+.slide.fade-transition {
+  animation: fadeInSlide 0.8s ease-in-out forwards;
+}
+
+.slide.zoom-transition {
+  animation: zoomIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Media query adjustments for animations */
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slideshow-nav,
+  .slideshow-dot,
+  .form-group,
+  .submit-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .slideshow-progress {
+    display: none;
+  }
+}
+
+/* Large screen enhancements */
+@media (min-width: 1200px) {
+  .volunteer-container {
+    max-width: 1600px;
+    gap: 40px;
+    flex-wrap: nowrap;
+  }
+  
+  .volunteer-left,
+  .volunteer-right {
+    min-width: 500px;
+    max-width: 750px;
+  }
+  
+  .slideshow {
+    min-height: 650px;
+  }
+  
+  .slide {
+    height: 650px;
+  }
+  
+  .slideshow-nav {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .slideshow-prev {
+    left: 20px;
+  }
+  
+  .slideshow-next {
+    right: 20px;
+  }
+  
+  .slideshow-dots {
+    bottom: 25px;
+    gap: 12px;
+  }
+  
+  .slideshow-dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Medium to large screen optimizations */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .volunteer-container {
+    max-width: 1200px;
+    gap: 35px;
+    flex-wrap: nowrap;
+  }
+  
+  .volunteer-left,
+  .volunteer-right {
+    min-width: 350px;
+    max-width: 550px;
+  }
+  
+  .slideshow {
+    min-height: 500px;
+  }
+  
+  .slide {
+    height: 500px;
+  }
+}
+
+/* Tablet landscape optimization - keep side by side */
+@media (min-width: 769px) and (max-width: 991px) {
+  .volunteer-container {
+    max-width: 1000px;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  
+  .volunteer-left,
+  .volunteer-right {
+    min-width: 250px;
+    max-width: 450px;
+    flex: 1;
+  }
+  
+  .slideshow {
+    min-height: 350px;
+  }
+  
+  .slide {
+    height: 350px;
+  }
+}
+
+/* Ensure side-by-side layout for medium screens */
+@media (min-width: 600px) and (max-width: 768px) {
+  .volunteer-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .volunteer-left,
+  .volunteer-right {
+    min-width: 200px;
+    max-width: 400px;
+    flex: 1;
+  }
+  
+  .slideshow {
+    min-height: 300px;
+  }
+  
+  .slide {
+    height: 300px;
+  }
+}
+
+/* Subtle background animation */
+@keyframes backgroundShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: #fff;
+}

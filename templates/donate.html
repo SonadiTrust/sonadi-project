@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Donate | Sonadi
 Charitable Trust{% endblock %} {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/donate.css' %}" />
+<link rel="stylesheet" href="{% static 'css/donate.css' %}?v=2025" />
 {% endblock %} {% block extra_css %}
 <style>
+  /* Force browser refresh - Cache buster */
   .page-heading.donate-hero {
     margin-bottom: 40px !important;
   }
@@ -76,6 +77,255 @@ Charitable Trust{% endblock %} {% block page_css %}
     border-radius: 16px;
     margin: 40px 0;
   }
+
+  /* Donation Form Styles - Using Consistent Site Styling */
+  .donation-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 32px rgba(76, 175, 80, 0.08);
+    border: 1px solid #e8f5e8;
+  }
+
+  .amount-selection h3,
+  .donor-info h3,
+  .donation-purpose h3 {
+    color: var(--primary-green-dark);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .amount-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .amount-option {
+    padding: 20px;
+    border: 2px solid #e8f5e8;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .amount-option:hover {
+    border-color: var(--primary-green);
+    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.15);
+  }
+
+  .amount-option.selected {
+    border-color: var(--primary-green);
+    background: linear-gradient(135deg, #e8f5e8, #f0fdf0);
+  }
+
+  .amount-option .amount {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 5px;
+  }
+
+  .amount-option .impact {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .amount-option.custom-amount {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100px !important;
+    position: relative !important;
+    display: flex !important;
+  }
+
+  .amount-option.custom-amount input {
+    border: none !important;
+    background: transparent !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: var(--primary-green) !important;
+    text-align: center !important;
+    width: 100% !important;
+    outline: none !important;
+    margin-bottom: 5px !important;
+  }
+
+  .amount-option.custom-amount input::placeholder {
+    color: var(--primary-green) !important;
+    opacity: 0.7 !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+  }
+
+  .amount-option.custom-amount.selected input {
+    color: var(--primary-green-dark) !important;
+  }
+
+  /* Override autofill for custom amount */
+  .amount-option.custom-amount input:-webkit-autofill,
+  .amount-option.custom-amount input:-webkit-autofill:hover,
+  .amount-option.custom-amount input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: var(--primary-green) !important;
+    background-color: transparent !important;
+  }
+
+  /* Use site-wide form styling for donation form */
+  .donation-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Override previous styling with site-wide form group styling */
+  .donation-form .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .donation-form .form-group input,
+  .donation-form .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .donation-form .form-group input:focus,
+  .donation-form .form-group textarea:focus {
+    border-bottom-color: var(--primary-green);
+  }
+
+  .donation-form .form-group label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 1rem;
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+
+  .donation-form .form-group input:focus + label,
+  .donation-form .form-group input:not(:placeholder-shown) + label,
+  .donation-form .form-group textarea:focus + label,
+  .donation-form .form-group textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    background: var(--white);
+    padding: 0 5px;
+    color: var(--primary-green);
+  }
+
+  .donation-form .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  /* Purpose options styling */
+  .purpose-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .purpose-option {
+    padding: 15px;
+    border: 2px solid #e8f5e8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .purpose-option:hover {
+    border-color: var(--primary-green);
+  }
+
+  .purpose-option input[type="radio"]:checked + span {
+    color: var(--primary-green-dark);
+    font-weight: 600;
+  }
+
+  .purpose-option input[type="radio"]:checked {
+    accent-color: var(--primary-green);
+  }
+
+  /* Submit button using site-wide styling */
+  .donation-form .submit-btn {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .donation-form .submit-btn:hover {
+    background-color: var(--primary-green-dark);
+  }
+
+  .form-submit {
+    text-align: center;
+  }
+
+  .security-note {
+    margin-top: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .security-note i {
+    color: var(--primary-green);
+  }
+
+  @media (max-width: 768px) {
+    .donation-form .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .amount-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    
+    .purpose-options {
+      grid-template-columns: 1fr;
+    }
+    
+    .donation-form {
+      padding: 30px 20px;
+    }
+  }
 </style>
 {% endblock %} {% block content %}
 <!-- Hero Section -->
@@ -115,6 +365,108 @@ Charitable Trust{% endblock %} {% block page_css %}
         </p>
       </div>
     </div>
+  </section>
+
+  <!-- Online Donation Section -->
+  <section class="donate-section">
+    <h2><strong>Donate Online - Quick & Secure</strong></h2>
+    
+    <form id="donationForm" method="POST" action="{% url 'donate_payment' %}" class="donation-form">
+      {% csrf_token %}
+      
+      <!-- Amount Selection -->
+      <div class="amount-selection">
+        <h3>Select Donation Amount</h3>
+        <div class="amount-grid">
+          <div class="amount-option" data-amount="100">
+            <span class="amount">₹100</span>
+            <span class="impact">Feed 2 animals for a day</span>
+          </div>
+          <div class="amount-option" data-amount="250">
+            <span class="amount">₹250</span>
+            <span class="impact">Vaccinate 1 animal</span>
+          </div>
+          <div class="amount-option" data-amount="500">
+            <span class="amount">₹500</span>
+            <span class="impact">Medical care for 1 animal</span>
+          </div>
+          <div class="amount-option" data-amount="1000">
+            <span class="amount">₹1,000</span>
+            <span class="impact">Sponsor an animal rescue</span>
+          </div>
+          <div class="amount-option" data-amount="2500">
+            <span class="amount">₹2,500</span>
+            <span class="impact">Support shelter for a week</span>
+          </div>
+          <div class="amount-option custom-amount">
+            <input type="number" id="customAmount" placeholder="₹ Enter amount" min="50" step="1">
+            <span class="impact">Custom amount</span>
+          </div>
+        </div>
+        
+        <input type="hidden" name="amount" id="selectedAmount" required>
+      </div>
+
+      <!-- Donor Information -->
+      <div class="donor-info">
+        <h3>Donor Information (Optional)</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="donor_name" name="donor_name" placeholder=" " autocomplete="name">
+            <label for="donor_name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="donor_email" name="donor_email" placeholder=" " autocomplete="email">
+            <label for="donor_email">Your Email</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="tel" id="donor_phone" name="donor_phone" placeholder=" " autocomplete="tel">
+            <label for="donor_phone">Your Phone Number</label>
+          </div>
+          <div class="form-group">
+            <textarea id="donor_message" name="donor_message" placeholder=" " autocomplete="off"></textarea>
+            <label for="donor_message">Message (Optional)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donation Purpose -->
+      <div class="donation-purpose">
+        <h3>Donation Purpose</h3>
+        <div class="purpose-options">
+          <label class="purpose-option">
+            <input type="radio" name="purpose" value="general" checked>
+            <span>General Animal Welfare</span>
+          </label>
+          <label class="purpose-option">
+            <input type="radio" name="purpose" value="medical">
+            <span>Emergency Medical Care</span>
+          </label>
+          <label class="purpose-option">
+            <input type="radio" name="purpose" value="rescue">
+            <span>Animal Rescue Operations</span>
+          </label>
+          <label class="purpose-option">
+            <input type="radio" name="purpose" value="shelter">
+            <span>Shelter Maintenance</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-submit">
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-heart"></i>
+          Proceed to Secure Payment
+        </button>
+        <p class="security-note">
+          <i class="fas fa-shield-alt"></i>
+          Powered by Razorpay - 100% Secure & PCI Compliant
+        </p>
+      </div>
+    </form>
   </section>
 
   <!-- Bank Details Section -->
