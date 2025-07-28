@@ -1,0 +1,275 @@
+/* ===========================================
+   BASE STYLES - Global CSS Variables and Universal Styles
+   =========================================== */
+
+/* CSS Variables */
+:root {
+  --primary-green: #4caf50;
+  --primary-green-dark: #45a049;
+  --navbar-bg: #000;
+  --footer-bg: #333;
+  --accent-yellow: #ffd700;
+  --accent-orange: #f5a623;
+  --white: #fff;
+  --text-main: #333;
+}
+
+/* Universal font family */
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Explicit button and input font family */
+button, input, textarea, select {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Remove any bottom margins/padding that could cause white gaps */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: var(--text-main);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  background-color: var(--primary-green);
+  padding: 20px;
+  text-align: center;
+  color: var(--white);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Common Button Styles */
+.btn {
+  background-color: var(--primary-green);
+  color: var(--white);
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: var(--primary-green-dark);
+}
+
+.btn--primary {
+  background-color: var(--accent-orange);
+}
+
+.btn--primary:hover {
+  background-color: #e0901c;
+}
+
+/* Magnetic button effect */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Submit Button Styles */
+.submit-btn {
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-green-dark);
+}
+
+/* Section Styles */
+section {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+section h2 {
+  color: var(--primary-green);
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--primary-green);
+}
+
+.form-group label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 1rem;
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  background: var(--white);
+  padding: 0 5px;
+  color: var(--primary-green);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Message Styles */
+.message-container {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.success-message {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 14px 20px;
+  border-radius: 6px;
+  border: 1px solid #c3e6cb;
+  font-weight: 500;
+}
+
+/* Card Styles */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Utility Classes */
+.center-button {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Loading Animations */
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-green);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Smooth Transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

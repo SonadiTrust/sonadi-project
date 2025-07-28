@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Donate Payment | Sonadi Charitable Trust{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/donate.css' %}" />
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .payment-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 32px rgba(76, 175, 80, 0.08);
+    border: 2px solid var(--primary-green);
+    text-align: center;
+  }
+
+  .payment-title {
+    font-size: 2.5rem;
+    color: var(--primary-green-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .payment-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    opacity: 0.8;
+  }
+
+  .donation-amount {
+    font-size: 3rem;
+    color: var(--primary-green);
+    font-weight: 700;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #e8f5e8, #f0fdf0);
+    border-radius: 12px;
+    border: 1px solid var(--primary-green);
+  }
+
+  .payment-form {
+    margin-top: 30px;
+  }
+
+  .razorpay-payment-button {
+    background-color: var(--primary-green) !important;
+    color: white !important;
+    border: none !important;
+    padding: 15px 40px !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-family: "Poppins", sans-serif !important;
+    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3) !important;
+  }
+
+  .razorpay-payment-button:hover {
+    background-color: var(--primary-green-dark) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4) !important;
+  }
+
+  .payment-info {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-green);
+  }
+
+  .payment-info h4 {
+    color: var(--primary-green-dark);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  .payment-info p {
+    margin: 5px 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+
+  .donor-details {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-green);
+  }
+
+  .donor-details h4 {
+    color: var(--primary-green-dark);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .donor-details p {
+    margin: 5px 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+
+  .security-badges {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .security-badge {
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .security-badge i {
+    color: var(--primary-green);
+  }
+
+  @media (max-width: 768px) {
+    .payment-container {
+      margin: 20px;
+      padding: 30px 20px;
+    }
+
+    .payment-title {
+      font-size: 2rem;
+    }
+
+    .donation-amount {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="donate-container">
+  <div class="payment-container" data-aos="fade-up">
+    <h1 class="payment-title">Complete Your Donation</h1>
+    <p class="payment-subtitle">Thank you for supporting Sonadi Charitable Trust</p>
+    
+    <div class="donation-amount">
+      ₹{{ amount_display|floatformat:0 }}
+    </div>
+
+    {% if donor_name %}
+    <div class="donor-details">
+      <h4><i class="fas fa-user"></i> Donor Information</h4>
+      <p><strong>Name:</strong> {{ donor_name }}</p>
+      {% if donor_email %}<p><strong>Email:</strong> {{ donor_email }}</p>{% endif %}
+      {% if purpose %}<p><strong>Purpose:</strong> {{ purpose|title }}</p>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="payment-info">
+      <h4><i class="fas fa-info-circle"></i> Donation Details</h4>
+      <p><strong>Organization:</strong> Sonadi Charity Trust</p>
+      <p><strong>Purpose:</strong> Animal Welfare & Community Service</p>
+      <p><strong>Payment Method:</strong> Secure Razorpay Gateway</p>
+    </div>
+
+    <form class="payment-form">
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_key }}"
+            data-amount="{{ amount }}"
+            data-currency="INR"
+            data-order_id="{{ order_id }}"
+            data-buttontext="Proceed to Payment"
+            data-name="Sonadi Charity Trust"
+            data-description="Donation for Animal Welfare"
+            data-theme.color="#4caf50"
+            data-handler="razorpayHandler"
+            data-prefill.name="{{ donor_name }}"
+            data-prefill.email="{{ donor_email }}">
+        </script>
+    </form>
+
+    <script>
+    function razorpayHandler(response) {
+        // Payment successful
+        const form = document.createElement('form');
+        form.method = 'GET';
+        form.action = '{% url "donate_success" %}';
+        
+        const inputs = [
+            { name: 'razorpay_payment_id', value: response.razorpay_payment_id },
+            { name: 'razorpay_order_id', value: response.razorpay_order_id },
+            { name: 'razorpay_signature', value: response.razorpay_signature }
+        ];
+        
+        inputs.forEach(input => {
+            const hiddenField = document.createElement('input');
+            hiddenField.type = 'hidden';
+            hiddenField.name = input.name;
+            hiddenField.value = input.value;
+            form.appendChild(hiddenField);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    // Handle payment failure
+    window.addEventListener('load', function() {
+        const razorpayButton = document.querySelector('[data-payment_button_id]');
+        if (razorpayButton) {
+            razorpayButton.addEventListener('error', function(error) {
+                window.location.href = '{% url "donate_failure" %}?error_description=' + encodeURIComponent(error.description || 'Payment failed');
+            });
+        }
+    });
+    </script>
+
+    <div class="security-badges">
+      <div class="security-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>SSL Secured</span>
+      </div>
+      <div class="security-badge">
+        <i class="fas fa-lock"></i>
+        <span>256-bit Encryption</span>
+      </div>
+      <div class="security-badge">
+        <i class="fas fa-credit-card"></i>
+        <span>PCI Compliant</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

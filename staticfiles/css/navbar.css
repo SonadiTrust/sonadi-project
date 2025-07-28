@@ -1,0 +1,212 @@
+/* ===========================================
+   NAVBAR AND HEADER STYLES
+   =========================================== */
+
+/* Site Header */
+.site-header {
+  background-color: var(--primary-green);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px 15px;
+  font-size: 2rem;
+  gap: 20px;
+  box-sizing: border-box;
+  line-height: 1.1;
+}
+
+.site-header h1 {
+  font-size: 1.7rem;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--navbar-bg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+
+.navbar a {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: none;
+}
+
+.nav-logo {
+  height: 48px;
+  width: auto;
+  margin-right: 20px;
+  vertical-align: middle;
+  border-radius: 8px;
+}
+
+/* Header title and mobile title */
+.header-title {
+  display: block;
+}
+
+.mobile-site-title {
+  display: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Hamburger menu */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  padding: 0 15px;
+}
+
+/* Page Heading */
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-green, #4caf50);
+  color: white;
+  padding: 10px;
+  gap: 15px;
+}
+
+.logo-img {
+  height: 100px;
+  width: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.page-heading-text h2 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.page-heading-text h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #fefefe;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .site-header {
+    display: none;
+  }
+
+  .header-title {
+    display: none;
+  }
+
+  .mobile-site-title {
+    display: inline-block;
+    padding: 0 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar a {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-toggle-label {
+    display: block;
+    padding: 10px 20px;
+    background-color: var(--navbar-bg);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--navbar-bg);
+    z-index: 999;
+  }
+
+  .nav-toggle:checked + .nav-toggle-label + .mobile-site-title + .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: var(--navbar-bg);
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .page-heading {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo-img {
+    height: 100px;
+  }
+
+  .page-heading-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .page-heading-text h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-heading {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo-img {
+    height: 100px;
+  }
+
+  .page-heading-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .page-heading-text h3 {
+    font-size: 1rem;
+  }
+}

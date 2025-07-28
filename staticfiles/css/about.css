@@ -1,0 +1,129 @@
+/* ===========================================
+   ABOUT PAGE STYLES
+   =========================================== */
+
+/* About Wrapper */
+.about-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 8px;
+}
+
+/* About Section */
+.about-section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  margin: 0 auto 40px auto;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 5px auto;
+  color: #444;
+  text-align: justify;
+}
+
+/* About Block Layout */
+.about-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.about-text {
+  margin-top: -50px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 50%;
+}
+
+.about-image-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 50%;
+  text-align: center;
+}
+
+.about-image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.side-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.side-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Quote Styles */
+.highlight-quote-about {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 16px 24px;
+  font-style: italic;
+  background-color: #f1f1f1;
+  border-left: 6px solid var(--primary-green, #2e7d32);
+  color: #444;
+  text-align: center;
+  font-size: 1.05rem;
+  border-radius: 6px;
+}
+
+/* About page specific animations - start hidden */
+.cta-section .btn {
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  transition: none;
+}
+
+/* CTA Button */
+.cta-button:hover {
+  background-color: #287d35;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .column {
+    padding: auto 8px;
+  }
+
+  .about-block {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .about-text,
+  .about-image-container {
+    width: 100%;
+  }
+
+  .about-image-container img {
+    width: 90%;
+  }
+}
